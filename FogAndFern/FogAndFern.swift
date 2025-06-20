@@ -1,5 +1,5 @@
 //
-//  Fog_and_FernApp.swift
+//  FogAndFernApp.swift
 //  Fog and Fern
 //
 //  Created by Kyle Olivo on 6/19/25.
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct Fog_and_FernApp: App {
+struct FogAndFernApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,

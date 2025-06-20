@@ -1,5 +1,5 @@
 //
-//  Fog_and_FernUITests.swift
+//  FogAndFernUITests.swift
 //  Fog and FernUITests
 //
 //  Created by Kyle Olivo on 6/19/25.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Fog_and_FernUITests: XCTestCase {
+final class FogAndFernUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

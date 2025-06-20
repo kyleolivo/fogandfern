@@ -24,38 +24,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		756F3C432E04EF3B0026D58F /* Fog and Fern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fog and Fern.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		756F3C542E04EF3D0026D58F /* Fog and FernTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fog and FernTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		756F3C5E2E04EF3D0026D58F /* Fog and FernUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fog and FernUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		756F3C432E04EF3B0026D58F /* FogAndFern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FogAndFern.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		756F3C542E04EF3D0026D58F /* FogAndFernTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FogAndFernTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		756F3C5E2E04EF3D0026D58F /* FogAndFernUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FogAndFernUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		756F3C662E04EF3D0026D58F /* Exceptions for "Fog and Fern" folder in "Fog and Fern" target */ = {
+		756F3C662E04EF3D0026D58F /* Exceptions for "FogAndFern" folder in "FogAndFern" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 756F3C422E04EF3B0026D58F /* Fog and Fern */;
+			target = 756F3C422E04EF3B0026D58F /* FogAndFern */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		756F3C452E04EF3B0026D58F /* Fog and Fern */ = {
+		756F3C452E04EF3B0026D58F /* FogAndFern */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				756F3C662E04EF3D0026D58F /* Exceptions for "Fog and Fern" folder in "Fog and Fern" target */,
+				756F3C662E04EF3D0026D58F /* Exceptions for "FogAndFern" folder in "FogAndFern" target */,
 			);
-			path = "Fog and Fern";
+			path = FogAndFern;
 			sourceTree = "<group>";
 		};
-		756F3C572E04EF3D0026D58F /* Fog and FernTests */ = {
+		756F3C572E04EF3D0026D58F /* FogAndFernTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Fog and FernTests";
+			path = FogAndFernTests;
 			sourceTree = "<group>";
 		};
-		756F3C612E04EF3D0026D58F /* Fog and FernUITests */ = {
+		756F3C612E04EF3D0026D58F /* FogAndFernUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Fog and FernUITests";
+			path = FogAndFernUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -88,9 +88,9 @@
 		756F3C3A2E04EF3A0026D58F = {
 			isa = PBXGroup;
 			children = (
-				756F3C452E04EF3B0026D58F /* Fog and Fern */,
-				756F3C572E04EF3D0026D58F /* Fog and FernTests */,
-				756F3C612E04EF3D0026D58F /* Fog and FernUITests */,
+				756F3C452E04EF3B0026D58F /* FogAndFern */,
+				756F3C572E04EF3D0026D58F /* FogAndFernTests */,
+				756F3C612E04EF3D0026D58F /* FogAndFernUITests */,
 				756F3C442E04EF3B0026D58F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,9 +98,9 @@
 		756F3C442E04EF3B0026D58F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				756F3C432E04EF3B0026D58F /* Fog and Fern.app */,
-				756F3C542E04EF3D0026D58F /* Fog and FernTests.xctest */,
-				756F3C5E2E04EF3D0026D58F /* Fog and FernUITests.xctest */,
+				756F3C432E04EF3B0026D58F /* FogAndFern.app */,
+				756F3C542E04EF3D0026D58F /* FogAndFernTests.xctest */,
+				756F3C5E2E04EF3D0026D58F /* FogAndFernUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		756F3C422E04EF3B0026D58F /* Fog and Fern */ = {
+		756F3C422E04EF3B0026D58F /* FogAndFern */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 756F3C672E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "Fog and Fern" */;
+			buildConfigurationList = 756F3C672E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "FogAndFern" */;
 			buildPhases = (
 				756F3C3F2E04EF3B0026D58F /* Sources */,
 				756F3C402E04EF3B0026D58F /* Frameworks */,
@@ -121,18 +121,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				756F3C452E04EF3B0026D58F /* Fog and Fern */,
+				756F3C452E04EF3B0026D58F /* FogAndFern */,
 			);
-			name = "Fog and Fern";
+			name = FogAndFern;
 			packageProductDependencies = (
 			);
 			productName = "Fog and Fern";
-			productReference = 756F3C432E04EF3B0026D58F /* Fog and Fern.app */;
+			productReference = 756F3C432E04EF3B0026D58F /* FogAndFern.app */;
 			productType = "com.apple.product-type.application";
 		};
-		756F3C532E04EF3D0026D58F /* Fog and FernTests */ = {
+		756F3C532E04EF3D0026D58F /* FogAndFernTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 756F3C6C2E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "Fog and FernTests" */;
+			buildConfigurationList = 756F3C6C2E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "FogAndFernTests" */;
 			buildPhases = (
 				756F3C502E04EF3D0026D58F /* Sources */,
 				756F3C512E04EF3D0026D58F /* Frameworks */,
@@ -144,18 +144,18 @@
 				756F3C562E04EF3D0026D58F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				756F3C572E04EF3D0026D58F /* Fog and FernTests */,
+				756F3C572E04EF3D0026D58F /* FogAndFernTests */,
 			);
-			name = "Fog and FernTests";
+			name = FogAndFernTests;
 			packageProductDependencies = (
 			);
 			productName = "Fog and FernTests";
-			productReference = 756F3C542E04EF3D0026D58F /* Fog and FernTests.xctest */;
+			productReference = 756F3C542E04EF3D0026D58F /* FogAndFernTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		756F3C5D2E04EF3D0026D58F /* Fog and FernUITests */ = {
+		756F3C5D2E04EF3D0026D58F /* FogAndFernUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 756F3C6F2E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "Fog and FernUITests" */;
+			buildConfigurationList = 756F3C6F2E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "FogAndFernUITests" */;
 			buildPhases = (
 				756F3C5A2E04EF3D0026D58F /* Sources */,
 				756F3C5B2E04EF3D0026D58F /* Frameworks */,
@@ -167,13 +167,13 @@
 				756F3C602E04EF3D0026D58F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				756F3C612E04EF3D0026D58F /* Fog and FernUITests */,
+				756F3C612E04EF3D0026D58F /* FogAndFernUITests */,
 			);
-			name = "Fog and FernUITests";
+			name = FogAndFernUITests;
 			packageProductDependencies = (
 			);
 			productName = "Fog and FernUITests";
-			productReference = 756F3C5E2E04EF3D0026D58F /* Fog and FernUITests.xctest */;
+			productReference = 756F3C5E2E04EF3D0026D58F /* FogAndFernUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -199,7 +199,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 756F3C3E2E04EF3B0026D58F /* Build configuration list for PBXProject "Fog and Fern" */;
+			buildConfigurationList = 756F3C3E2E04EF3B0026D58F /* Build configuration list for PBXProject "FogAndFern" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -213,9 +213,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				756F3C422E04EF3B0026D58F /* Fog and Fern */,
-				756F3C532E04EF3D0026D58F /* Fog and FernTests */,
-				756F3C5D2E04EF3D0026D58F /* Fog and FernUITests */,
+				756F3C422E04EF3B0026D58F /* FogAndFern */,
+				756F3C532E04EF3D0026D58F /* FogAndFernTests */,
+				756F3C5D2E04EF3D0026D58F /* FogAndFernUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,12 +271,12 @@
 /* Begin PBXTargetDependency section */
 		756F3C562E04EF3D0026D58F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 756F3C422E04EF3B0026D58F /* Fog and Fern */;
+			target = 756F3C422E04EF3B0026D58F /* FogAndFern */;
 			targetProxy = 756F3C552E04EF3D0026D58F /* PBXContainerItemProxy */;
 		};
 		756F3C602E04EF3D0026D58F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 756F3C422E04EF3B0026D58F /* Fog and Fern */;
+			target = 756F3C422E04EF3B0026D58F /* FogAndFern */;
 			targetProxy = 756F3C5F2E04EF3D0026D58F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -295,7 +295,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Fog and Fern/Info.plist";
+				INFOPLIST_FILE = FogAndFern/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fog & Fern";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -341,7 +341,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Fog and Fern/Info.plist";
+				INFOPLIST_FILE = FogAndFern/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fog & Fern";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -501,7 +501,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kyleolivo.Fog-and-FernTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyleolivo.fogandferntests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -510,7 +510,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fog and Fern.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fog and Fern";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FogAndFern.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FogAndFern";
 				XROS_DEPLOYMENT_TARGET = 2.6;
 			};
 			name = Debug;
@@ -526,7 +526,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kyleolivo.Fog-and-FernTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyleolivo.fogandferntests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -535,7 +535,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fog and Fern.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fog and Fern";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FogAndFern.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FogAndFern";
 				XROS_DEPLOYMENT_TARGET = 2.6;
 			};
 			name = Release;
@@ -550,7 +550,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kyleolivo.Fog-and-FernUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyleolivo.fogandfernuitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -574,7 +574,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kyleolivo.Fog-and-FernUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyleolivo.fogandfernuitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -591,7 +591,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		756F3C3E2E04EF3B0026D58F /* Build configuration list for PBXProject "Fog and Fern" */ = {
+		756F3C3E2E04EF3B0026D58F /* Build configuration list for PBXProject "FogAndFern" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				756F3C6A2E04EF3D0026D58F /* Debug */,
@@ -600,7 +600,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		756F3C672E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "Fog and Fern" */ = {
+		756F3C672E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "FogAndFern" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				756F3C682E04EF3D0026D58F /* Debug */,
@@ -609,7 +609,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		756F3C6C2E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "Fog and FernTests" */ = {
+		756F3C6C2E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "FogAndFernTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				756F3C6D2E04EF3D0026D58F /* Debug */,
@@ -618,7 +618,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		756F3C6F2E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "Fog and FernUITests" */ = {
+		756F3C6F2E04EF3D0026D58F /* Build configuration list for PBXNativeTarget "FogAndFernUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				756F3C702E04EF3D0026D58F /* Debug */,
