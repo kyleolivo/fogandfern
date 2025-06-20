@@ -1,5 +1,5 @@
 //
-//  Fog_and_FernUITestsLaunchTests.swift
+//  FogAndFernUITestsLaunchTests.swift
 //  Fog and FernUITests
 //
 //  Created by Kyle Olivo on 6/19/25.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Fog_and_FernUITestsLaunchTests: XCTestCase {
+final class FogAndFernUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
