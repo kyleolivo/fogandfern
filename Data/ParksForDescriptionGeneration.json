@@ -1,0 +1,1863 @@
+{
+  "generatedDate" : "2025-06-23T01:12:19Z",
+  "parks" : [
+    {
+      "name" : "10th Ave & Clement Mini Park",
+      "address" : "351 Ninth Ave",
+      "category" : "mini",
+      "currentDescription" : "Nestled in the heart of the Inner Richmond near the bustling Clement Street corridor, this nearly one-acre green sanctuary offers residents a tranquil escape from urban density. The park features thoughtfully arranged seating areas and mature plantings that create intimate gathering spaces for the diverse Richmond community. Its strategic location makes it a perfect midday respite for shoppers exploring nearby Asian markets and restaurants, while providing neighborhood families with essential green space in this walkable district.",
+      "acreage" : 0.93242788,
+      "neighborhood" : "Inner Richmond"
+    },
+    {
+      "name" : "15th Avenue Steps",
+      "address" : "1060 Kirkham St",
+      "category" : "mini",
+      "currentDescription" : "Carved into the hillside terrain of the Inner Sunset, these charming stepped gardens transform what could be ordinary urban infrastructure into a delightful pocket oasis. The terraced design maximizes the half-acre space, creating multiple levels of seating and planted areas that offer panoramic views toward the city. Local residents often pause here during their daily walks, making it a natural community gathering spot that celebrates the neighborhood's unique topography.",
+      "acreage" : 0.50806563,
+      "neighborhood" : "Inner Sunset"
+    },
+    {
+      "neighborhood" : "Mission",
+      "name" : "24th & York Mini Park",
+      "address" : "2810 24th St",
+      "acreage" : 0.13317206,
+      "currentDescription" : "This tiny but mighty triangular park serves as a crucial green anchor at the intersection of two busy Mission District streets, providing immediate relief from the area's urban intensity. Despite its compact 0.13-acre footprint, the space maximizes every square foot with clever landscaping and seating that accommodates both quick pauses and longer conversations. It represents the Mission's grassroots spirit, offering a democratic space where longtime residents and newcomers alike can connect with nature and each other.",
+      "category" : "mini"
+    },
+    {
+      "neighborhood" : "Noe Valley",
+      "name" : "29th & Diamond Open Space",
+      "address" : "1701 Diamond St",
+      "acreage" : 0.93141186,
+      "currentDescription" : "Perched on the slopes between Noe Valley and the Castro, this hillside retreat offers nearly an acre of terraced green space with stunning city vistas. The park's elevated position provides a natural amphitheater effect, where visitors can enjoy panoramic views while surrounded by native plantings that thrive in San Francisco's unique microclimate. It serves as both a neighborhood landmark and a peaceful meditation spot for residents navigating the busy corridors of upper Diamond Street.",
+      "category" : "mini"
+    },
+    {
+      "neighborhood" : "Mission",
+      "name" : "49 S Van Ness Avenue",
+      "address" : "49 Van Ness Ave",
+      "acreage" : 2.53339019,
+      "currentDescription" : "Located in Mission, 49 S Van Ness Avenue serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "category" : "neighborhood"
+    },
+    {
+      "neighborhood" : "Bayview Hunters Point",
+      "name" : "900 Innes",
+      "address" : "900 Innes St",
+      "acreage" : 2.98206163,
+      "currentDescription" : "Serving the Bayview Hunters Point community, this waterfront facility provides essential recreational infrastructure and community gathering space in a neighborhood rich with cultural heritage and ongoing revitalization efforts. The park's location near the bay offers residents access to open space and recreational programming while supporting the area's strong community organizing tradition. Its role as both a recreation center and community meeting place makes it vital to neighborhood life and resident engagement.",
+      "category" : "neighborhood"
+    },
+    {
+      "neighborhood" : "Bayview Hunters Point",
+      "name" : "Adam Rodgers Park",
+      "address" : "1215 Quesada Ave",
+      "acreage" : 2.76858023,
+      "currentDescription" : "Located in Bayview Hunters Point, Adam Rodgers Park serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "category" : "neighborhood"
+    },
+    {
+      "neighborhood" : "Hayes Valley",
+      "name" : "Alamo Square",
+      "address" : "1081 Fulton St",
+      "acreage" : 13.64929367,
+      "currentDescription" : "Perched atop one of San Francisco's most iconic hills, Alamo Square offers breathtaking panoramic views of the city skyline, including the famous \"Painted Ladies\" Victorian homes that have graced countless postcards and films. This 13.6-acre hillside plaza serves as both a neighborhood gathering place and a world-renowned tourist destination, where visitors can picnic on the grassy slopes while taking in sweeping vistas from downtown to the Golden Gate Bridge. The plaza's elevated position and open lawns make it a perfect spot for photography, casual recreation, and community events, while its central location in Hayes Valley provides easy access to local shops and cafes.",
+      "category" : "plaza"
+    },
+    {
+      "neighborhood" : "Excelsior",
+      "name" : "Alice Chalmers Playground",
+      "address" : "670 Brunswick St",
+      "acreage" : 1.81590783,
+      "currentDescription" : "Serving the diverse Excelsior neighborhood, Alice Chalmers Playground provides essential recreational facilities for local families with its playground equipment, sports courts, and open areas for community gatherings. The park's central location makes it easily accessible to residents throughout the district, while its well-maintained amenities support both structured activities and informal play. As a neighborhood anchor, it fosters community connections and provides safe outdoor space for children and families in this multicultural residential area.",
+      "category" : "neighborhood"
+    },
+    {
+      "neighborhood" : "Russian Hill",
+      "name" : "Alice Marble Courts",
+      "address" : "1200 Greenwich St",
+      "acreage" : 0.83992372,
+      "currentDescription" : "Named after the legendary tennis champion who called San Francisco home, this Russian Hill gem combines athletic heritage with breathtaking views of the bay and Alcatraz. The courts sit dramatically on the hillside, offering players and spectators alike an unparalleled urban tennis experience where the city skyline serves as a stunning backdrop. Beyond tennis, the surrounding green space provides seating areas where neighbors gather to watch games and enjoy the panoramic vistas that make this location truly special.",
+      "category" : "mini"
+    },
+    {
+      "neighborhood" : "Mission",
+      "name" : "Alioto Mini Park",
+      "address" : "3460 20th St",
+      "acreage" : 0.21154127000000003,
+      "currentDescription" : "This intimate quarter-acre pocket park embodies the Mission District's community-focused spirit, providing essential green refuge in one of the city's most densely populated neighborhoods. Located on busy 20th Street, it offers residents a rare opportunity to connect with nature without leaving their immediate area, featuring drought-resistant plantings that reflect California's environmental consciousness. The park serves as an informal community living room where neighbors of all ages can pause, socialize, and enjoy a moment of tranquility amid the Mission's vibrant street life.",
+      "category" : "mini"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Marina",
+      "address" : "2609 Gough St",
+      "acreage" : 0.88362876,
+      "currentDescription" : "Tucked between the elegant homes of the Marina District, this nearly one-acre park provides a sophisticated green respite that perfectly complements the neighborhood's refined character. The park's mature trees and carefully maintained landscapes create an almost pastoral feeling, offering residents a place to exercise their dogs, read quietly, or enjoy picnic lunches with views toward the bay. Its proximity to both Chestnut Street shopping and the waterfront makes it an ideal stopping point for those exploring this picturesque district.",
+      "name" : "Allyne Park"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Pacific Heights",
+      "address" : "2501 Jackson St",
+      "acreage" : 12.935002050000001,
+      "currentDescription" : "Rising in terraced splendor through the heart of Pacific Heights, Alta Plaza Park is an elegant hillside plaza featuring formal landscaping, grand staircases, and commanding views over the city and bay. This 12.9-acre civic space showcases classic San Francisco urban design with its symmetrical layout of walking paths, manicured gardens, and multiple levels that climb the steep hillside, creating intimate gathering areas at each tier. The plaza's sophisticated atmosphere and stunning architecture make it a favorite for both quiet contemplation and social gatherings, while its strategic location offers spectacular sunrise views and serves as a gateway to Pacific Heights' prestigious residential streets.",
+      "name" : "Alta Plaza Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Lone Mountain\/USF",
+      "address" : "600 Arguello Blvd",
+      "acreage" : 7.08433275,
+      "currentDescription" : "Located in Lone Mountain\/USF, Angelo J. Rossi Playground serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Angelo J. Rossi Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "139 Aptos Ave",
+      "acreage" : 4.9857799,
+      "currentDescription" : "Located in the Visitacion Valley neighborhood, Aptos Playground provides crucial recreational infrastructure for local families with playground equipment and open spaces designed for community use. The facility serves as a gathering place where children can play safely while parents build the social connections that strengthen neighborhood bonds. Its role in supporting family life and community interaction makes it an essential resource in this residential district that values shared public space.",
+      "name" : "Aptos Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Richmond",
+      "address" : "455 18th Ave",
+      "acreage" : 0.92315503,
+      "currentDescription" : "Set in the heart of the Outer Richmond's residential streets, this neighborhood playground brings families together in a space designed for active play and community connection. The nearly one-acre site features age-appropriate play equipment surrounded by open green space where children can run freely while parents socialize on nearby benches. Its location in the avenues provides crucial recreational infrastructure for families who call this fog-kissed district home, creating lasting memories and neighborhood bonds.",
+      "name" : "Argonne Playground"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Potrero Hill",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.12946478,
+      "currentDescription" : "This charming community garden on Potrero Hill embodies the neighborhood's spirit of collaboration and environmental consciousness. Despite its compact size, the garden maximizes growing space through vertical gardening techniques and efficient plot design, creating a productive urban farm that supplies fresh vegetables to local families. Regular community workdays and seasonal celebrations foster deep connections among gardeners, while the site serves as an outdoor classroom where children and adults learn about sustainable agriculture, composting, and the importance of local food systems in urban environments.",
+      "name" : "Arkansas Friendship Garden"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Glen Park",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.12555599,
+      "currentDescription" : "Nestled in the heart of Glen Park, this intimate quarter-acre community garden serves as a green sanctuary where neighbors cultivate both plants and friendships. The garden's raised beds and composting systems showcase sustainable urban farming techniques, while educational workshops teach visitors about organic growing methods and seasonal planting. Local families gather here to tend their plots and share knowledge, creating a vibrant hub of environmental stewardship and community connection that demonstrates how small spaces can yield abundant harvests and lasting relationships.",
+      "name" : "Arlington Community Garden"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Outer Richmond",
+      "address" : "San Francisco, CA",
+      "acreage" : 1.8432519,
+      "currentDescription" : "Located in Outer Richmond, Balboa Natural Area serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Balboa Natural Area"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Outer Mission",
+      "address" : "51 Havelock St",
+      "acreage" : 24.86336884,
+      "currentDescription" : "Spanning multiple blocks in the Richmond District, Balboa Park combines sports facilities, recreational programming, and community gathering spaces to serve one of San Francisco's most diverse neighborhoods. The park's extensive amenities including pools, courts, and open fields accommodate both organized athletics and casual recreation for residents of all ages and backgrounds. Its central location and comprehensive facilities make it a vital community resource that supports healthy lifestyles and cross-cultural interaction in this international district.",
+      "name" : "Balboa Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "900 Key Ave",
+      "acreage" : 46.64177327,
+      "currentDescription" : "Bay View Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Bay View Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "5701 3rd St",
+      "acreage" : 3.9087788,
+      "currentDescription" : "Located in Bayview Hunters Point, Bayview K.C. Jones Playground serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Bayview K.C. Jones Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Western Addition",
+      "address" : "84 Beideman St",
+      "acreage" : 0.08773144,
+      "currentDescription" : "Despite being one of the city's smallest green spaces at less than one-tenth of an acre, this Western Addition pocket park demonstrates how even the tiniest urban interventions can provide meaningful community benefit. Located in the heart of the Fillmore's historic district, it offers a quiet contemplation space amid the neighborhood's rich cultural landscape. The park's intimate scale makes every element—from seating to plantings—feel intentional and welcoming, proving that great things indeed come in small packages.",
+      "name" : "Beideman & O'Farrell Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Glen Park",
+      "address" : "298 Berkeley Way",
+      "acreage" : 0.83122668,
+      "currentDescription" : "Nestled in the Glen Park village atmosphere, this hillside park takes advantage of the neighborhood's natural topography to create an elevated green sanctuary overlooking the charming business district below. The 0.8-acre space features terraced seating areas and native plantings that cascade down the slope, providing multiple vantage points for enjoying both nature and neighborhood life. It serves as a perfect spot for residents to pause during their walks to and from the Glen Park BART station, creating a seamless connection between urban transit and natural beauty.",
+      "name" : "Berkeley Way Open Space"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Bernal Heights",
+      "address" : "San Francisco, CA",
+      "acreage" : 26.342816420000002,
+      "currentDescription" : "Bernal Heights Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Bernal Heights Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bernal Heights",
+      "address" : "500 Moultrie St",
+      "acreage" : 0.8346184,
+      "currentDescription" : "This community hub serves as both recreational facility and neighborhood gathering place in the heart of Bernal Heights' village-like atmosphere. The nearly one-acre site combines indoor programming with outdoor green space, offering residents of all ages opportunities for fitness, socializing, and community engagement. Its location on Moultrie Street places it at the center of the neighborhood's daily life, making it a natural meeting point where the strong community spirit that defines Bernal Heights comes alive.",
+      "name" : "Bernal Heights Rec Center"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Nob Hill",
+      "address" : "1101 Washington St",
+      "acreage" : 0.7514173700000001,
+      "currentDescription" : "Honoring the memory of flight attendant Betty Ann Ong, a hero of September 11th, this Nob Hill recreation center provides crucial community services in one of the city's most densely populated areas. The three-quarter-acre facility offers both indoor programming and outdoor respite space, serving the diverse population of Chinatown and Nob Hill residents who rely on public recreation facilities. Its central location makes it accessible to multiple neighborhoods, creating a bridge between communities while providing essential green space in the urban core.",
+      "name" : "Betty Ann Ong Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Glen Park",
+      "address" : "294 Beacon St",
+      "acreage" : 3.6688939,
+      "currentDescription" : "This dramatic hilltop park in Glen Park offers visitors some of San Francisco's most spectacular panoramic views from its rocky summit, with sweeping vistas that encompass downtown, the bay, and surrounding neighborhoods. The park's natural amphitheater setting and steep terrain create an authentic wilderness experience just minutes from the village-like Glen Park business district, making it a favorite destination for both daily exercise and special occasions. Its combination of accessible location and challenging topography attracts hikers, dog walkers, and photography enthusiasts who appreciate both the physical workout and the stunning urban scenery.",
+      "name" : "Billy Goat Hill"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Russian Hill",
+      "address" : "1201 Broadway",
+      "acreage" : 0.1245258,
+      "currentDescription" : "Perched dramatically above the Broadway Tunnel entrance, this small but strategically located park offers Russian Hill residents a quiet retreat with some of the city's most spectacular views. The one-eighth-acre space maximizes its clifftop position, providing seating areas where visitors can watch the ebb and flow of city traffic while enjoying panoramic vistas of the bay and distant hills. It represents urban planning at its finest, transforming what could be unused infrastructure space into a beloved neighborhood asset.",
+      "name" : "Broadway Tunnel W. Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Oceanview\/Merced\/Ingleside",
+      "address" : "373 Ramsell St",
+      "acreage" : 3.79028119,
+      "currentDescription" : "Located in Oceanview\/Merced\/Ingleside, Brooks Park serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Brooks Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Western Addition, Hayes Valley",
+      "address" : "1151 Buchanan St",
+      "acreage" : 1.9706335400000001,
+      "currentDescription" : "Located in Western Addition, Hayes Valley, Buchanan St Mall serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Buchanan St Mall"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Haight Ashbury",
+      "address" : "1293 Haight St",
+      "acreage" : 38.34512762,
+      "currentDescription" : "Rising 569 feet above the Haight Ashbury district, Buena Vista Park offers visitors a forested urban wilderness with some of San Francisco's most spectacular panoramic views. This 37-acre hilltop sanctuary features winding trails through eucalyptus groves and native plantings that create a sense of escape from city life, while multiple viewpoints provide stunning vistas of the Golden Gate Bridge, downtown skyline, and bay. The park's combination of natural beauty and cultural significance as the city's oldest official park makes it a beloved destination for both daily exercise and special occasions, where visitors can experience the intersection of San Francisco's natural landscape and urban sophistication.",
+      "name" : "Buena Vista Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Pacific Heights",
+      "address" : "2748 Bush St",
+      "acreage" : 0.19535678,
+      "currentDescription" : "This elegant Pacific Heights pocket park embodies the neighborhood's sophisticated character while providing essential green space in one of the city's most prestigious districts. The quarter-acre site features mature trees and refined landscaping that create an intimate outdoor room perfect for quiet reflection or casual conversation. Its location on Bush Street makes it easily accessible to residents navigating between the neighborhood's commercial corridors and residential streets, offering a moment of natural beauty amid urban sophistication.",
+      "name" : "Bush & Broderick Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Outer Richmond",
+      "address" : "851 38th Ave",
+      "acreage" : 1.00858201,
+      "currentDescription" : "Located in the Richmond District near the ocean, Cabrillo Playground provides families with recreational facilities that take advantage of the area's cool, temperate climate and proximity to Golden Gate Park. The playground serves the diverse Richmond community with equipment and programming designed for children of various ages, while its location offers easy access to both neighborhood amenities and the park's extensive trail network. Its role as a family gathering place reflects the Richmond's character as one of San Francisco's most family-friendly residential districts.",
+      "name" : "Cabrillo Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Sunset\/Parkside",
+      "address" : "2695 19th Ave",
+      "acreage" : 7.339430640000001,
+      "currentDescription" : "Located in Sunset\/Parkside, Carl Larsen Park serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Carl Larsen Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Mission",
+      "address" : "185 Cayuga Ave",
+      "acreage" : 0.15415614000000002,
+      "currentDescription" : "Located in the diverse Outer Mission neighborhood, this small corner park serves as a vital green anchor in an area where such spaces are precious commodities. The quarter-acre site provides essential outdoor gathering space for the multicultural families who call this district home, featuring play areas and seating that accommodate multiple generations. Its position at the intersection of residential streets makes it a natural community crossroads where neighbors can connect while children play safely away from busy traffic.",
+      "name" : "Cayuga & Lamartine Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Outer Mission",
+      "address" : "301 Naglee Ave",
+      "acreage" : 3.56475182,
+      "currentDescription" : "Serving the Outer Mission community, Cayuga Playground provides essential recreational infrastructure with playground equipment, sports facilities, and open space for local families. The park's design emphasizes community use and accessibility, offering residents a safe gathering place for both organized activities and informal recreation. Its central location and well-maintained amenities make it a vital neighborhood resource that supports family life and community interaction in this diverse residential area.",
+      "name" : "Cayuga Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "North Beach",
+      "address" : "225 Chestnut St",
+      "acreage" : 0.04732612,
+      "currentDescription" : "This tiny North Beach pocket park, though only a twentieth of an acre, provides crucial breathing room in one of the city's most densely built neighborhoods. Located steps from the Italian heritage sites and bustling cafes that define North Beach, it offers visitors and residents alike a quiet moment amid the district's vibrant street life. The space's intimate scale creates an almost secret garden feeling, where locals know to pause for a few minutes of tranquility while exploring the neighborhood's rich cultural landscape.",
+      "name" : "Chestnut & Kearny Open Space"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Tenderloin",
+      "address" : "1 Carlton B. Goodlett Place",
+      "acreage" : 0.80652683,
+      "currentDescription" : "While primarily serving as San Francisco's seat of government, the green spaces surrounding City Hall create an unexpected urban oasis in the heart of the Civic Center. The formal landscaping and open plazas provide residents with a place to experience democratic architecture while enjoying outdoor space that reflects the city's commitment to public accessibility. The grounds serve as both ceremonial space for civic events and daily respite for those working in or visiting the government district, creating a meaningful connection between public service and public space.",
+      "name" : "City Hall"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Noe Valley",
+      "address" : "855 Clipper Terrace",
+      "acreage" : 0.4677895,
+      "currentDescription" : "Perched on a terraced hillside in Noe Valley, this nearly half-acre community garden takes advantage of San Francisco's microclimates to create diverse growing zones for year-round cultivation. The garden's thoughtful design includes drought-resistant native plants alongside productive vegetable beds, demonstrating how urban agriculture can work in harmony with local ecosystems. Weekend workshops on permaculture and water conservation draw gardeners from across the city, while the site's spectacular views and peaceful atmosphere make it a beloved gathering place for both serious growers and families seeking to connect with nature.",
+      "name" : "Clipper Terr Comm. Garden"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bernal Heights",
+      "address" : "90 Coleridge St",
+      "acreage" : 0.23009548000000002,
+      "currentDescription" : "This intimate Bernal Heights pocket park captures the neighborhood's village-like character, providing residents with a small but perfectly formed green retreat. The quarter-acre space features thoughtful landscaping and seating that encourages both solitary reflection and community gathering, embodying the tight-knit spirit that makes Bernal Heights special. Its quiet residential location makes it a favorite spot for neighbors to walk their dogs, read books, or simply enjoy a few minutes of natural beauty amid the urban landscape.",
+      "name" : "Coleridge Mini Park"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Nob Hill",
+      "address" : "1000 Taylor St",
+      "acreage" : 1.29616036,
+      "currentDescription" : "Collis P. Huntington Park is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Collis P. Huntington Park"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Potrero Hill",
+      "address" : "699 Connecticut St",
+      "acreage" : 0.13554906,
+      "currentDescription" : "This intimate community garden in Potrero Hill stands as a testament to neighborhood resilience and environmental stewardship. The compact space features innovative growing techniques including container gardening and trellising systems that maximize productivity while creating a beautiful green oasis. Local residents of all ages collaborate on shared projects like the children's teaching garden and native pollinator habitat, fostering intergenerational learning about sustainable practices and urban biodiversity.",
+      "name" : "Connecticut Friendship Garden"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Castro\/Upper Market",
+      "address" : "199 Museum Way",
+      "acreage" : 13.24973014,
+      "currentDescription" : "Perched on a dramatic rocky outcrop in the Castro area, Corona Heights Park offers visitors spectacular 360-degree views of San Francisco from its 520-foot summit. This 16-acre natural area features exposed bedrock formations and native plant communities that provide insight into the city's geological history, while its challenging trails reward hikers with some of the most comprehensive urban vistas available. The park's combination of accessible location and wild character makes it a favorite destination for both serious hikers seeking workout challenges and casual visitors wanting to experience San Francisco's dramatic topography without leaving the city limits.",
+      "name" : "Corona Heights Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bernal Heights",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.15050869,
+      "currentDescription" : "Tucked into the residential streets of Bernal Heights, this small park provides essential green infrastructure in a neighborhood known for its strong community bonds. The modest quarter-acre space creates an outdoor living room where neighbors naturally encounter each other during daily routines, fostering the kind of spontaneous interactions that build lasting community connections. Its location near Precita Avenue makes it easily accessible while maintaining the quiet, residential character that Bernal Heights residents cherish.",
+      "name" : "Coso & Precita Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Pacific Heights",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.17142016,
+      "currentDescription" : "Hidden among Pacific Heights' elegant residential streets, this small park offers an intimate green respite that feels like a private garden shared with the community. The quarter-acre space features mature plantings and quiet seating areas that provide a contemplative escape from the neighborhood's busy shopping and dining corridors. Its discreet location makes it a favorite among locals who appreciate having a peaceful retreat just steps from the urban amenities that make Pacific Heights so desirable.",
+      "name" : "Cottage Row Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Marina",
+      "address" : "1 Miley St",
+      "acreage" : 0.14948525000000001,
+      "currentDescription" : "This charming Marina District playground brings families together in a space designed specifically for children's play and parent community building. The quarter-acre site features modern play equipment surrounded by seating areas where parents can socialize while their children explore and make friends. Its location in the heart of Cow Hollow makes it a central gathering point for the neighborhood's many young families, creating lasting bonds and childhood memories in one of the city's most family-friendly districts.",
+      "name" : "Cow Hollow Playground"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Glen Park",
+      "address" : "2 Crags Ct",
+      "acreage" : 0.43651079,
+      "currentDescription" : "Hidden away on a quiet Glen Park street, this nearly half-acre community garden serves as both a productive urban farm and a peaceful retreat from city life. The garden's thoughtful layout includes dedicated spaces for herb cultivation, fruit trees, and experimental plots where gardeners test new growing techniques suited to San Francisco's unique climate. Monthly potluck dinners featuring garden-fresh ingredients strengthen community bonds, while the site's compost demonstration area and rainwater collection systems educate visitors about sustainable urban living practices.",
+      "name" : "Crags Court Garden"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Excelsior, McLaren Park",
+      "address" : "799 Moscow St",
+      "acreage" : 57.523356299999996,
+      "currentDescription" : "This expansive recreational facility in the Excelsior district provides comprehensive amenities including sports fields, playground equipment, and community programming space for one of San Francisco's most affordable family neighborhoods. The park's substantial size and diverse facilities accommodate everything from youth soccer leagues to family gatherings, serving as a vital community anchor for residents of all ages. Its role as both a recreational destination and community meeting place makes it essential infrastructure for maintaining neighborhood cohesion and supporting active lifestyles.",
+      "name" : "Crocker Amazon Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Glen Park",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.07942271,
+      "currentDescription" : "This tiny Glen Park pocket park demonstrates how even the smallest urban spaces can provide meaningful community value when thoughtfully designed and lovingly maintained. The one-twentieth-acre site offers neighbors a quiet spot for reflection and casual conversation, perfectly scaled to Glen Park's intimate village atmosphere. Its location near the neighborhood's charming business district makes it a natural rest stop for residents running errands or exploring the area's unique blend of urban convenience and small-town charm.",
+      "name" : "Diamond & Farnum Open Space"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Bernal Heights",
+      "address" : "114 Brewster St",
+      "acreage" : 0.30290238,
+      "currentDescription" : "This community garden in the historic Dogpatch neighborhood honors local heritage while promoting sustainable urban agriculture and community building. The garden's memorial aspect creates a meaningful space for reflection and remembrance, while its productive beds demonstrate how community-driven food systems can flourish in post-industrial neighborhoods. Local residents collaborate on seasonal growing projects and educational programs that connect gardening skills with neighborhood history, creating a living tribute that serves both community needs and environmental goals.",
+      "name" : "Dogpatch - Miller Memorial Garden"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "7 Martha Ave",
+      "acreage" : 1.60282348,
+      "currentDescription" : "Located in West of Twin Peaks, Dorothy Erskine Park serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Dorothy Erskine Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Noe Valley",
+      "address" : "1098 Douglass St",
+      "acreage" : 7.88730383,
+      "currentDescription" : "Located in Noe Valley, Douglass Playground serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Douglass Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Richmond",
+      "address" : "336 31st Ave",
+      "acreage" : 0.9268219600000001,
+      "currentDescription" : "Located in the fog-blessed Outer Richmond, these tennis courts provide recreational opportunities while showcasing the neighborhood's commitment to active outdoor living. The nearly one-acre facility offers players a chance to enjoy their sport in the fresh ocean air, with the unique microclimate creating ideal conditions for year-round play. Beyond tennis, the surrounding space serves the diverse avenues community as a gathering place where neighbors can connect over shared interests in fitness and outdoor recreation.",
+      "name" : "DuPont Tennis Courts"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Haight Ashbury",
+      "address" : "50 Scott St",
+      "acreage" : 4.78759191,
+      "currentDescription" : "Beloved as the heart of the Castro\/Upper Market area, Duboce Park serves as San Francisco's premier dog park while providing recreational facilities for one of the city's most vibrant neighborhoods. This nearly 4-acre urban oasis features off-leash areas that create a social hub for dog owners, along with playground equipment and open space for families to enjoy. The park's central location and welcoming atmosphere make it a daily gathering place where the Castro's diverse community comes together, from longtime residents to newcomers, creating the kind of authentic neighborhood connections that define San Francisco's best residential districts.",
+      "name" : "Duboce Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Noe Valley",
+      "address" : "592 Duncan St",
+      "acreage" : 0.65081602,
+      "currentDescription" : "Nestled in the hills between Noe Valley and the Castro, this terraced park offers residents nearly two-thirds of an acre of sloped green space with panoramic city views. The park's hillside location creates natural amphitheater seating where visitors can enjoy sweeping vistas while surrounded by native plants that thrive in San Francisco's Mediterranean climate. It serves as both a neighborhood landmark and a peaceful retreat for residents seeking respite from the busy commercial corridors that define these vibrant districts.",
+      "name" : "Duncan & Castro Open Space"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "San Francisco, CA",
+      "acreage" : 2.41942505,
+      "currentDescription" : "Located in West of Twin Peaks, Edgehill Mountain serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Edgehill Mountain"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Financial District\/South Beach",
+      "address" : "10 Market St",
+      "acreage" : 4.13652822,
+      "currentDescription" : "Embarcadero Plaza is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Embarcadero Plaza"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Potrero Hill",
+      "address" : "700 Minnesota St",
+      "acreage" : 2.22949667,
+      "currentDescription" : "Located in Potrero Hill, Esprit Park serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Esprit Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "South of Market",
+      "address" : "270 6th St",
+      "acreage" : 1.16261065,
+      "currentDescription" : "Located in South of Market, Eugene Friend Rec Center serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Eugene Friend Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Castro\/Upper Market",
+      "address" : "100 Collingwood St",
+      "acreage" : 2.25481227,
+      "currentDescription" : "Anchoring the Castro district, Eureka Valley Recreation Center provides comprehensive facilities that serve one of San Francisco's most close-knit communities with indoor programming and outdoor recreational space. The center's amenities support diverse activities from fitness classes to community meetings, while its central location makes it easily accessible to residents throughout the valley. As both a recreational facility and community gathering place, it plays a crucial role in maintaining the social connections and neighborhood activism that define Castro culture and contribute to San Francisco's progressive identity.",
+      "name" : "Eureka Valley Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Glen Park",
+      "address" : "61 Everson St",
+      "acreage" : 1.2687575199999999,
+      "currentDescription" : "Located in Glen Park, Everson & Digby Lots serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "name" : "Everson & Digby Lots"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Excelsior",
+      "address" : "579 Madrid St",
+      "acreage" : 1.90615221,
+      "currentDescription" : "Located in the heart of the diverse Excelsior district, this community playground provides essential recreational facilities for local families with playground equipment, sports courts, and open areas for neighborhood gatherings. The park serves as a vital community anchor where children from various cultural backgrounds come together to play while parents build social connections that strengthen the area's multicultural character. Its central location and accessible amenities make it a cornerstone of community life in this affordable residential neighborhood that proudly maintains its working-class roots.",
+      "name" : "Excelsior Playground"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Glen Park",
+      "address" : "26 Amatista Ln",
+      "acreage" : 0.86592145,
+      "currentDescription" : "Fairmont Plaza is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Fairmont Plaza"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "551 Utah St",
+      "acreage" : 0.31978069000000003,
+      "currentDescription" : "This uniquely named Mission District park transforms a small urban lot into a meaningful green space that reflects the neighborhood's creative and resilient spirit. The third-acre site provides essential outdoor gathering space in one of the city's most densely populated areas, featuring plantings and seating that encourage both community interaction and quiet contemplation. Its location on Utah Street places it at the heart of the Mission's residential core, offering families and individuals alike a precious opportunity to connect with nature without leaving their neighborhood.",
+      "name" : "Fallen Bridge Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Tenderloin",
+      "address" : "246 Eddy St",
+      "acreage" : 1.093675,
+      "currentDescription" : "Rising like a green sanctuary in the heart of the Tenderloin, this 1-acre park provides crucial respite and recreational opportunities for one of San Francisco's most densely populated neighborhoods. Named after a Franciscan priest who served the area's most vulnerable residents, the park features playground equipment, seating areas, and programming that serves families, children, and individuals seeking safe outdoor space. Despite the urban challenges surrounding it, the park represents hope and community resilience, offering a place where Tenderloin residents can experience nature, recreation, and social connection in an environment designed with dignity and care.",
+      "name" : "Father Alfred Boeddeker Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Russian Hill",
+      "address" : "2366 Leavenworth St",
+      "acreage" : 0.32959382000000004,
+      "currentDescription" : "Perched on the slopes of Russian Hill, this intimate third-acre park offers visitors spectacular views of the bay while providing a peaceful retreat from the neighborhood's steep streets and bustling activity. The park's terraced design takes advantage of the natural topography to create multiple seating areas, each offering different perspectives on the city's stunning landscape. Its location near Leavenworth Street makes it easily accessible to residents and visitors exploring Russian Hill's unique blend of residential charm and urban sophistication.",
+      "name" : "Fay Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Western Addition",
+      "address" : "1140 Fillmore St",
+      "acreage" : 0.25969231,
+      "currentDescription" : "Located in the heart of the Western Addition's cultural district, this quarter-acre park provides essential green space in a neighborhood rich with jazz history and community resilience. The park offers residents a place to gather, reflect, and connect with nature while surrounded by the vibrant cultural landscape that makes the Fillmore special. Its central location makes it accessible to multiple communities, creating opportunities for cross-cultural interaction and shared appreciation for the simple pleasure of urban green space.",
+      "name" : "Fillmore & Turk Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Russian Hill",
+      "address" : "2745 Larkin St",
+      "acreage" : 4.89328892,
+      "currentDescription" : "Built atop a former reservoir in Russian Hill, Francisco Park offers visitors a unique elevated green space with spectacular panoramic views of the bay, Alcatraz, and San Francisco's eastern neighborhoods. This innovative 4.5-acre park features terraced design elements that take advantage of its rooftop location, creating multiple levels of recreational space including playground equipment, open lawns, and seating areas perfect for picnicking with a view. The park's transformation from utilitarian infrastructure to beloved community space exemplifies San Francisco's commitment to creative urban planning and demonstrates how innovative design can create extraordinary public amenities in dense urban environments.",
+      "name" : "Francisco Park"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Mission",
+      "address" : "2500 17th St",
+      "acreage" : 5.60397,
+      "currentDescription" : "Franklin Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Franklin Square"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Richmond",
+      "address" : "855 27th Ave",
+      "acreage" : 0.92342215,
+      "currentDescription" : "Nestled in the quiet residential streets of the Outer Richmond, Fulton Playground serves as a charming neighborhood anchor with its well-maintained play equipment and open lawn areas. This nearly one-acre mini park provides families with a safe, welcoming space for children to play while parents can enjoy the peaceful atmosphere away from the city's busier corridors. The playground's thoughtful design includes age-appropriate equipment and shaded seating areas that make it a beloved gathering spot for local families and a perfect example of how small parks can have a big impact on community life.",
+      "name" : "Fulton Playground"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Mission",
+      "address" : "3100 26th St",
+      "acreage" : 3.4567257600000003,
+      "currentDescription" : "Garfield Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Garfield Square"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Mission",
+      "address" : "2301 San Jose Ave",
+      "acreage" : 0.35235001,
+      "currentDescription" : "This unique mini park occupies a piece of San Francisco's transportation history in the Outer Mission, where historic streetcar barns once stood. The compact space cleverly transforms an industrial site into a community asset, featuring native plantings and seating areas that honor the neighborhood's working-class heritage. Despite its modest size, Geneva Carbarn provides essential green respite for residents in this densely populated area, serving as a quiet retreat where neighbors can connect and children can play safely away from busy San Jose Avenue.",
+      "name" : "Geneva Carbarn"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Outer Mission",
+      "address" : "545 Geneva Ave",
+      "acreage" : 0.29349566,
+      "currentDescription" : "Located in the diverse Outer Mission neighborhood, this community garden serves as a cultural crossroads where residents from many backgrounds share traditional growing knowledge and techniques. The garden's plots reflect the area's rich immigrant heritage, featuring vegetables and herbs from around the world that connect families to their cultural roots while feeding the community. Regular harvest festivals and cooking demonstrations celebrate both the garden's bounty and the neighborhood's multicultural spirit, making this space a vital hub for food security and cultural exchange.",
+      "name" : "Geneva Community Garden"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Glen Park",
+      "address" : "5210 Diamond Heights Blvd",
+      "acreage" : 6.97162064,
+      "currentDescription" : "Serving the Glen Park community with nearly 7 acres of recreational facilities, this playground provides comprehensive amenities including sports courts, play equipment, and open space that make it a destination for families throughout the southeastern neighborhoods. The park's substantial size and diverse offerings accommodate everything from organized youth sports to casual family gatherings, while its location near the Glen Park BART station makes it easily accessible to visitors from across the city. Named after a former San Francisco mayor, the playground exemplifies the community investment and civic pride that make Glen Park one of the city's most successfully village-like neighborhoods.",
+      "name" : "George Christopher Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "993 Gilman Ave",
+      "acreage" : 4.859213520000001,
+      "currentDescription" : "Standing as a cornerstone of the Bayview Hunters Point community, Gilman Playground provides essential recreational infrastructure with sports courts, playground equipment, and programming space that serves multiple generations of neighborhood residents. The park's amenities support both organized activities and informal community gatherings, creating opportunities for social connection and youth development in a neighborhood with a strong sense of cultural identity. Its role as both a recreational facility and community meeting place makes it vital to neighborhood life and an important resource for families seeking safe, quality public space.",
+      "name" : "Gilman Playground"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Glen Park, West of Twin Peaks",
+      "address" : "70 Elk St",
+      "acreage" : 70.70205415,
+      "currentDescription" : "Hidden in the heart of San Francisco, this 70-acre natural canyon preserves one of the city's last remaining wild spaces with hiking trails, native plant communities, and a seasonal creek that flows through dramatic rock formations. The park's rugged terrain and diverse ecosystems provide visitors with a true wilderness experience just minutes from urban neighborhoods, featuring everything from oak woodlands to grasslands that support local wildlife and native birds. As both a recreational destination and an environmental education site, Glen Canyon Park demonstrates how cities can preserve natural heritage while providing residents with opportunities to connect with the land that existed before urban development.",
+      "name" : "Glen Canyon Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Western Addition",
+      "address" : "1392 Golden Gate Ave",
+      "acreage" : 0.11507146,
+      "currentDescription" : "Tucked into the vibrant Western Addition at just over a tenth of an acre, this tiny urban gem proves that great things come in small packages. The park's strategic location provides a crucial pause point for pedestrians navigating the busy Golden Gate Avenue corridor, offering a few benches and thoughtfully curated plantings that bring nature into the urban streetscape. Though small, this mini park exemplifies San Francisco's commitment to creating green spaces in every neighborhood, providing residents with a moment of tranquility amid the city's energy.",
+      "name" : "Golden Gate & Steiner Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Inner Sunset",
+      "address" : "2041 12th Ave",
+      "acreage" : 6.9612378999999995,
+      "currentDescription" : "Perched high in the Inner Sunset's residential hills, Golden Gate Heights Park offers visitors stunning panoramic views stretching from downtown San Francisco to the Pacific Ocean from its elevated 4-acre setting. The park's terraced design takes advantage of the natural topography to create multiple viewing areas and seating spots that showcase some of the city's most comprehensive vistas. Its location in a quiet residential neighborhood provides a peaceful retreat where visitors can experience both the grandeur of San Francisco's geography and the intimate scale of neighborhood life, making it a beloved destination for both daily exercise and special occasions.",
+      "name" : "Golden Gate Heights Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Golden Gate Park",
+      "address" : "501 Stanyan St",
+      "acreage" : 115.88066061,
+      "currentDescription" : "Golden Gate Park - Section 1 is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Golden Gate Park - Section 1"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Golden Gate Park",
+      "address" : "501 Stanyan St",
+      "acreage" : 81.26527558,
+      "currentDescription" : "Golden Gate Park - Section 2 is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Golden Gate Park - Section 2"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Golden Gate Park",
+      "address" : "501 Stanyan St",
+      "acreage" : 52.725805969999996,
+      "currentDescription" : "Golden Gate Park - Section 3 is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Golden Gate Park - Section 3"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Golden Gate Park",
+      "address" : "501 Stanyan St",
+      "acreage" : 243.51617454,
+      "currentDescription" : "Golden Gate Park - Section 4 is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Golden Gate Park - Section 4"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Golden Gate Park",
+      "address" : "501 Stanyan St",
+      "acreage" : 224.09549108000002,
+      "currentDescription" : "Golden Gate Park - Section 5 is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Golden Gate Park - Section 5"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Golden Gate Park, Outer Richmond",
+      "address" : "501 Stanyan St",
+      "acreage" : 212.12957138000002,
+      "currentDescription" : "Golden Gate Park - Section 6 is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Golden Gate Park - Section 6"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Golden Gate Park",
+      "address" : "501 Stanyan St",
+      "acreage" : 102.23319549,
+      "currentDescription" : "Golden Gate Park - Section 7 is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Golden Gate Park - Section 7"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Bernal Heights",
+      "address" : "100 Cortland Avenue",
+      "acreage" : 0.04552904,
+      "currentDescription" : "This small but mighty community garden in Bernal Heights proves that even the tiniest spaces can create significant community impact. Despite its compact footprint, the garden maximizes productivity through intensive growing methods and shared resource systems that bring neighbors together around common goals. The site serves as a demonstration project for small-space urban agriculture, inspiring other neighborhoods to transform underutilized lots into productive green spaces that strengthen food security and community connections.",
+      "name" : "Good Prospect Community Garden"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Inner Sunset",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.7939106100000001,
+      "currentDescription" : "Perched in the Inner Sunset with sweeping views toward the ocean, Grand View Open Space lives up to its name by offering visitors a elevated perspective of San Francisco's western neighborhoods. This terraced mini park features winding pathways and strategically placed seating that take advantage of the natural topography, creating intimate viewing spots perfect for contemplation or casual conversation. The park's design seamlessly blends into the hillside landscape while providing residents with a precious pocket of nature and stunning vistas that make it feel much larger than its three-quarters of an acre.",
+      "name" : "Grand View Open Space"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Inner Sunset",
+      "address" : "1730 15th Ave",
+      "acreage" : 4.1444643,
+      "currentDescription" : "Known locally as \"Turtle Hill\" for its distinctive rocky formations, Grand View Park lives up to its name by offering visitors spectacular 360-degree views of San Francisco from its 16th Avenue summit in the Inner Sunset. This 4-acre hilltop park features exposed bedrock and native plant communities that create a unique urban wilderness experience, while its multiple trails and viewpoints provide different perspectives on the city's dramatic topography. The park's combination of geological interest and panoramic vistas makes it a favorite destination for hikers, photographers, and anyone seeking to understand San Francisco's remarkable setting between ocean, bay, and hills.",
+      "name" : "Grand View Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Haight Ashbury",
+      "address" : "1180 Stanyan St",
+      "acreage" : 1.87097396,
+      "currentDescription" : "Located in the heart of Haight Ashbury, Grattan Playground provides crucial recreational facilities for families in one of San Francisco's most culturally significant neighborhoods. The park features playground equipment and open space that serve the area's diverse mix of longtime residents, young families, and cultural visitors, creating a community gathering place that reflects the Haight's welcoming spirit. Its proximity to Golden Gate Park and the neighborhood's commercial corridor makes it easily accessible while providing safe outdoor space where children can play and families can connect with the vibrant community life that defines this historic district.",
+      "name" : "Grattan Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Financial District\/South Beach",
+      "address" : "4 Guy Pl",
+      "acreage" : 0.09001658000000001,
+      "currentDescription" : "Hidden away on a quiet alley in the Financial District, Guy Place Mini Park is one of San Francisco's smallest yet most charming urban retreats at just under a tenth of an acre. This intimate pocket park serves as a secret garden for downtown workers and residents, featuring carefully selected plants and seating that create a serene microenvironment amid the surrounding high-rises. The park's compact design maximizes every square foot, proving that even the tiniest green spaces can provide essential respite and connection to nature in the heart of the urban core.",
+      "name" : "Guy Place Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Japantown",
+      "address" : "1900 Geary Blvd",
+      "acreage" : 3.65430877,
+      "currentDescription" : "Serving as a cultural and recreational bridge between Japantown and the Western Addition, Hamilton Recreation Center provides comprehensive facilities that honor the area's rich multicultural heritage while serving contemporary community needs. The center's programming and amenities reflect the neighborhood's Japanese-American history and ongoing cultural diversity, offering activities and spaces that bring together multiple generations and ethnic communities. Its role as both a recreational facility and cultural gathering place makes it essential to maintaining the social fabric and cultural identity that make this area unique in San Francisco's urban landscape.",
+      "name" : "Hamilton Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "390 San Marcos Ave",
+      "acreage" : 4.85063362,
+      "currentDescription" : "This elevated open space in the West of Twin Peaks area provides visitors with a natural retreat and panoramic city views from its strategic hilltop location. The park's undeveloped character and native plantings create a wilderness experience within the urban environment, while its trails offer opportunities for hiking and nature observation just minutes from residential neighborhoods. As one of San Francisco's remaining wild spaces, Hawk Hill serves both as a recreational destination and an important habitat that preserves the city's natural heritage for future generations.",
+      "name" : "Hawk Hill"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Hayes Valley",
+      "address" : "689 Hayes St",
+      "acreage" : 0.75325012,
+      "currentDescription" : "This beloved community hub in Hayes Valley combines classic playground equipment with modern design sensibilities, creating a vibrant gathering place for families in one of San Francisco's most dynamic neighborhoods. The three-quarter-acre space features age-appropriate play structures, open areas for running and games, and comfortable seating for caregivers to socialize while keeping watch over their children. Surrounded by the neighborhood's trendy cafes and boutiques, the playground serves as the heart of Hayes Valley's family-friendly character, where the sounds of children's laughter blend perfectly with the area's urban sophistication.",
+      "name" : "Hayes Valley Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Oceanview\/Merced\/Ingleside",
+      "address" : "300 Head St",
+      "acreage" : 0.5196217500000001,
+      "currentDescription" : "Located in the diverse Oceanview\/Merced\/Ingleside district, this half-acre mini park provides a vital community gathering space in a neighborhood where such amenities are precious. The park's thoughtful layout includes open lawn areas perfect for informal sports and family picnics, along with shaded seating areas that encourage neighbors to linger and connect. Despite its modest size, Head & Brotherhood Mini Park serves as a crucial social infrastructure for the surrounding residential community, offering a safe and welcoming environment where children can play and families can build lasting friendships.",
+      "name" : "Head & Brotherood Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Russian Hill",
+      "address" : "1401 Broadway",
+      "acreage" : 0.91679834,
+      "currentDescription" : "Named after the legendary tennis champion who once lived nearby, this nearly one-acre park on prestigious Broadway in Russian Hill honors both athletic excellence and neighborhood heritage. The playground features quality equipment and open spaces that reflect the area's commitment to family life, while its elevated location provides glimpses of the bay and cityscape that remind visitors of San Francisco's stunning geography. This mini park serves as a refined yet playful gathering spot for one of the city's most historic neighborhoods, where families can enjoy recreation in an atmosphere of quiet elegance.",
+      "name" : "Helen Wills PG"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "32 Jennings St",
+      "acreage" : 0.58300596,
+      "currentDescription" : "This waterfront mini park in Bayview Hunters Point offers a rare combination of urban nature and industrial heritage, providing visitors with a unique perspective on San Francisco Bay's ecology. The half-acre space features native wetland plantings and wildlife viewing opportunities that create an outdoor classroom for environmental education while serving as a peaceful retreat for neighborhood residents. Despite its small size, Heron's Head Park plays an outsized role in connecting the community to the bay's natural systems, offering a glimpse of what the shoreline looked like before urban development transformed the landscape.",
+      "name" : "Heron's Head Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "McLaren Park, Visitacion Valley",
+      "address" : "1701 Visitacion Ave",
+      "acreage" : 6.9967099699999995,
+      "currentDescription" : "Serving the Visitacion Valley community, Herz Playground provides essential recreational infrastructure with playground equipment and open space designed for local families and community gatherings. The park's amenities support both children's play and family socializing, creating a neighborhood anchor where residents can build lasting connections. Its role as a community gathering place reflects Visitacion Valley's strong neighborhood identity and commitment to maintaining quality public amenities that serve residents of all ages and backgrounds.",
+      "name" : "Herz Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "2 Willie B Kennedy Dr",
+      "acreage" : 3.8280115100000005,
+      "currentDescription" : "True to its name, this Bayview Hunters Point park offers visitors elevated views of San Francisco Bay and the surrounding urban landscape from its strategic hillside location. The park's elevated position provides a unique perspective on the neighborhood's relationship to the bay while offering residents a peaceful retreat with benches and walking areas. Its combination of scenic beauty and community gathering space makes it both a recreational destination and a symbol of the neighborhood's resilience and connection to San Francisco's natural setting.",
+      "name" : "Hilltop Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bernal Heights",
+      "address" : "625  Holly Park Cir",
+      "acreage" : 8.14671198,
+      "currentDescription" : "Crowning Bernal Heights with its distinctive circular design, Holly Park provides the neighborhood with a central gathering place that embodies the area's strong community spirit and village-like character. This 8-acre hilltop park features playground equipment, sports facilities, and open space arranged around its unique round layout, creating multiple areas for both organized activities and casual recreation. The park's elevated location offers glimpses of city views while its design encourages community interaction, making it a beloved focal point where Bernal Heights residents of all ages come together for daily recreation and special neighborhood events.",
+      "name" : "Holly Park"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Nob Hill",
+      "address" : "1 Hooker Alley",
+      "acreage" : 0.05516923000000001,
+      "currentDescription" : "Tucked away in the heart of Nob Hill, this intimate community garden transforms a small urban alley into a thriving oasis of green productivity and neighborhood connection. The garden's creative use of vertical space and container growing demonstrates how urban agriculture can flourish even in the city's densest neighborhoods. Local residents gather regularly to tend their plots and share gardening wisdom, creating a peaceful retreat that brings nature and community spirit to one of San Francisco's most urban environments.",
+      "name" : "Hooker Alley Community Garden"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "South of Market",
+      "address" : "1129 Howard St",
+      "acreage" : 0.27830188,
+      "currentDescription" : "This South of Market community garden provides a vital green refuge in the neighborhood's urban landscape, serving as both a productive growing space and a gathering place for local residents. The garden's location in SOMA makes it an important resource for food access and community building in an area undergoing rapid development. Educational programs focus on urban sustainability and food justice, while the garden's diverse plots showcase how community agriculture can thrive alongside the city's tech corridor, creating connections between innovation and traditional growing wisdom.",
+      "name" : "Howard & Langton Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Russian Hill",
+      "address" : "1825 Hyde St",
+      "acreage" : 0.1128114,
+      "currentDescription" : "Perched on the steep slopes of Russian Hill, this tiny triangular park at just over a tenth of an acre maximizes its dramatic setting with terraced seating that takes advantage of spectacular city and bay views. The park's compact design includes drought-resistant plantings and carefully positioned benches that create intimate conversation spots while showcasing San Francisco's famous topography. Though small, Hyde & Vallejo Mini Park serves as a neighborhood jewel where residents can pause during their daily climbs up the hill to catch their breath and enjoy some of the most stunning urban vistas in the world.",
+      "name" : "Hyde & Vallejo Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "2080 Folsom St",
+      "acreage" : 0.85530419,
+      "currentDescription" : "This nearly one-acre community park in the Mission District celebrates the neighborhood's rich Latino heritage while providing essential recreation space for local families. Named with words from indigenous Mayan language, the park features colorful murals, playground equipment, and open areas that reflect the cultural vibrancy of its surroundings. The thoughtful design includes shaded seating areas and flexible spaces that can accommodate everything from children's birthday parties to informal soccer games, making it a true community living room where neighbors of all ages can gather, play, and celebrate their shared cultural identity.",
+      "name" : "In Chan Kaajal Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Nob Hill",
+      "address" : "1700 Taylor St",
+      "acreage" : 0.86687177,
+      "currentDescription" : "Named after California's first poet laureate, this nearly one-acre hillside park in Nob Hill combines literary heritage with stunning panoramic views of the bay and city skyline. The park's terraced design includes walking paths, benches positioned to maximize the vistas, and mature trees that provide both shade and a sense of natural sanctuary in this densely built neighborhood. Visitors can enjoy quiet contemplation befitting its namesake while taking in some of San Francisco's most spectacular scenery, making this mini park a perfect blend of cultural history and natural beauty that embodies the city's sophisticated character.",
+      "name" : "Ina Coolbrith Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "915 Hudson Ave",
+      "acreage" : 11.78006227,
+      "currentDescription" : "This waterfront park provides Bayview Hunters Point residents with rare direct access to San Francisco Bay's shoreline, featuring walking paths, fishing opportunities, and educational areas that celebrate the neighborhood's maritime heritage. The park's bayfront location offers spectacular views while its design emphasizes environmental restoration and community access to natural resources. As both a recreational facility and an environmental education site, it demonstrates the community's commitment to preserving waterfront access while creating sustainable outdoor spaces that serve multiple generations.",
+      "name" : "India Basin - Shoreline Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Inner Sunset, Twin Peaks",
+      "address" : "San Francisco, CA",
+      "acreage" : 19.45943336,
+      "currentDescription" : "Stretching through multiple neighborhoods as a 20-acre linear wilderness corridor, the Interior Greenbelt preserves one of San Francisco's most important natural habitats while providing residents with hiking trails and nature education opportunities. This unique urban forest features native plant communities and seasonal creek flows that support local wildlife while offering visitors a true wilderness experience within city limits. The greenbelt's role as both recreational destination and environmental preserve demonstrates San Francisco's commitment to maintaining natural systems while providing residents with opportunities to connect with the land's original ecosystems.",
+      "name" : "Interior Greenbelt"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Inner Sunset",
+      "address" : "1960 9th Ave",
+      "acreage" : 1.33077004,
+      "currentDescription" : "Serving the Inner Sunset community, J.P. Murphy Playground provides families with well-maintained recreational facilities including playground equipment and open space for neighborhood gatherings. The park's amenities support both structured play and informal community activities, while its location makes it easily accessible to residents throughout the surrounding residential area. As a neighborhood anchor, it fosters the kind of daily social interactions and family connections that contribute to the Inner Sunset's reputation as one of San Francisco's most livable family-friendly districts.",
+      "name" : "J.P. Murphy Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Potrero Hill",
+      "address" : "1645 17th St",
+      "acreage" : 4.938932090000001,
+      "currentDescription" : "Perched on Potrero Hill's slopes with stunning views of the bay and downtown skyline, Jackson Playground provides families with recreational facilities that take advantage of one of San Francisco's most scenic neighborhood locations. The playground's elevated setting creates a unique play environment where children can enjoy modern equipment while surrounded by some of the city's most spectacular urban vistas. Its combination of family amenities and dramatic scenery makes it both a practical neighborhood resource and a destination that showcases the natural beauty that makes Potrero Hill one of San Francisco's most desirable residential areas.",
+      "name" : "Jackson Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Mission",
+      "address" : "1451 Hampshire St",
+      "acreage" : 2.92992063,
+      "currentDescription" : "Named after a former San Francisco mayor, this Mission District playground serves as an important community anchor providing recreational facilities for one of the city's most vibrant and culturally diverse neighborhoods. The park features playground equipment and open space that accommodate the area's strong family culture and tradition of community gatherings, while its central location makes it easily accessible to residents throughout the Mission. As both a recreational facility and community meeting place, it plays a crucial role in maintaining the social connections and neighborhood activism that define Mission District culture.",
+      "name" : "James Rolph Jr. Playground"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Japantown",
+      "address" : "1610 Geary Blvd",
+      "acreage" : 0.8039862600000001,
+      "currentDescription" : "Japantown Peace Plaza is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Japantown Peace Plaza"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Western Addition",
+      "address" : "950 Gough St",
+      "acreage" : 6.430115570000001,
+      "currentDescription" : "Jefferson Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Jefferson Square"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "North Beach",
+      "address" : "651 Lombard Street",
+      "acreage" : 2.9199723800000004,
+      "currentDescription" : "Honoring North Beach's most famous son, this playground celebrates the baseball legend's legacy while providing essential recreational facilities for families in San Francisco's historic Italian-American neighborhood. The park features sports courts and playground equipment that encourage active recreation, while its location in the heart of North Beach connects it to the area's rich cultural heritage and ongoing community life. Its namesake and neighborhood setting make it both a tribute to athletic achievement and a practical family resource that supports the multigenerational community bonds that define North Beach character.",
+      "name" : "Joe DiMaggio Playground"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "McLaren Park, Visitacion Valley, Excelsior, Portola",
+      "address" : "100 John F Shelley Dr",
+      "acreage" : 313.70160816,
+      "currentDescription" : "John McLaren Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "John McLaren Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "246 Joost Ave",
+      "acreage" : 0.14135551000000002,
+      "currentDescription" : "This compact corner park in the residential West of Twin Peaks neighborhood serves as a quiet neighborhood anchor where tree-lined streets meet community gathering space. At just over a tenth of an acre, the park makes the most of its modest footprint with thoughtfully arranged seating and plantings that create a welcoming environment for neighbors to meet and children to play safely. The park's design reflects the family-friendly character of the surrounding single-family homes, providing a precious pocket of shared green space that strengthens community bonds in this quieter corner of the city.",
+      "name" : "Joost & Baden Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "2498 Folsom St",
+      "acreage" : 0.9714546500000001,
+      "currentDescription" : "This nearly one-acre playground in the Mission District serves as a vibrant community hub that reflects the neighborhood's strong family culture and commitment to children's well-being. The park features modern playground equipment, open areas for active play, and shaded seating that accommodates the extended families and multigenerational gatherings common in Latino communities. Surrounded by the Mission's bustling commercial corridors, the playground provides a safe haven where children can play freely while parents and grandparents socialize, creating the kind of intergenerational community space that makes urban neighborhoods feel like home.",
+      "name" : "Jose Coronado Playground"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Russian Hill",
+      "address" : "601 Beach St",
+      "acreage" : 0.15427579,
+      "currentDescription" : "Joseph Conrad Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Joseph Conrad Square"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Tenderloin",
+      "address" : "355 McAllister St",
+      "acreage" : 5.38412296,
+      "currentDescription" : "Joseph L. Alioto Performing Arts Piazza is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Joseph L. Alioto Performing Arts Piazza"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "1551 Newcomb Ave",
+      "acreage" : 0.9187404600000001,
+      "currentDescription" : "This nearly one-acre recreational facility in Bayview Hunters Point provides essential community infrastructure in a neighborhood where quality amenities are highly valued. The center combines indoor and outdoor spaces that support everything from youth sports to senior programs, creating a multigenerational gathering place that strengthens neighborhood bonds. The thoughtful design includes open areas for informal recreation, covered spaces for year-round programming, and comfortable seating areas that encourage community interaction, making it a vital resource for building social connections and supporting healthy lifestyles in this diverse southeastern neighborhood.",
+      "name" : "Joseph Lee Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "300 Stonecrest Dr",
+      "acreage" : 1.74952259,
+      "currentDescription" : "Located in the West of Twin Peaks area, Junipero Serra Playground provides families with recreational facilities in a quiet residential setting that offers both neighborhood convenience and scenic beauty. The playground features equipment and open space designed for family use, while its location provides easy access for residents throughout the surrounding single-family neighborhoods. Its role as a community gathering place reflects the area's family-friendly character and commitment to maintaining quality public amenities that serve residents of all ages.",
+      "name" : "Junipero Serra Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "324 San Jose Ave",
+      "acreage" : 0.32420151999999997,
+      "currentDescription" : "Located along busy San Jose Avenue in the Mission, this third-of-an-acre park provides a much-needed green buffer between residential areas and commercial traffic. The park's design emphasizes durability and community use, with open lawn areas perfect for pickup soccer games and family gatherings, plus seating areas where neighbors can escape the urban hustle. Despite its modest size, Juri Commons serves as an important community living room for local families, offering a safe space for children to play and adults to socialize while staying connected to the vibrant energy of Mission District street life.",
+      "name" : "Juri Commons"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Visitacion Valley",
+      "address" : "199 Kelloch Ave",
+      "acreage" : 1.95902415,
+      "currentDescription" : "Serving the Visitacion Valley community, this neighborhood park provides essential recreational space with amenities designed for local families and community gatherings. The park's modest size and thoughtful design create an intimate gathering place where residents can connect with neighbors while children enjoy safe outdoor play. Its role as a community anchor reflects Visitacion Valley's strong neighborhood identity and commitment to maintaining public spaces that support resident interaction and community building.",
+      "name" : "Kelloch & Velasco Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "45 Hoff Street",
+      "acreage" : 0.25956440000000003,
+      "currentDescription" : "This quarter-acre gem in the Mission District embodies the neighborhood's commitment to youth empowerment and community activism, with colorful play equipment and open areas designed specifically with children's needs and creativity in mind. The park's name reflects the community's belief in giving young people agency and space to grow, while its thoughtful design includes features that encourage both active play and quiet exploration. Surrounded by the Mission's family-oriented residential streets, Kid Power Park serves as a daily gathering place where children can develop friendships and confidence while parents build the social networks that make urban neighborhoods feel like home.",
+      "name" : "Kid Power Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Twin Peaks",
+      "address" : "10 Stanton St",
+      "acreage" : 2.8734699200000002,
+      "currentDescription" : "Rising above the Castro district with its distinctive exposed summit, Kite Hill offers visitors an elevated natural experience with panoramic city views and excellent conditions for its namesake activity. This 2-acre hilltop park features open space perfect for kite flying while providing spectacular vistas of downtown, the bay, and surrounding neighborhoods from its 378-foot elevation. The hill's combination of recreational opportunity and scenic beauty makes it a beloved destination for both Castro residents seeking daily exercise and visitors wanting to experience San Francisco's dramatic topography from a unique vantage point.",
+      "name" : "Kite Hill"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Hayes Valley",
+      "address" : "363 Page St",
+      "acreage" : 0.96157746,
+      "currentDescription" : "This nearly one-acre park in Hayes Valley stands as a testament to community organizing and neighborhood transformation, featuring modern playground equipment, open lawn areas, and basketball courts that serve residents of all ages. The park's design reflects years of community input and advocacy, creating flexible spaces that can accommodate everything from toddler playdates to teenage basketball games to community meetings. Located in one of San Francisco's most successfully revitalized neighborhoods, Koshland Park exemplifies how quality public spaces can anchor community life and provide the social infrastructure necessary for diverse urban neighborhoods to thrive.",
+      "name" : "Koshland Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Pacific Heights",
+      "address" : "2101 Washington St",
+      "acreage" : 12.48255602,
+      "currentDescription" : "Perched high in the prestigious Pacific Heights neighborhood, Lafayette Park offers sweeping city views from its elevated 12-acre hilltop setting. This sophisticated urban retreat features tennis courts, a charming playground, and manicured green lawns that serve as a peaceful oasis for affluent families and their four-legged companions. The park's central location and panoramic vistas make it a favorite gathering spot for morning joggers and sunset admirers alike.",
+      "name" : "Lafayette Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Lakeshore",
+      "address" : "1 Harding Rd",
+      "acreage" : 608.5808581199999,
+      "currentDescription" : "Lake Merced Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Lake Merced Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Oceanview\/Merced\/Ingleside",
+      "address" : "799 Lakeview Ave",
+      "acreage" : 0.51492393,
+      "currentDescription" : "Nestled in the quiet residential streets of Oceanview\/Merced\/Ingleside, this half-acre park provides a peaceful retreat where neighbors can gather and children can play safely away from busy thoroughfares. The park's design emphasizes community use with open lawn areas perfect for family picnics and informal sports, plus comfortable seating areas that encourage neighbors to linger and connect. Though modest in size, Lakeview & Ashton Mini Park serves as a crucial social anchor for the surrounding single-family homes, offering a shared green space that strengthens community bonds and provides a safe haven for outdoor recreation.",
+      "name" : "Lakeview & Ashton Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Presidio Heights",
+      "address" : "251 Euclid Ave",
+      "acreage" : 1.61019533,
+      "currentDescription" : "Nestled in the refined Presidio Heights neighborhood, Laurel Hill Playground provides a compact but well-designed recreational space for local families. This intimate community park features modern playground equipment and open areas perfect for picnics, serving as a quiet retreat where children can play safely while parents connect with neighbors. Its proximity to the Presidio makes it an ideal starting point for exploring San Francisco's natural landscapes.",
+      "name" : "Laurel Hill Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Mission",
+      "address" : "10 Lessing St",
+      "acreage" : 0.16886261,
+      "currentDescription" : "This compact corner park in the Outer Mission maximizes its sixth-of-an-acre footprint with thoughtful design that creates a welcoming neighborhood gathering spot. The park features age-appropriate playground equipment and seating areas that provide a safe space for children to play while parents socialize with neighbors. Despite its small size, Lessing & Sears Mini Park serves as an important community anchor in this working-class neighborhood, offering residents a precious pocket of green space where they can escape apartment living and enjoy outdoor time together.",
+      "name" : "Lessing & Sears Mini Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Lincoln Park, Outer Richmond, Seacliff",
+      "address" : "100 34th Ave",
+      "acreage" : 112.82207948,
+      "currentDescription" : "Overlooking the Golden Gate from San Francisco's northwestern corner, Lincoln Park combines world-class golf, spectacular ocean views, and the prestigious Legion of Honor museum in a stunning 100-acre coastal setting. The park's clifftop location provides dramatic vistas of the Golden Gate Bridge and Marin Headlands, while its 18-hole municipal golf course offers players some of the most scenic and challenging play in the country. With hiking trails, the California Palace of the Legion of Honor, and the historic Columbarium nearby, Lincoln Park serves as both a recreational destination and a cultural center that celebrates San Francisco's commitment to combining natural beauty with artistic achievement.",
+      "name" : "Lincoln Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "San Francisco, CA",
+      "acreage" : 1.4722266,
+      "currentDescription" : "This charming neighborhood gem in Bayview Hunters Point reflects the area's creative spirit and tight-knit community bonds. Despite its modest size, Little Hollywood Park serves as a vital gathering place where local families come together for impromptu celebrations and children's birthday parties. The park's playful name hints at the neighborhood's artistic aspirations and provides a safe, welcoming space for residents to build lasting friendships.",
+      "name" : "Little Hollywood Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "McLaren Park",
+      "address" : "599 Yale St",
+      "acreage" : 14.34392909,
+      "currentDescription" : "Sprawling across 14 acres within the greater McLaren Park area, Louis Sutter Playground stands as one of the city's most substantial neighborhood recreation facilities. This expansive playground complex features multiple play structures, sports courts, and vast open fields that accommodate everything from little league games to family reunions. Its generous size and diverse amenities make it a destination park that draws families from across the southeastern neighborhoods for weekend adventures.",
+      "name" : "Louis Sutter Playground"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Sunset\/Parkside, Lakeshore, Golden Gate Park, Outer Richmond",
+      "address" : "San Francisco, CA",
+      "acreage" : 77.01029842999999,
+      "currentDescription" : "Lower Great Highway is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Lower Great Highway"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Western Addition",
+      "address" : "1016 Laguna St",
+      "acreage" : 5.8488473999999995,
+      "currentDescription" : "Located in the culturally rich Western Addition, Margaret S. Hayward Playground serves as a vibrant community anchor in one of San Francisco's most historically significant neighborhoods. This 6-acre facility combines modern recreational amenities with the area's deep African American heritage, providing basketball courts, playground equipment, and gathering spaces where multiple generations come together. The park plays a crucial role in maintaining community connections in a rapidly changing neighborhood.",
+      "name" : "Margaret S.Hayward PG"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Potrero Hill",
+      "address" : "San Francisco, CA",
+      "acreage" : 2.65784166,
+      "currentDescription" : "Tucked away in the artistic Potrero Hill neighborhood, Mariposa Park offers residents a peaceful escape from the bustling city below. This intimate community space features a playground and open areas perfect for neighborhood barbecues and casual gatherings, embodying the area's strong sense of community. The park's location provides easy access for families living in the surrounding Victorian homes while maintaining the neighborhood's characteristic small-town feel within the big city.",
+      "name" : "Mariposa Park"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Financial District\/South Beach",
+      "address" : "285 Washington St",
+      "acreage" : 2.01307708,
+      "currentDescription" : "Maritime Plaza is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Maritime Plaza"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Sunset\/Parkside",
+      "address" : "2354 24th Ave",
+      "acreage" : 7.9149034700000005,
+      "currentDescription" : "McCoppin Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "McCoppin Square"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Potrero Hill",
+      "address" : "2311 20th St",
+      "acreage" : 2.86724662,
+      "currentDescription" : "McKinley Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "McKinley Square"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Oceanview\/Merced\/Ingleside",
+      "address" : "801 Shields St",
+      "acreage" : 1.2332518000000001,
+      "currentDescription" : "Serving the diverse Oceanview\/Merced\/Ingleside community, Merced Heights Playground provides essential recreational space in one of the city's most affordable family neighborhoods. This compact but well-maintained facility features playground equipment and open areas where children from various cultural backgrounds come together to play and learn. The park represents the multicultural spirit of its surrounding community, offering a safe space for families to gather and celebrate their shared experiences.",
+      "name" : "Merced Heights Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Russian Hill",
+      "address" : "1055 Greenwich St",
+      "acreage" : 0.48377232000000003,
+      "currentDescription" : "Perched on the slopes of Russian Hill with stunning views of the bay, this half-acre playground combines recreation with some of San Francisco's most spectacular urban scenery. The park's elevated location and thoughtful design take advantage of the natural topography, featuring play equipment and seating areas that allow families to enjoy both active recreation and breathtaking vistas. Named after the Renaissance master, the playground reflects the sophisticated character of its prestigious neighborhood while providing essential family amenities that make this historic area welcoming to residents of all ages.",
+      "name" : "Michelangelo Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Oceanview\/Merced\/Ingleside",
+      "address" : "650 Capitol Ave",
+      "acreage" : 11.11763085,
+      "currentDescription" : "This expansive 11-acre recreation complex serves as the crown jewel of the Oceanview\/Merced\/Ingleside district, honoring community advocates Minnie and Lovie Ward. The facility combines indoor recreation programs with outdoor sports fields, tennis courts, and playground areas, creating a comprehensive community hub that serves residents of all ages. Its size and varied amenities make it a destination where families can spend entire days engaging in activities from youth basketball leagues to senior fitness programs.",
+      "name" : "Minnie and Lovie Ward Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "25 Omar Way",
+      "acreage" : 2.43050547,
+      "currentDescription" : "Perched in the residential West of Twin Peaks neighborhood, Miraloma Playground offers families a quiet retreat with stunning views of the city below. This well-designed community park features modern playground equipment and open spaces perfect for neighborhood gatherings, serving the needs of local families who chose this area for its suburban feel within the city. The park's elevated location provides a sense of escape while maintaining easy access to urban amenities.",
+      "name" : "Miraloma Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Mission Bay",
+      "address" : "San Francisco, CA",
+      "acreage" : 11.62264449,
+      "currentDescription" : "As one of San Francisco's newest neighborhoods rapidly transforms around it, Mission Bay Park serves as a green anchor in this high-tech corridor. This modern 12-acre facility features contemporary design elements, walking paths, and recreational areas that cater to the young professionals and growing families moving into the surrounding luxury developments. The park represents the neighborhood's forward-thinking approach to urban planning, providing essential green space in an increasingly dense urban environment.",
+      "name" : "Mission Bay Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Mission Bay",
+      "address" : "290 Channel St",
+      "acreage" : 17.168503570000002,
+      "currentDescription" : "Stretching along the historic Mission Creek waterway, this 17-acre linear park creates a unique urban oasis in the heart of Mission Bay. The park's design celebrates the area's maritime history while providing modern amenities including walking paths, waterfront seating, and recreational areas for the growing community of tech workers and families. Its proximity to the bay offers visitors a rare opportunity to experience San Francisco's natural waterways while remaining in the heart of the city.",
+      "name" : "Mission Creek Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Castro\/Upper Market",
+      "address" : "646 Dolores St",
+      "acreage" : 15.98778553,
+      "currentDescription" : "Beloved by locals and visitors alike, Mission Dolores Park serves as San Francisco's unofficial outdoor living room with its iconic palm trees and spectacular city views. This 16-acre cultural epicenter in the Castro\/Upper Market area hosts everything from weekend picnics and pickup soccer games to large community festivals and political rallies. The park's diverse amenities, including tennis courts, a playground, and vast lawns perfect for sunbathing, make it a democratic space where all of San Francisco comes together to celebrate the city's progressive spirit.",
+      "name" : "Mission Dolores Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Mission",
+      "address" : "3555 19th St",
+      "acreage" : 2.13927288,
+      "currentDescription" : "Located in the heart of the vibrant Mission District, this compact playground serves as a vital community resource for the neighborhood's diverse Latino families. The park provides essential recreational space where children can play safely while their parents connect with neighbors, fostering the strong community bonds that define the Mission. Its central location makes it easily accessible to families living in the surrounding Victorian flats and serves as a gathering point for the neighborhood's rich cultural celebrations.",
+      "name" : "Mission Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "2450 Harrison St",
+      "acreage" : 0.7079828300000001,
+      "currentDescription" : "This compact recreational facility in the heart of the Mission District serves as vital community infrastructure, combining indoor programming space with outdoor recreation areas in less than an acre. The center's design reflects the neighborhood's strong community organizing tradition, providing flexible spaces that can accommodate everything from youth programs to community meetings to cultural celebrations. Located in one of San Francisco's most vibrant and diverse neighborhoods, Mission Rec Center exemplifies how small-scale community facilities can have an outsized impact on neighborhood life by providing the social infrastructure necessary for building strong, connected communities.",
+      "name" : "Mission Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Marina",
+      "address" : "1800 Chestnut St",
+      "acreage" : 12.7320657,
+      "currentDescription" : "Anchoring the affluent Marina District, Moscone Recreation Center offers 13 acres of premium recreational facilities just blocks from the San Francisco Bay. This comprehensive facility features tennis courts, sports fields, and a playground, serving the active lifestyle preferences of the neighborhood's young professionals and established families. The center's proximity to Crissy Field and the Golden Gate Bridge makes it a perfect starting point for extended outdoor adventures while providing essential community space for Marina residents.",
+      "name" : "Moscone Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Inner Richmond, Presidio",
+      "address" : "1 11th Ave",
+      "acreage" : 12.96241818,
+      "currentDescription" : "This unique 13-acre park surrounding a natural freshwater lake offers visitors a rare glimpse of San Francisco's original landscape near the Richmond District and Presidio. The park features walking trails around the historic lake, picnic areas, and a playground, creating a perfect blend of natural beauty and family recreation. Its location near the Presidio makes it feel like a hidden sanctuary where city dwellers can experience the tranquility of nature while remaining within urban boundaries.",
+      "name" : "Mountain Lake Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "150 Dalewood Way",
+      "acreage" : 40.71814397,
+      "currentDescription" : "Mt. Davidson Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Mt. Davidson Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Haight Ashbury",
+      "address" : "480 Upper Terrace",
+      "acreage" : 0.2051841,
+      "currentDescription" : "This tiny hilltop park in Haight Ashbury occupies one of San Francisco's most unique geographic features, offering visitors a sense of being on top of the world despite its modest fifth-of-an-acre size. The park's elevated position provides panoramic views of the city while its compact design includes seating areas and pathways that create an almost mystical atmosphere befitting its mythological name. Surrounded by the neighborhood's famous Victorian architecture, Mt. Olympus serves as a hidden gem where residents and visitors can experience a moment of transcendence and connection to the city's dramatic topography.",
+      "name" : "Mt. Olympus"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bernal Heights",
+      "address" : "124 Mullen Ave",
+      "acreage" : 0.45045589,
+      "currentDescription" : "Located in the close-knit Bernal Heights neighborhood, this half-acre park embodies the community's strong activist tradition and commitment to family-friendly amenities. The park features playground equipment and open areas designed through extensive community input, creating a space that truly reflects neighborhood needs and values. Surrounded by Bernal Heights' characteristic mix of single-family homes and small apartment buildings, the park serves as a daily gathering place where neighbors build the social connections that make this hilltop community feel like a small town within the big city.",
+      "name" : "Mullen & Peralta Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Inner Richmond",
+      "address" : "450 7th Ave",
+      "acreage" : 0.23791683,
+      "currentDescription" : "This quarter-acre pocket park in the Inner Richmond provides a quiet retreat along busy 7th Avenue, offering neighborhood residents a peaceful spot to pause and connect with nature amid urban density. Named after a local community advocate, the park features thoughtfully selected plantings and seating areas that create a sense of sanctuary while honoring the grassroots organizing tradition that makes San Francisco neighborhoods so livable. Despite its modest size, Muriel Leff Mini Park serves as an important reminder of how small-scale green spaces can provide essential respite and community gathering opportunities in densely populated urban areas.",
+      "name" : "Muriel Leff Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Castro\/Upper Market",
+      "address" : "1 Beaver St",
+      "acreage" : 0.10643145000000001,
+      "currentDescription" : "This tiny triangular park at the intersection of two charming Castro-area streets proves that even the smallest urban spaces can create community connections and provide natural respite. At just over a tenth of an acre, the park maximizes its compact footprint with careful plantings and seating that create an intimate neighborhood gathering spot. The park's location in one of San Francisco's most walkable and community-oriented neighborhoods makes it a perfect example of how small-scale green infrastructure can enhance the pedestrian experience and provide residents with shared outdoor space that strengthens neighborhood bonds.",
+      "name" : "Noe & Beaver Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Noe Valley",
+      "address" : "780 Douglass St",
+      "acreage" : 1.1042326100000002,
+      "currentDescription" : "Serving the family-friendly Noe Valley neighborhood, this intimate recreational facility provides essential sports courts and gathering space for one of the city's most desirable residential areas. The compact park caters to the active lifestyle of local families, offering tennis courts and play areas where children can safely enjoy outdoor activities. Its location in the heart of Noe Valley makes it a natural meeting place for parents and a cornerstone of the neighborhood's strong community identity.",
+      "name" : "Noe Valley Courts"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Noe Valley",
+      "address" : "3861 24th St",
+      "acreage" : 0.27605287,
+      "currentDescription" : "Noe Valley Town Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Noe Valley Town Square"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "San Francisco, CA",
+      "acreage" : 10.97943057,
+      "currentDescription" : "Hidden away in the West of Twin Peaks area, O'Shaughnessy Hollow offers nearly 11 acres of undeveloped natural space that feels worlds away from urban San Francisco. This unique park preserves native vegetation and provides hiking trails where residents can experience the city's original ecosystem, complete with seasonal wildflowers and native grasses. The hollow serves as both a neighborhood retreat and an important habitat for local wildlife, representing San Francisco's commitment to preserving its natural heritage.",
+      "name" : "O'Shaughnessy Hollow"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Bernal Heights",
+      "address" : "700 Ogden Ave",
+      "acreage" : 0.16972337,
+      "currentDescription" : "This Bernal Heights community garden sits on a terraced slope that captures stunning city views while providing productive growing space for local families. The garden's design takes advantage of San Francisco's microclimates, with sun-loving vegetables in the upper terraces and shade-tolerant crops below, creating a diverse ecosystem that supports both plants and community connections. Weekend workdays bring neighbors together to maintain shared areas and exchange growing tips, while the site's peaceful atmosphere and panoramic vistas make it a beloved neighborhood gathering place.",
+      "name" : "Ogden Terrace Community Garden"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Hayes Valley",
+      "address" : "281 Page St",
+      "acreage" : 0.17920747,
+      "currentDescription" : "This compact corner park in Hayes Valley serves as a green punctuation mark in one of San Francisco's most successfully revitalized neighborhoods, providing residents with a peaceful gathering spot amid the area's bustling cafes and boutiques. At less than a fifth of an acre, the park makes the most of its modest size with thoughtful plantings and seating that create a welcoming environment for neighbors to meet and children to play safely. The park's design reflects Hayes Valley's commitment to quality public spaces, offering a perfect example of how small-scale green infrastructure can enhance urban living and provide essential community amenities.",
+      "name" : "Page & Laguna Mini Park"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Hayes Valley",
+      "address" : "438 Page St",
+      "acreage" : 0.08966064,
+      "currentDescription" : "In the heart of Hayes Valley, this compact community garden serves as a green anchor that connects residents to sustainable living practices and each other. Despite its small size, the garden maximizes impact through intensive growing methods and educational programs that teach urban farming skills to gardeners of all experience levels. The site's location near cultural venues and cafes makes it a unique intersection of urban agriculture and neighborhood vibrancy, demonstrating how community gardens can thrive in dynamic city environments.",
+      "name" : "Page Street Community Garden"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Marina, Presidio",
+      "address" : "3601 Lyon St",
+      "acreage" : 19.74090095,
+      "currentDescription" : "This magnificent 19.7-acre plaza surrounding the iconic Palace of Fine Arts rotunda creates one of San Francisco's most breathtaking civic spaces, where classical architecture meets natural beauty in a setting that has inspired visitors for over a century. Originally built for the 1915 Panama-Pacific Exposition, the plaza combines the grandeur of its Greco-Roman inspired architecture with peaceful lagoons and manicured grounds that provide a transcendent escape from urban life. The plaza serves as both a cultural landmark and a beloved gathering place for weddings, photography, picnics, and quiet contemplation, embodying San Francisco's commitment to preserving beautiful public spaces that elevate the human spirit and connect residents with their city's rich cultural heritage.",
+      "name" : "Palace of Fine Arts"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Portola",
+      "address" : "500 Felton St",
+      "acreage" : 5.40622384,
+      "currentDescription" : "Located in the diverse Portola neighborhood, Palega Playground provides 5 acres of recreational space that serves as a vital community hub for local families. This well-maintained facility features playground equipment, sports courts, and open areas perfect for community gatherings and cultural celebrations. The park plays an important role in bringing together the neighborhood's multicultural residents, offering a safe space where children from various backgrounds can play and learn together.",
+      "name" : "Palega Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "1801 Palou Ave",
+      "acreage" : 2.78896476,
+      "currentDescription" : "Serving the resilient Bayview Hunters Point community, Palou & Phelps Park provides essential recreational space in a neighborhood working to revitalize and strengthen its community bonds. This nearly 3-acre facility offers playground equipment and gathering areas where local families can come together for celebrations and community events. The park represents hope and renewal for the neighborhood, providing a safe space where children can play while their families work to build a stronger community future.",
+      "name" : "Palou & Phelps Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Outer Richmond, Inner Richmond, Seacliff, Presidio",
+      "address" : "San Francisco, CA",
+      "acreage" : 20.38628898,
+      "currentDescription" : "Park Presidio Blvd is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Park Presidio Blvd"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Bernal Heights",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.046942010000000006,
+      "currentDescription" : "This small but significant community garden in Bernal Heights exemplifies how neighbors can transform overlooked urban spaces into thriving centers of community life and environmental stewardship. The garden's intimate scale encourages close collaboration among local residents, who share resources, knowledge, and harvests while building lasting friendships. Educational initiatives focus on climate-appropriate growing techniques and composting, making this tiny oasis a powerful demonstration of how community-driven urban agriculture can strengthen both neighborhood bonds and local food systems.",
+      "name" : "Park Street Garden"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Sunset\/Parkside",
+      "address" : "2680 28th Ave",
+      "acreage" : 8.851842280000001,
+      "currentDescription" : "Parkside Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Parkside Square"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "3070 23rd St",
+      "acreage" : 0.6971327900000001,
+      "currentDescription" : "This vibrant community park in the Mission District celebrates the neighborhood's Latino heritage while providing essential recreational space for local families. The park's name, meaning \"United Children's Park,\" reflects its role as a gathering place where kids from diverse backgrounds come together to play and learn. With colorful murals, playground equipment, and open areas designed for community celebrations, the park serves as both a recreational facility and a cultural center that strengthens the bonds between families and honors the Mission's rich tradition of community activism and cultural pride.",
+      "name" : "Parque Ninos Unidos"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Hayes Valley",
+      "address" : "489 Hayes St",
+      "acreage" : 0.47891084000000006,
+      "currentDescription" : "Patricia's Green in Hayes Valley is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Patricia's Green in Hayes Valley"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Castro\/Upper Market",
+      "address" : "2475 15th St",
+      "acreage" : 0.82012885,
+      "currentDescription" : "Peixotto Playground is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Peixotto Playground"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Sunset\/Parkside",
+      "address" : "200 Crestlake Dr",
+      "acreage" : 30.767888810000002,
+      "currentDescription" : "Pine Lake Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Pine Lake Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Noe Valley, Twin Peaks",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.8120188,
+      "currentDescription" : "Perched on a hillside in the Portola neighborhood, this mini park takes advantage of its elevated location to offer visitors stunning panoramic views of the city and bay. The terraced design creates multiple seating areas that maximize the scenic vistas while providing a peaceful retreat from the busy commercial corridors below. Despite its modest size, the park serves as an important neighborhood landmark and gathering place, where residents can enjoy both natural beauty and spectacular urban scenery that showcases San Francisco's dramatic topography.",
+      "name" : "Portola Open Space"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Chinatown",
+      "address" : "745 Kearny St",
+      "acreage" : 1.48363715,
+      "currentDescription" : "Portsmouth Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Portsmouth Square"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Potrero Hill",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.22471632,
+      "currentDescription" : "Potrero Hill Mini Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Potrero Hill Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Potrero Hill",
+      "address" : "801 Arkansas St",
+      "acreage" : 10.07167616,
+      "currentDescription" : "Crowning the top of Potrero Hill, this 10-acre recreation center offers spectacular panoramic views of the San Francisco Bay and downtown skyline. The facility serves the neighborhood's diverse mix of longtime residents and newcomers with comprehensive amenities including sports courts, playground areas, and community rooms for local organizations. Its elevated location and extensive facilities make it a destination where the entire Potrero Hill community comes together for everything from youth sports leagues to neighborhood meetings.",
+      "name" : "Potrero Hill Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Mission",
+      "address" : "San Francisco, CA",
+      "acreage" : 4.67952643,
+      "currentDescription" : "Located in the Mission District's industrial corridor, Potrero del Sol provides nearly 5 acres of essential green space and recreational facilities for the surrounding Latino community. This community-centered park features sports courts, playground equipment, and open areas that host everything from quinceañera celebrations to community soccer tournaments. The park serves as a cultural anchor where Spanish-speaking families can gather, celebrate their heritage, and build connections that strengthen the broader Mission community.",
+      "name" : "Potrero del Sol"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bernal Heights",
+      "address" : "3200 Folsom St",
+      "acreage" : 2.24636446,
+      "currentDescription" : "Nestled in the friendly Bernal Heights neighborhood, Precita Park offers residents a charming community gathering place with a distinctly village-like atmosphere. This intimate 2-acre park features playground equipment and open spaces perfect for neighborhood barbecues and impromptu gatherings, embodying the area's reputation as one of San Francisco's most neighborly communities. The park's location on a residential street makes it feel like an extension of neighbors' backyards, fostering the close relationships that define Bernal Heights living.",
+      "name" : "Precita Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bernal Heights",
+      "address" : "193 Prentiss St",
+      "acreage" : 0.06867937,
+      "currentDescription" : "At just 0.07 acres, this tiny Mission District park proves that size doesn't determine community impact, serving as a vital green sanctuary in one of the city's most densely populated neighborhoods. Despite its compact footprint, the park maximizes every square foot with thoughtful landscaping and seating that creates an intimate gathering place for neighbors. Its location on a quiet residential street makes it feel like a shared backyard for the surrounding apartment buildings, providing families with essential outdoor space and a place where children can play safely under the watchful eyes of their community.",
+      "name" : "Prentiss Mini Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Presidio Heights",
+      "address" : "3437 Clay St",
+      "acreage" : 0.48584834,
+      "currentDescription" : "Presidio Heights Playground is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Presidio Heights Playground"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Presidio, Presidio Heights",
+      "address" : "3550 Pacific Ave",
+      "acreage" : 12.383017019999999,
+      "currentDescription" : "Presidio Wall Playground is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Presidio Wall Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "885 Le Conte Ave",
+      "acreage" : 0.16845868000000003,
+      "currentDescription" : "Ralph D. House Community Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Ralph D. House Community Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Oceanview\/Merced\/Ingleside",
+      "address" : "100 Randolph St",
+      "acreage" : 0.13033013,
+      "currentDescription" : "Randolph & Bright Mini Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Randolph & Bright Mini Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Western Addition",
+      "address" : "1901 Geary Blvd",
+      "acreage" : 6.0195823,
+      "currentDescription" : "A cornerstone of the Western Addition community, Raymond Kimball Playground offers 6 acres of recreational space featuring basketball courts, tennis facilities, and a children's playground. Located on Geary Boulevard, this park serves as a vital gathering place for neighborhood families and provides quality athletic facilities in the heart of one of San Francisco's most culturally diverse districts. The playground's central location makes it easily accessible via public transit and connects residents to green space in this densely populated area.",
+      "name" : "Raymond Kimball Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Richmond",
+      "address" : "149 18th Ave",
+      "acreage" : 0.92841564,
+      "currentDescription" : "Richmond Playground is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Richmond Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Richmond",
+      "address" : "251 18th Ave",
+      "acreage" : 0.92842227,
+      "currentDescription" : "Richmond Rec Center is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Richmond Rec Center"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.75391193,
+      "currentDescription" : "Ridgetop Plaza is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Ridgetop Plaza"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Outer Richmond",
+      "address" : "250 25th Ave",
+      "acreage" : 0.9087681300000001,
+      "currentDescription" : "Rochambeau Playground is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Rochambeau Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Inner Sunset",
+      "address" : "1800 14th Ave",
+      "acreage" : 1.67139883,
+      "currentDescription" : "Perched in the Inner Sunset, Rocky Outcrop is a unique 1.7-acre natural formation that offers visitors a chance to experience San Francisco's geological character up close. This distinctive park features actual rock outcroppings that provide natural climbing opportunities and scenic viewpoints overlooking the surrounding residential neighborhood. Its rugged terrain creates a miniature wilderness experience within the urban landscape, making it a favorite spot for nature lovers and those seeking a peaceful escape from city life.",
+      "name" : "Rocky Outcrop"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Lakeshore",
+      "address" : "San Francisco, CA",
+      "acreage" : 3.62274957,
+      "currentDescription" : "Located in the Lakeshore neighborhood, Rolph Nicol Playground serves as a vital community recreation center with 3.6 acres of family-friendly amenities. The park features well-maintained playground equipment, open grassy areas for picnicking and play, and serves as a gathering place for local families. Its proximity to Lake Merced makes it part of a larger network of outdoor spaces that encourage active lifestyles in this residential area of San Francisco.",
+      "name" : "Rolph Nicol Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Castro\/Upper Market",
+      "address" : "299 Henry St",
+      "acreage" : 0.38656205,
+      "currentDescription" : "Roosevelt & Henry Stairs is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Roosevelt & Henry Stairs"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.61650925,
+      "currentDescription" : "SOMA West Dog Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "SOMA West Dog Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Mission",
+      "address" : "San Francisco, CA",
+      "acreage" : 0.8712779300000001,
+      "currentDescription" : "This purpose-built facility in the rapidly developing South of Market area provides essential recreational infrastructure specifically designed for skateboarding, BMX, and other wheeled sports. The park's modern design and quality features attract youth from across the city, creating a vibrant community hub that celebrates street sports culture while providing safe, legal space for these popular activities. Its location in SOMA makes it easily accessible via public transit, while its specialized facilities demonstrate San Francisco's commitment to supporting diverse recreational interests and youth engagement.",
+      "name" : "SOMA West Skate Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Castro\/Upper Market",
+      "address" : "70 Ord St",
+      "acreage" : 0.19406325,
+      "currentDescription" : "Saturn Street Steps is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Saturn Street Steps"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "1321 Selby St",
+      "acreage" : 0.42040069,
+      "currentDescription" : "Selby & Palou Mini Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Selby & Palou Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Twin Peaks",
+      "address" : "70 Corwin St",
+      "acreage" : 0.41645266,
+      "currentDescription" : "Seward Mini Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Seward Mini Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Tenderloin",
+      "address" : "800 O'Farrell St",
+      "acreage" : 0.27778728,
+      "currentDescription" : "Sgt. John Macaulay Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Sgt. John Macaulay Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Sharp Park Complex",
+      "address" : "1 Sharp Park Rd",
+      "acreage" : 409.75272024000003,
+      "currentDescription" : "Sharp Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Sharp Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "1 Lillian St",
+      "acreage" : 0.951628,
+      "currentDescription" : "Shoreview Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Shoreview Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Sunset\/Parkside",
+      "address" : "2899 19th Ave",
+      "acreage" : 34.77360918,
+      "currentDescription" : "Sigmund Stern Recreation Grove is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Sigmund Stern Recreation Grove"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "1700 Silver Ave",
+      "acreage" : 5.5742696700000005,
+      "currentDescription" : "Spanning 5.6 acres in Bayview Hunters Point, Silver Terrace Playground provides essential recreational facilities for one of San Francisco's most vibrant communities. The park features basketball courts, playground equipment, and open space that serves as a central meeting point for neighborhood residents. Located on Silver Avenue, it plays a crucial role in community building and provides safe outdoor space for children and families in this historically significant area of the city.",
+      "name" : "Silver Terrace Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Financial District\/South Beach",
+      "address" : "100 South Park St",
+      "acreage" : 1.1178723,
+      "currentDescription" : "A charming oval-shaped park in the heart of the Financial District\/South Beach area, South Park represents one of San Francisco's earliest planned residential squares. This intimate 1.1-acre green space is surrounded by historic Victorian homes and modern condominiums, creating a unique blend of old and new San Francisco. The park serves as a peaceful oasis for downtown workers and residents, featuring mature trees, walking paths, and a playground that makes it a perfect lunch-time retreat or evening gathering spot.",
+      "name" : "South Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Sunset\/Parkside",
+      "address" : "2601 40th Ave",
+      "acreage" : 4.10606077,
+      "currentDescription" : "Nestled in the Sunset\/Parkside district, South Sunset Playground offers 4.1 acres of recreational facilities that serve the families of this fog-kissed neighborhood. The park features playground equipment, open grassy areas, and sports facilities that provide essential community gathering space in this residential area. Its location near the ocean influences the park's unique microclimate, often shrouded in San Francisco's famous fog, creating a mystical atmosphere that's quintessentially San Francisco.",
+      "name" : "South Sunset Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bernal Heights",
+      "address" : "95 Justin Dr",
+      "acreage" : 13.6037164,
+      "currentDescription" : "Commanding 13.6 acres in Bernal Heights, St. Mary's Recreation Center stands as one of the neighborhood's premier community facilities. The expansive complex features multiple sports courts, a gymnasium, playground equipment, and large open spaces that host community events and recreational programs. Located on Justin Drive, it serves as a cornerstone of the Bernal Heights community, providing year-round programming and facilities that bring together residents of all ages in this close-knit hilltop neighborhood.",
+      "name" : "St. Mary's Rec Center"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Financial District\/South Beach",
+      "address" : "633 California St",
+      "acreage" : 1.44145528,
+      "currentDescription" : "St. Mary's Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "St. Mary's Square"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Castro\/Upper Market",
+      "address" : "122 States St",
+      "acreage" : 2.9114282,
+      "currentDescription" : "A beloved neighborhood gem in the Castro\/Upper Market area, States Street Playground provides nearly 3 acres of community recreation space in one of San Francisco's most iconic districts. The playground features modern equipment, sports facilities, and open areas that serve as gathering spaces for local families. Its location in the heart of the Castro makes it a vital community resource that supports the diverse families calling this historic neighborhood home.",
+      "name" : "States Street Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Financial District\/South Beach",
+      "address" : "143 The Embarcadero",
+      "acreage" : 4.47281041,
+      "currentDescription" : "Perched along The Embarcadero with stunning views of the Bay Bridge, Sue Bierman Park transforms 4.5 acres of former freeway space into a beautiful waterfront oasis. Named after the influential San Francisco environmentalist, this terraced park features landscaped gardens, walking paths, and multiple levels that provide different vantage points of the bay and city skyline. The park serves as both a tranquil retreat for Financial District workers and a scenic destination for visitors exploring San Francisco's waterfront.",
+      "name" : "Sue Bierman Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "236 Monterey Blvd",
+      "acreage" : 0.24625547,
+      "currentDescription" : "Sunnyside Conservatory is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Sunnyside Conservatory"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "233 Melrose Avenue",
+      "acreage" : 2.6017107200000003,
+      "currentDescription" : "Located in the quiet residential Sunnyside neighborhood, this 2.6-acre playground provides essential recreational facilities for families in the West of Twin Peaks area. The park features well-maintained playground equipment, open grassy areas, and serves as a central gathering point for this close-knit community. Its peaceful setting and family-friendly amenities make it a perfect spot for neighborhood children to play and families to connect in one of San Francisco's more affordable residential districts.",
+      "name" : "Sunnyside Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Sunset\/Parkside",
+      "address" : "2201 Lawton St",
+      "acreage" : 3.8795047200000004,
+      "currentDescription" : "Serving the heart of the Sunset\/Parkside community, Sunset Recreation Center spans 3.9 acres and provides comprehensive recreational facilities for this fog-embraced neighborhood. The center features a gymnasium, outdoor courts, playground equipment, and multipurpose rooms that host community programs and events throughout the year. Located on Lawton Street, it serves as a vital community hub that brings together the diverse residents of the Outer Sunset, fostering neighborhood connections and healthy active lifestyles.",
+      "name" : "Sunset Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Inner Sunset",
+      "address" : "100 Twin Peaks Blvd",
+      "acreage" : 3.02368704,
+      "currentDescription" : "Rising above the Inner Sunset at 650 feet elevation, Tank Hill offers 3 acres of natural open space with some of the most spectacular panoramic views in San Francisco. This former water tank site now provides visitors with breathtaking 360-degree vistas encompassing the Pacific Ocean, Golden Gate Bridge, downtown skyline, and the entire Bay Area. The hill's relatively easy access combined with its stunning views makes it a favorite destination for photographers, dog walkers, and anyone seeking to experience San Francisco's geographic grandeur.",
+      "name" : "Tank Hill"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "North Beach",
+      "address" : "1 Telegraph Hill Blvd",
+      "acreage" : 4.81974441,
+      "currentDescription" : "Telegraph Hill - Pioneer Park is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Telegraph Hill - Pioneer Park"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Tenderloin",
+      "address" : "570 Ellis St",
+      "acreage" : 0.65914847,
+      "currentDescription" : "Tenderloin Rec Center is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Tenderloin Rec Center"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Glen Park",
+      "address" : "100 Topaz Way",
+      "acreage" : 0.91640837,
+      "currentDescription" : "Topaz Open Space is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Topaz Open Space"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Tenderloin",
+      "address" : "201 Hyde St",
+      "acreage" : 0.15400689,
+      "currentDescription" : "Turk & Hyde Mini Park is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Turk & Hyde Mini Park"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Twin Peaks",
+      "address" : "501 Twin Peaks Blvd",
+      "acreage" : 56.48619326,
+      "currentDescription" : "Rising 922 feet above sea level, Twin Peaks provides visitors with San Francisco's most accessible and comprehensive panoramic views, showcasing the entire Bay Area from a dramatic windswept summit. These iconic hills offer multiple viewing areas and parking access that make spectacular vistas available to visitors of all mobility levels, while hiking trails provide more adventurous routes to hidden viewpoints. As both a geographic landmark and a recreational destination, Twin Peaks serves as San Francisco's natural observatory, where residents and visitors can gain perspective on the city's unique topography and appreciate the stunning natural setting that makes this urban environment so extraordinary.",
+      "name" : "Twin Peaks"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Tenderloin",
+      "address" : "1150 Market St",
+      "acreage" : 2.6602428600000003,
+      "currentDescription" : "UN Plaza is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "UN Plaza"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "Financial District\/South Beach",
+      "address" : "333 Post St",
+      "acreage" : 2.6001148800000005,
+      "currentDescription" : "Union Square is an urban plaza that serves as a civic gathering space, hosting community events and providing a central meeting point in the heart of the city.",
+      "name" : "Union Square"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Noe Valley",
+      "address" : "295 Day St",
+      "acreage" : 2.91807067,
+      "currentDescription" : "Situated in the heart of Noe Valley, Upper Noe Recreation Center provides 2.9 acres of community-focused recreational facilities in one of San Francisco's most family-oriented neighborhoods. The center features a gymnasium, outdoor courts, playground equipment, and hosts a variety of community programs that serve families throughout the valley. Its central location on Day Street makes it easily accessible to residents and serves as a cornerstone of community life in this charming neighborhood known for its village-like atmosphere.",
+      "name" : "Upper Noe Rec Center"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "South of Market",
+      "address" : "55 Sherman St",
+      "acreage" : 2.69637816,
+      "currentDescription" : "Named after the Olympic diving champion who broke barriers in sports, this 2.7-acre park in South of Market serves as both a recreational facility and a tribute to athletic excellence. The park features modern playground equipment, sports facilities, and open space that provides essential recreation opportunities in this rapidly developing neighborhood. Located on Sherman Street, it offers residents and workers in SoMa a valuable green space that honors the legacy of one of San Francisco's most accomplished athletes.",
+      "name" : "Victoria Manalo Draves Park"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Visitacion Valley",
+      "address" : "103 Tucker Ave",
+      "acreage" : 2.4270373800000002,
+      "currentDescription" : "Stretching through the Visitacion Valley neighborhood, this 2.4-acre linear park creates a green corridor that connects residents to nature and each other. The greenway features walking paths, native plant landscaping, and community gathering spaces that serve this diverse residential area. Its design emphasizes environmental sustainability and community building, providing both recreational opportunities and habitat for local wildlife while serving as a peaceful retreat from urban life.",
+      "name" : "Visitacion Valley Greenway"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Glen Park",
+      "address" : "300 Addison St",
+      "acreage" : 4.625647740000001,
+      "currentDescription" : "Commanding a hillside location in Glen Park, Walter Haas Playground spans 4.6 acres and offers some of the most stunning views of downtown San Francisco from any neighborhood park. The terraced facility features multiple levels of playground equipment, sports courts, and picnic areas that take advantage of the dramatic topography. Named after the Levi Strauss executive and philanthropist, the park serves as both a recreational facility and a scenic viewpoint that showcases San Francisco's iconic skyline from a unique residential perspective.",
+      "name" : "Walter Haas Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Hayes Valley",
+      "address" : "301 Van Ness Ave",
+      "acreage" : 0.76530419,
+      "currentDescription" : "The elegant landscaped areas surrounding these iconic Civic Center cultural institutions create a formal urban oasis that honors both artistic achievement and military sacrifice. The manicured grounds and memorial elements provide visitors with a contemplative space that reflects the dignity and significance of both the performing arts and the memory of those who served in military conflicts. This unique combination of cultural and commemorative functions makes the space both a practical gathering area for theatergoers and a meaningful place for reflection on the values that define civic life.",
+      "name" : "War Memorial & Opera House"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Russian Hill",
+      "address" : "1470 Washington St",
+      "acreage" : 0.16129288,
+      "currentDescription" : "Wash. & Hyde MP is a small urban oasis that provides a peaceful respite from city life, offering seating and green space for neighborhood residents and passersby.",
+      "name" : "Wash. & Hyde MP"
+    },
+    {
+      "category" : "plaza",
+      "neighborhood" : "North Beach, Chinatown",
+      "address" : "600 Columbus Ave",
+      "acreage" : 2.75453187,
+      "currentDescription" : "Anchoring North Beach with its 2.8-acre expanse, Washington Square serves as the vibrant heart of San Francisco's \"Little Italy,\" where the neighborhood's rich Italian-American heritage blends seamlessly with contemporary urban life. The square's open lawns, mature trees, and central location make it perfect for the community gatherings, bocce ball games, and casual socializing that define North Beach's village-like atmosphere, while its proximity to Saints Peter and Paul Church adds a spiritual dimension to daily neighborhood life. Its role as both a recreational space and a cultural center embodies North Beach's unique character as a neighborhood that has successfully preserved its ethnic identity while welcoming new residents and visitors who appreciate its authentic sense of community and Old World charm.",
+      "name" : "Washington Square"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "West of Twin Peaks",
+      "address" : "131 Lenox Way",
+      "acreage" : 1.30972879,
+      "currentDescription" : "Tucked into the West Portal neighborhood near the Muni tunnel entrance, this compact 1.3-acre playground serves as a vital community resource for families in this transit-oriented district. The park features playground equipment designed for different age groups, open space for gatherings, and serves as a neighborhood meeting point near the busy West Portal Avenue commercial corridor. Its convenient location makes it easily accessible to both residents and families traveling through this important transportation hub.",
+      "name" : "West Portal Playground"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Sunset\/Parkside",
+      "address" : "3223 Ortega St",
+      "acreage" : 17.78874033,
+      "currentDescription" : "Spanning an impressive 17.8 acres in the Sunset\/Parkside district, West Sunset Playground stands as one of the largest neighborhood recreational facilities in San Francisco. This expansive complex features multiple sports fields, tennis courts, playground equipment, and vast open spaces that accommodate everything from organized sports leagues to casual family gatherings. Located on Ortega Street, the park serves as a central recreational hub for the fog-kissed Outer Sunset community, providing ample space for outdoor activities year-round.",
+      "name" : "West Sunset Playground"
+    },
+    {
+      "category" : "garden",
+      "neighborhood" : "Inner Sunset",
+      "address" : "1620 7th Ave",
+      "acreage" : 0.4614091,
+      "currentDescription" : "This Inner Sunset community garden draws its name from the area's natural springs, creating a meaningful connection between San Francisco's environmental history and contemporary urban agriculture. The garden's design incorporates water-wise gardening techniques and native plant cultivation alongside productive vegetable beds, demonstrating sustainable growing practices suited to the city's Mediterranean climate. Community workshops on permaculture and ecological gardening attract participants from across the city, while the site's serene atmosphere and commitment to environmental stewardship make it a model for sustainable urban community spaces.",
+      "name" : "White Crane Springs"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Chinatown",
+      "address" : "850 Sacramento St",
+      "acreage" : 0.65634945,
+      "currentDescription" : "This culturally responsive playground in Chinatown provides essential recreational facilities designed specifically to serve the neighborhood's Chinese-American families and their unique community needs. The park's amenities and programming reflect an understanding of multigenerational family structures and cultural values, creating a space where children can play while maintaining connections to their heritage. Its location in the heart of one of America's oldest Chinatowns makes it a vital community resource that supports both recreational needs and cultural continuity for families navigating life between traditional and contemporary American experiences.",
+      "name" : "Willie Woo Woo Wong Playground"
+    },
+    {
+      "category" : "mini",
+      "neighborhood" : "Chinatown",
+      "address" : "922 Jackson St",
+      "acreage" : 0.35612707000000005,
+      "currentDescription" : "Serving the dense Chinatown community, this playground provides crucial outdoor recreation space where Chinese-American families can gather and children can play safely in one of San Francisco's most historically significant neighborhoods. The park's design accommodates the multigenerational family gatherings common in Chinese culture, while its central location makes it easily accessible to residents living in the surrounding apartment buildings. Despite space constraints common to Chinatown, the playground maximizes its impact by creating a community focal point that supports both children's development and neighborhood social connections.",
+      "name" : "Woh Hei Yuen Playground"
+    },
+    {
+      "category" : "destination",
+      "neighborhood" : "Marina, Presidio",
+      "address" : "1 Marina Green Dr",
+      "acreage" : 165.47144441999998,
+      "currentDescription" : "Yacht Harbor and Marina Green is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
+      "name" : "Yacht Harbor and Marina Green"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Visitacion Valley",
+      "address" : "251 Leland Ave",
+      "acreage" : 2.30918707,
+      "currentDescription" : "Named to honor cross-cultural friendship and peace, this 2.3-acre park in Visitacion Valley provides dedicated picnic facilities and gathering spaces for community celebrations and family events. The park features covered picnic areas, open lawns, and landscaping that creates a welcoming environment for cultural events and neighborhood gatherings. Located on Leland Avenue, it serves as an important community resource that reflects the diverse, multicultural character of the Visitacion Valley neighborhood.",
+      "name" : "Yik Oi Huang Peace & Friendship Park Picnic Area"
+    },
+    {
+      "category" : "neighborhood",
+      "neighborhood" : "Bayview Hunters Point",
+      "address" : "1398 Hudson Ave",
+      "acreage" : 6.44637851,
+      "currentDescription" : "Serving the Bayview Hunters Point community, this 6.4-acre playground provides comprehensive recreational facilities in one of San Francisco's most historically significant neighborhoods. The park features basketball courts, playground equipment, and open spaces that serve as vital community gathering areas. Named to honor local community leaders, the playground plays an important role in providing safe recreational opportunities and fostering community connections in this vibrant area that's experiencing ongoing revitalization and growth.",
+      "name" : "Youngblood-Coleman Playground"
+    }
+  ],
+  "instructions" : "This file contains San Francisco park data for generating enhanced descriptions.\n\nFor each park, please create a detailed, engaging description (2-4 sentences) that includes:\n- What makes this park unique or special\n- Key features, amenities, or attractions\n- The park's role in its neighborhood\/community\n- Any historical significance or notable characteristics\n\nConsider the park's category, size (acreage), neighborhood context, and location.\nFocus on what visitors would actually experience and enjoy at each park.\n\nCategories:\n- destination: Major parks with significant attractions (20+ acres typically)\n- neighborhood: Community hubs with recreational facilities (1-20 acres)\n- mini: Small urban oases and pocket parks (<1 acre)\n- plaza: Urban squares and civic gathering spaces\n- garden: Community gardens for urban agriculture\n\nPlease maintain a consistent, informative yet inspiring tone that would encourage park exploration.",
+  "totalParks" : 232
+}
