@@ -12,7 +12,6 @@ struct ParkDetailOverlay: View {
     let park: Park
     let onMarkVisited: (Park) -> Void
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @Query(sort: \Visit.timestamp, order: .reverse) private var visits: [Visit]
     @Query(sort: \User.createdDate) private var users: [User]
     

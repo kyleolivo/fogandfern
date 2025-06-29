@@ -25,7 +25,6 @@ protocol ParkRepositoryProtocol {
 // MARK: - Park Repository Implementation
 class ParkRepository: ParkRepositoryProtocol {
     private let modelContainer: ModelContainer
-    private let curationService = ParkCurationService.shared
     
     private var modelContext: ModelContext {
         ModelContext(modelContainer)
@@ -194,29 +193,9 @@ class ParkRepository: ParkRepositoryProtocol {
     }
     
     func syncParksFromRemote(for city: City) async throws -> [Park] {
-        do {
-            // Load curated parks from SF Parks API
-            let curatedParks = try await curationService.loadCuratedParks(for: city)
-            
-            // Insert new parks into the database
-            for park in curatedParks {
-                // Check if park already exists
-                let existing = try await getParkBySFParksID(park.sfParksPropertyID, city: city)
-                
-                if existing == nil {
-                    modelContext.insert(park)
-                } else {
-                    // Update existing park with new data
-                    try updateExistingPark(existing!, with: park)
-                }
-            }
-            
-            try modelContext.save()
-            
-            return curatedParks
-        } catch {
-            throw ParkRepositoryError(.networkFailure(reason: error.localizedDescription), underlyingError: error)
-        }
+        // This method is currently not implemented as we load parks from JSON
+        // Future implementation would sync from remote API
+        return []
     }
     
     func refreshParkData(for city: City) async throws {
@@ -266,31 +245,9 @@ class ParkRepository: ParkRepositoryProtocol {
     }
     
     @MainActor private func syncParksFromRemoteOnMain(for city: City) async throws -> [Park] {
-        do {
-            // Load curated parks from SF Parks API
-            let curatedParks = try await curationService.loadCuratedParksOnMain(for: city)
-            
-            let context = modelContainer.mainContext
-            
-            // Insert new parks into the database
-            for park in curatedParks {
-                // Check if park already exists
-                let existing = try await getParkBySFParksIDOnMain(park.sfParksPropertyID, city: city)
-                
-                if existing == nil {
-                    context.insert(park)
-                } else {
-                    // Update existing park with new data
-                    try updateExistingParkOnMain(existing!, with: park)
-                }
-            }
-            
-            try context.save()
-            
-            return curatedParks
-        } catch {
-            throw ParkRepositoryError(.networkFailure(reason: error.localizedDescription), underlyingError: error)
-        }
+        // This method is currently not implemented as we load parks from JSON
+        // Future implementation would sync from remote API
+        return []
     }
     
     @MainActor private func getParkBySFParksIDOnMain(_ sfParksID: String?, city: City) async throws -> Park? {

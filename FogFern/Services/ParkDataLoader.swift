@@ -46,16 +46,12 @@ struct ParkDataLoader {
         
         // If we have the expected number of parks, don't reload
         if existingParks.count == container.parks.count {
-            print("Parks already loaded correctly (\(existingParks.count) parks), skipping...")
             return
         }
         
         // Only clear if we have duplicates or wrong count
         if existingParks.count > container.parks.count {
-            print("Found \(existingParks.count) parks, expected \(container.parks.count). Clearing duplicates...")
             clearExistingParks(from: modelContext)
-        } else {
-            print("Loading \(container.parks.count - existingParks.count) additional parks...")
         }
         
         // Get or create city
@@ -67,7 +63,6 @@ struct ParkDataLoader {
             return newCity
         }()
         
-        print("Loading \(container.parks.count) parks from JSON...")
         var insertedParkNames = Set<String>()
         
         // Add existing park names to avoid duplicates
@@ -86,13 +81,10 @@ struct ParkDataLoader {
             insertedParkNames.insert(parkData.name)
         }
         
-        print("Total unique parks in database: \(insertedParkNames.count)")
-        
         // Save the new version
         UserDefaults.standard.set(container.version, forKey: "ParksDataVersion")
         
         try modelContext.save()
-        print("Parks loaded successfully!")
     }
     
     // MARK: - Versioning Functions
@@ -108,28 +100,24 @@ struct ParkDataLoader {
             let parkDescriptor = FetchDescriptor<Park>()
             let existingParks = try modelContext.fetch(parkDescriptor)
             
-            print("Deleting \(existingParks.count) existing parks...")
             for park in existingParks {
                 modelContext.delete(park)
             }
             
             // Save after deleting parks to clear relationships
             try modelContext.save()
-            print("Parks deleted, relationships cleared")
             
             // Now safely delete cities
             let cityDescriptor = FetchDescriptor<City>()
             let existingCities = try modelContext.fetch(cityDescriptor)
             
-            print("Deleting \(existingCities.count) existing cities...")
             for city in existingCities {
                 modelContext.delete(city)
             }
             
             try modelContext.save()
-            print("Successfully cleared all existing data")
         } catch {
-            print("Error clearing existing data: \(error)")
+            // Failed to clear existing data
         }
     }
     

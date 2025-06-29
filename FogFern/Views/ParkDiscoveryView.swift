@@ -83,7 +83,6 @@ struct ParkDiscoveryView: View {
             try modelContext.save()
         } catch {
             // TODO: Implement proper error handling with user notification
-            print("Error saving visit: \(error)")
         }
     }
     
@@ -172,29 +171,6 @@ struct ParkDiscoveryView: View {
             loadParks()
             ensureCurrentUserExists()
             locationManager.requestLocationPermission()
-            
-            // Debug: Print park count and check for duplicates
-            print("Total parks loaded: \(allParks.count)")
-            let parkNames = allParks.map { $0.name }
-            let uniqueNames = Set(parkNames)
-            if parkNames.count != uniqueNames.count {
-                print("WARNING: Duplicate park names detected!")
-                let duplicates = parkNames.filter { name in
-                    parkNames.filter { $0 == name }.count > 1
-                }
-                print("Duplicates: \(Set(duplicates))")
-            }
-            
-            // Debug: Check for coordinate duplicates in filtered parks
-            let coordinates = parks.map { "\($0.latitude),\($0.longitude)" }
-            let uniqueCoordinates = Set(coordinates)
-            if coordinates.count != uniqueCoordinates.count {
-                print("WARNING: Multiple parks at same coordinates!")
-                let coordinateGroups = Dictionary(grouping: parks, by: { "\($0.latitude),\($0.longitude)" })
-                for (coord, parkList) in coordinateGroups where parkList.count > 1 {
-                    print("  Coordinate \(coord): \(parkList.map { $0.name })")
-                }
-            }
         }
     }
     
@@ -203,21 +179,18 @@ struct ParkDiscoveryView: View {
     private func loadParks() {
         // Only load parks once during the app session
         guard !hasLoadedParks else {
-            print("Parks already loaded, skipping...")
             return
         }
         
-        print("Loading parks for the first time...")
         hasLoadedParks = true
         
         do {
             // ParkDataLoader will create its own city instance
             try ParkDataLoader.loadParks(into: modelContext, for: City.sanFrancisco)
         } catch {
-            // TODO: Implement proper error handling with user notification
-            print("Error loading parks: \(error)")
             hasLoadedParks = false // Reset so we can try again
             try? modelContext.save()
+            // TODO: Implement proper error handling with user notification
         }
     }
     
@@ -249,7 +222,6 @@ struct ParkDiscoveryView: View {
                 try modelContext.save()
             } catch {
                 // TODO: Implement proper error handling with user notification
-                print("Error creating user: \(error)")
             }
         }
     }
