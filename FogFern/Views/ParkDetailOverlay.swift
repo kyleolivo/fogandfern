@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import MapKit
 
 struct ParkDetailOverlay: View {
     let park: Park
@@ -73,20 +74,39 @@ struct ParkDetailOverlay: View {
                     
                     Divider()
                     
-                    // Mark as visited section
-                    Button(action: {
-                        onMarkVisited(park)
-                    }) {
-                        HStack {
-                            Image(systemName: hasVisited(park) ? "checkmark.circle.fill" : "plus.circle")
-                            Text(hasVisited(park) ? "Visited" : "Mark as Visited")
+                    // Action buttons section
+                    VStack(spacing: 12) {
+                        // Mark as visited button
+                        Button(action: {
+                            onMarkVisited(park)
+                        }) {
+                            HStack {
+                                Image(systemName: hasVisited(park) ? "checkmark.circle.fill" : "plus.circle")
+                                Text(hasVisited(park) ? "Visited" : "Mark as Visited")
+                            }
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(hasVisited(park) ? .green : .blue)
+                            .cornerRadius(10)
                         }
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(hasVisited(park) ? .green : .blue)
-                        .cornerRadius(10)
+                        
+                        // Get directions button
+                        Button(action: {
+                            openDirections()
+                        }) {
+                            HStack {
+                                Image(systemName: "location.fill")
+                                Text("Get Directions")
+                            }
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(.indigo)
+                            .cornerRadius(10)
+                        }
                     }
                     
                     Divider()
@@ -125,5 +145,22 @@ struct ParkDetailOverlay: View {
         return visits.contains { visit in
             visit.park.id == park.id && visit.user.id == currentUser.id
         }
+    }
+    
+    private func openDirections() {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: park.latitude,
+            longitude: park.longitude
+        )
+        
+        let placemark = MKPlacemark(coordinate: coordinate)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = park.name
+        
+        let launchOptions: [String: Any] = [
+            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit
+        ]
+        
+        mapItem.openInMaps(launchOptions: launchOptions)
     }
 }
