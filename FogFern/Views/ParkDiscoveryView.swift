@@ -18,13 +18,14 @@ struct ParkDiscoveryView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var mapPosition = MapCameraPosition.region(
         MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194),
-            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            center: CLLocationCoordinate2D(latitude: 37.7302, longitude: -122.4393),
+            span: MKCoordinateSpan(latitudeDelta: 0.17, longitudeDelta: 0.17)
         )
     )
     @State private var selectedPark: Park?
     @State private var selectedCategories: Set<ParkCategory> = [.destination]
     @State private var showingFilterSheet = false
+    @State private var showingMapView = true
     
     // Filtered parks based on selected categories
     private var parks: [Park] {
@@ -37,6 +38,15 @@ struct ParkDiscoveryView: View {
     private var visibleParks: [Park] {
         // For now, return all parks since MapCameraPosition doesn't expose region easily
         return parks
+    }
+    
+    // Split parks by visit status for list view
+    private var visitedParks: [Park] {
+        parks.filter { hasVisited($0) }.sorted { $0.name < $1.name }
+    }
+    
+    private var unvisitedParks: [Park] {
+        parks.filter { !hasVisited($0) }.sorted { $0.name < $1.name }
     }
     
     private func hasVisited(_ park: Park) -> Bool {
@@ -92,17 +102,32 @@ struct ParkDiscoveryView: View {
     }
     
     var body: some View {
-        // Full screen map
-        Map(position: $mapPosition, selection: $selectedPark) {
-            ForEach(parks) { park in
-                Marker(park.name, systemImage: "tree.fill", coordinate: park.coordinate)
-                    .tint(hasVisited(park) ? .green : .blue)
-                    .tag(park)
+        Group {
+            if showingMapView {
+                // Full screen map
+                Map(position: $mapPosition, selection: $selectedPark) {
+                    ForEach(parks) { park in
+                        Marker(park.name, systemImage: "tree.fill", coordinate: park.coordinate)
+                            .tint(hasVisited(park) ? .green : .blue)
+                            .tag(park)
+                    }
+                }
+                .mapStyle(.standard)
+                .onShake {
+                    selectRandomVisiblePark()
+                }
+            } else {
+                // List view
+                ParkFilteredListView(
+                    visitedParks: visitedParks, 
+                    unvisitedParks: unvisitedParks,
+                    selectedCategories: selectedCategories,
+                    onParkSelected: { park in
+                        selectedPark = park
+                    },
+                    onMarkVisited: markAsVisited
+                )
             }
-        }
-        .mapStyle(.standard)
-        .onShake {
-            selectRandomVisiblePark()
         }
         .sheet(item: $selectedPark) { park in
             ParkDetailOverlay(park: park, onMarkVisited: markAsVisited)
@@ -111,22 +136,29 @@ struct ParkDiscoveryView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
+                Picker("View Mode", selection: $showingMapView) {
+                    Text("Map").tag(true)
+                    Text("List").tag(false)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .frame(width: 120)
+            }
+            
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
                     showingFilterSheet = true
                 } label: {
                     Image(systemName: "line.3.horizontal.decrease.circle")
                         .foregroundColor(selectedCategories.count > 1 ? .blue : .primary)
                 }
-            }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
+                
                 Button {
                     centerOnUserLocation()
                 } label: {
                     Image(systemName: "location")
                         .foregroundColor(.blue)
                 }
-                .disabled(!locationManager.isLocationAvailable)
+                .disabled(!locationManager.isLocationAvailable || !showingMapView)
             }
         }
         .sheet(isPresented: $showingFilterSheet) {
@@ -456,6 +488,105 @@ struct RoundedCorner: Shape {
             cornerRadii: CGSize(width: radius, height: radius)
         )
         return Path(path.cgPath)
+    }
+}
+
+struct ParkFilteredListView: View {
+    let visitedParks: [Park]
+    let unvisitedParks: [Park]
+    let selectedCategories: Set<ParkCategory>
+    let onParkSelected: (Park) -> Void
+    let onMarkVisited: (Park) -> Void
+    
+    var body: some View {
+        List {
+            if !visitedParks.isEmpty {
+                Section("✅ Visited Parks (\(visitedParks.count))") {
+                    ForEach(visitedParks) { park in
+                        ParkListRow(
+                            park: park, 
+                            isVisited: true,
+                            onTap: { onParkSelected(park) },
+                            onMarkVisited: onMarkVisited
+                        )
+                    }
+                }
+            }
+            
+            if !unvisitedParks.isEmpty {
+                Section("📍 Unvisited Parks (\(unvisitedParks.count))") {
+                    ForEach(unvisitedParks) { park in
+                        ParkListRow(
+                            park: park, 
+                            isVisited: false,
+                            onTap: { onParkSelected(park) },
+                            onMarkVisited: onMarkVisited
+                        )
+                    }
+                }
+            }
+            
+            if visitedParks.isEmpty && unvisitedParks.isEmpty {
+                Section {
+                    Text("No parks match your current filter")
+                        .foregroundColor(.secondary)
+                        .italic()
+                }
+            }
+        }
+        .listStyle(PlainListStyle())
+    }
+}
+
+struct ParkListRow: View {
+    let park: Park
+    let isVisited: Bool
+    let onTap: () -> Void
+    let onMarkVisited: ((Park) -> Void)?
+    
+    var body: some View {
+        HStack {
+            // Park category icon
+            Image(systemName: park.category.systemImageName)
+                .foregroundColor(.mint)
+                .frame(width: 24)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(park.name)
+                    .font(.body)
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.leading)
+                
+                HStack {
+                    Text(park.category.displayName)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    Spacer()
+                    
+                    Text(park.formattedAcreage)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+            
+            Spacer()
+            
+            // Visit status button
+            Button(action: {
+                onMarkVisited?(park)
+            }) {
+                Image(systemName: isVisited ? "checkmark.circle.fill" : "plus.circle")
+                    .foregroundColor(isVisited ? .green : .blue)
+                    .font(.title2)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+        .padding(.vertical, 8)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            onTap()
+        }
     }
 }
 

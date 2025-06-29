@@ -2093,17 +2093,6 @@
       "latitude": 37.78540076
     },
     {
-      "longitude": -122.48190638,
-      "address": "1 Sharp Park Rd",
-      "category": "destination",
-      "neighborhood": "Sharp Park Complex",
-      "fullDescription": "Sharp Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
-      "name": "Sharp Park",
-      "shortDescription": "Major 409-acre park with multiple attractions and facilities",
-      "acreage": 409.75272024000003,
-      "latitude": 37.62439947
-    },
-    {
       "longitude": -122.38106567,
       "address": "1 Lillian St",
       "category": "mini",
