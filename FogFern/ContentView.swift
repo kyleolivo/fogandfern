@@ -10,14 +10,14 @@ import SwiftData
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ParkDiscoveryView()
         }
     }
 }
 
 struct ParkListView: View {
-    @EnvironmentObject private var appState: AppState
+    @Environment(AppState.self) private var appState
     
     var body: some View {
         List {
@@ -116,7 +116,7 @@ struct ParkRowView: View {
 
 
 struct ParkListEmptyStateView: View {
-    @EnvironmentObject private var appState: AppState
+    @Environment(AppState.self) private var appState
     
     var body: some View {
         VStack(spacing: 16) {
@@ -150,6 +150,6 @@ struct ParkListEmptyStateView: View {
     let container = try! ModelContainer(for: schema, configurations: [ModelConfiguration(isStoredInMemoryOnly: true)])
     
     ContentView()
-        .environmentObject(AppState(modelContainer: container))
+        .environment(AppState(modelContainer: container))
         .modelContainer(container)
 }

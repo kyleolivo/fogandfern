@@ -115,7 +115,6 @@ final class Park {
     // Visit information
     var bestTimeToVisit: String?
     
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self))
     var accessibilityFeatures: [String]
     
     // Status and metadata
@@ -131,7 +130,6 @@ final class Park {
     var lastSyncDate: Date?
     
     // Image management
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self))
     var imageURLs: [String]
     var primaryImageURL: String?
     

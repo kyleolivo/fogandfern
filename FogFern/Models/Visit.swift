@@ -79,7 +79,6 @@ final class Visit {
     var verificationStatus: VisitVerificationStatus
     var isPrivate: Bool
     
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self))
     var tags: [String]
     
     // Location verification
@@ -94,11 +93,9 @@ final class Visit {
     // Social aspects
     var companionCount: Int?
     
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self))
     var companionNames: [String]
     
     // Activity tracking
-    @Attribute(.transformable(by: NSSecureUnarchiveFromDataTransformer.self))
     var activitiesCompleted: [String]
     var photosCount: Int
     

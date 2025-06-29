@@ -8,10 +8,10 @@
 import Foundation
 import SwiftData
 import CoreLocation
-import Combine
 
+@Observable
 @MainActor
-class AppState: ObservableObject {
+class AppState {
     private let modelContainer: ModelContainer
     
     // Repositories
@@ -19,14 +19,14 @@ class AppState: ObservableObject {
     let userRepository: UserRepository
     
     // Current state
-    @Published var currentUser: User?
-    @Published var currentCity: City?
-    @Published var parks: [Park] = []
-    @Published var isLoading = false
-    @Published var errorMessage: String?
+    var currentUser: User?
+    var currentCity: City?
+    var parks: [Park] = []
+    var isLoading = false
+    var errorMessage: String?
     
     // Location
-    @Published var userLocation: CLLocation?
+    var userLocation: CLLocation?
     
     init(modelContainer: ModelContainer) {
         self.modelContainer = modelContainer

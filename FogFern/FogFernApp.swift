@@ -33,7 +33,7 @@ struct FogFernApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(AppState(modelContainer: sharedModelContainer))
+                .environment(AppState(modelContainer: sharedModelContainer))
         }
         .modelContainer(sharedModelContainer)
     }

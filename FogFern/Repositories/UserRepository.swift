@@ -50,28 +50,45 @@ class UserRepository: UserRepositoryProtocol {
     func getCurrentUserID() async throws -> PersistentIdentifier {
         let descriptor = FetchDescriptor<User>()
         
-        let users = try modelContext.fetch(descriptor).sorted { $0.createdDate < $1.createdDate }
-        
-        if let existingUser = users.first {
-            existingUser.updateActivity()
-            try modelContext.save()
-            return existingUser.persistentModelID
-        } else {
-            // Create default user if none exists
-            return try await createUser(displayName: nil, email: nil)
+        do {
+            let users = try modelContext.fetch(descriptor).sorted { $0.createdDate < $1.createdDate }
+            
+            if let existingUser = users.first {
+                existingUser.updateActivity()
+                try modelContext.save()
+                return existingUser.persistentModelID
+            } else {
+                // Create default user if none exists
+                return try await createUser(displayName: nil, email: nil)
+            }
+        } catch {
+            throw UserRepositoryError(.invalidUserData(reason: "Failed to fetch current user"), underlyingError: error)
         }
     }
     
     func createUser(displayName: String?, email: String?) async throws -> PersistentIdentifier {
-        let user = User(
-            displayName: displayName,
-            email: email
-        )
+        // Validate email if provided
+        if let email = email, !email.isEmpty {
+            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+            if !emailTest.evaluate(with: email) {
+                throw UserRepositoryError(.invalidUserData(reason: "Invalid email format"))
+            }
+        }
         
-        modelContext.insert(user)
-        try modelContext.save()
-        
-        return user.persistentModelID
+        do {
+            let user = User(
+                displayName: displayName,
+                email: email
+            )
+            
+            modelContext.insert(user)
+            try modelContext.save()
+            
+            return user.persistentModelID
+        } catch {
+            throw UserRepositoryError(.invalidUserData(reason: "Failed to create user"), underlyingError: error)
+        }
     }
     
     func updateUser(userID: PersistentIdentifier) async throws {
@@ -81,11 +98,19 @@ class UserRepository: UserRepositoryProtocol {
             }
         )
         
-        guard let user = try modelContext.fetch(descriptor).first else {
-            throw RepositoryError.userNotFound
+        do {
+            guard let user = try modelContext.fetch(descriptor).first else {
+                throw UserRepositoryError(.userNotFound(id: UUID()))
+            }
+            user.updateActivity()
+            try modelContext.save()
+        } catch {
+            if error is UserRepositoryError {
+                throw error
+            } else {
+                throw UserRepositoryError(.invalidUserData(reason: "Failed to update user"), underlyingError: error)
+            }
         }
-        user.updateActivity()
-        try modelContext.save()
     }
     
     func updateUserPreferences(userID: PersistentIdentifier, preferences: UserPreferences) async throws {
@@ -95,20 +120,28 @@ class UserRepository: UserRepositoryProtocol {
             }
         )
         
-        guard let user = try modelContext.fetch(descriptor).first else {
-            throw RepositoryError.userNotFound
+        do {
+            guard let user = try modelContext.fetch(descriptor).first else {
+                throw UserRepositoryError(.userNotFound(id: UUID()))
+            }
+            
+            user.preferredUnits = preferences.preferredUnits
+            user.defaultPrivacyLevel = preferences.defaultPrivacyLevel
+            user.enableLocationTracking = preferences.enableLocationTracking
+            user.enableNotifications = preferences.enableNotifications
+            user.enableAnalytics = preferences.enableAnalytics
+            user.enableWeatherData = preferences.enableWeatherData
+            user.preferredVisitDuration = preferences.preferredVisitDuration
+            
+            user.updateActivity()
+            try modelContext.save()
+        } catch {
+            if error is UserRepositoryError {
+                throw error
+            } else {
+                throw UserRepositoryError(.invalidUserData(reason: "Failed to update user preferences"), underlyingError: error)
+            }
         }
-        
-        user.preferredUnits = preferences.preferredUnits
-        user.defaultPrivacyLevel = preferences.defaultPrivacyLevel
-        user.enableLocationTracking = preferences.enableLocationTracking
-        user.enableNotifications = preferences.enableNotifications
-        user.enableAnalytics = preferences.enableAnalytics
-        user.enableWeatherData = preferences.enableWeatherData
-        user.preferredVisitDuration = preferences.preferredVisitDuration
-        
-        user.updateActivity()
-        try modelContext.save()
     }
     
     func updateUserStats(userID: PersistentIdentifier) async throws {
@@ -118,11 +151,19 @@ class UserRepository: UserRepositoryProtocol {
             }
         )
         
-        guard let user = try modelContext.fetch(descriptor).first else {
-            throw RepositoryError.userNotFound
+        do {
+            guard let user = try modelContext.fetch(descriptor).first else {
+                throw UserRepositoryError(.userNotFound(id: UUID()))
+            }
+            user.updateStats()
+            try modelContext.save()
+        } catch {
+            if error is UserRepositoryError {
+                throw error
+            } else {
+                throw UserRepositoryError(.invalidUserData(reason: "Failed to update user stats"), underlyingError: error)
+            }
         }
-        user.updateStats()
-        try modelContext.save()
     }
     
     func deleteUser(userID: PersistentIdentifier) async throws {
@@ -132,11 +173,19 @@ class UserRepository: UserRepositoryProtocol {
             }
         )
         
-        guard let user = try modelContext.fetch(descriptor).first else {
-            throw RepositoryError.userNotFound
+        do {
+            guard let user = try modelContext.fetch(descriptor).first else {
+                throw UserRepositoryError(.userNotFound(id: UUID()))
+            }
+            modelContext.delete(user)
+            try modelContext.save()
+        } catch {
+            if error is UserRepositoryError {
+                throw error
+            } else {
+                throw UserRepositoryError(.invalidUserData(reason: "Failed to delete user"), underlyingError: error)
+            }
         }
-        modelContext.delete(user)
-        try modelContext.save()
     }
     
     // MARK: - Main Actor Methods - Reconstruct objects from IDs
@@ -148,15 +197,28 @@ class UserRepository: UserRepositoryProtocol {
                 user.persistentModelID == id
             }
         )
-        return try context.fetch(descriptor).first
+        
+        do {
+            return try context.fetch(descriptor).first
+        } catch {
+            throw UserRepositoryError(.invalidUserData(reason: "Failed to fetch user by ID"), underlyingError: error)
+        }
     }
     
     @MainActor func getCurrentUser() async throws -> User {
-        let userID = try await getCurrentUserID()
-        guard let user = try getUser(by: userID) else {
-            throw RepositoryError.userNotFound
+        do {
+            let userID = try await getCurrentUserID()
+            guard let user = try getUser(by: userID) else {
+                throw UserRepositoryError(.userNotFound(id: UUID()))
+            }
+            return user
+        } catch {
+            if error is UserRepositoryError {
+                throw error
+            } else {
+                throw UserRepositoryError(.invalidUserData(reason: "Failed to get current user"), underlyingError: error)
+            }
         }
-        return user
     }
 }
 
@@ -169,12 +231,29 @@ extension UserRepository {
             }
         )
         
-        guard let user = try modelContext.fetch(descriptor).first else {
-            throw RepositoryError.userNotFound
+        do {
+            guard let user = try modelContext.fetch(descriptor).first else {
+                throw UserRepositoryError(.userNotFound(id: UUID()))
+            }
+            
+            // Validate that profile is complete
+            var missingFields: [String] = []
+            if user.displayName?.isEmpty ?? true { missingFields.append("display name") }
+            
+            if !missingFields.isEmpty {
+                throw UserRepositoryError(.profileIncomplete(missingFields: missingFields))
+            }
+            
+            user.completeOnboarding()
+            user.currentCityID = selectedCity.id
+            try modelContext.save()
+        } catch {
+            if error is UserRepositoryError {
+                throw error
+            } else {
+                throw UserRepositoryError(.invalidUserData(reason: "Failed to complete user onboarding"), underlyingError: error)
+            }
         }
-        user.completeOnboarding()
-        user.currentCityID = selectedCity.id
-        try modelContext.save()
     }
     
     func getUserEngagementMetrics(_ user: User) -> UserEngagementMetrics {

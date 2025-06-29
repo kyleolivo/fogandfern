@@ -45,22 +45,26 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let parks = try modelContext.fetch(descriptor)
-        
-        // If no parks found, try to sync from remote
-        if parks.isEmpty {
-            return try await syncParksFromRemote(for: city)
-        }
-        
-        // Sort manually: featured first, then by featured rank, then by name
-        return parks.sorted { lhs, rhs in
-            if lhs.isFeatured != rhs.isFeatured {
-                return lhs.isFeatured
-            } else if lhs.isFeatured && rhs.isFeatured {
-                return (lhs.featuredRank ?? 999) < (rhs.featuredRank ?? 999)
-            } else {
-                return lhs.name < rhs.name
+        do {
+            let parks = try modelContext.fetch(descriptor)
+            
+            // If no parks found, try to sync from remote
+            if parks.isEmpty {
+                return try await syncParksFromRemote(for: city)
             }
+            
+            // Sort manually: featured first, then by featured rank, then by name
+            return parks.sorted { lhs, rhs in
+                if lhs.isFeatured != rhs.isFeatured {
+                    return lhs.isFeatured
+                } else if lhs.isFeatured && rhs.isFeatured {
+                    return (lhs.featuredRank ?? 999) < (rhs.featuredRank ?? 999)
+                } else {
+                    return lhs.name < rhs.name
+                }
+            }
+        } catch {
+            throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch parks from database"), underlyingError: error)
         }
     }
     
@@ -72,20 +76,35 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let parks = try modelContext.fetch(descriptor)
-        return parks.sorted { ($0.featuredRank ?? 999) < ($1.featuredRank ?? 999) }
+        do {
+            let parks = try modelContext.fetch(descriptor)
+            return parks.sorted { ($0.featuredRank ?? 999) < ($1.featuredRank ?? 999) }
+        } catch {
+            throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch featured parks from database"), underlyingError: error)
+        }
     }
     
     func getParksNearLocation(_ location: CLLocation, radius: CLLocationDistance, city: City) async throws -> [Park] {
-        let allParks = try await getAllParks(for: city)
-        
-        return allParks.filter { park in
-            let parkLocation = CLLocation(latitude: park.latitude, longitude: park.longitude)
-            return parkLocation.distance(from: location) <= radius
-        }.sorted { lhs, rhs in
-            let lhsDistance = CLLocation(latitude: lhs.latitude, longitude: lhs.longitude).distance(from: location)
-            let rhsDistance = CLLocation(latitude: rhs.latitude, longitude: rhs.longitude).distance(from: location)
-            return lhsDistance < rhsDistance
+        do {
+            let allParks = try await getAllParks(for: city)
+            
+            return allParks.filter { park in
+                guard park.latitude != 0 && park.longitude != 0 else {
+                    return false
+                }
+                let parkLocation = CLLocation(latitude: park.latitude, longitude: park.longitude)
+                return parkLocation.distance(from: location) <= radius
+            }.sorted { lhs, rhs in
+                let lhsDistance = CLLocation(latitude: lhs.latitude, longitude: lhs.longitude).distance(from: location)
+                let rhsDistance = CLLocation(latitude: rhs.latitude, longitude: rhs.longitude).distance(from: location)
+                return lhsDistance < rhsDistance
+            }
+        } catch {
+            if error is ParkRepositoryError {
+                throw error
+            } else {
+                throw ParkRepositoryError(.locationDataMissing, context: ["radius": radius], underlyingError: error)
+            }
         }
     }
     
@@ -96,11 +115,19 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let parks = try modelContext.fetch(descriptor)
-        return parks.first
+        do {
+            let parks = try modelContext.fetch(descriptor)
+            return parks.first
+        } catch {
+            throw ParkRepositoryError(.parkNotFound(id: id), underlyingError: error)
+        }
     }
     
     func searchParks(query: String, in city: City) async throws -> [Park] {
+        guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            throw ParkRepositoryError(.invalidParkData(reason: "Search query cannot be empty"))
+        }
+        
         let cityId = city.id
         
         let descriptor = FetchDescriptor<Park>(
@@ -114,9 +141,12 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let results = try modelContext.fetch(descriptor)
-        
-        return results.sorted { $0.name < $1.name }
+        do {
+            let results = try modelContext.fetch(descriptor)
+            return results.sorted { $0.name < $1.name }
+        } catch {
+            throw ParkRepositoryError(.dataCorruption(details: "Failed to search parks in database"), underlyingError: error)
+        }
     }
     
     func getParksBy(category: ParkCategory, in city: City) async throws -> [Park] {
@@ -127,13 +157,17 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let parks = try modelContext.fetch(descriptor)
-        return parks.sorted { lhs, rhs in
-            if lhs.isFeatured != rhs.isFeatured {
-                return lhs.isFeatured
-            } else {
-                return lhs.name < rhs.name
+        do {
+            let parks = try modelContext.fetch(descriptor)
+            return parks.sorted { lhs, rhs in
+                if lhs.isFeatured != rhs.isFeatured {
+                    return lhs.isFeatured
+                } else {
+                    return lhs.name < rhs.name
+                }
             }
+        } catch {
+            throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch parks by category"), underlyingError: error)
         }
     }
     
@@ -145,40 +179,56 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let parks = try modelContext.fetch(descriptor)
-        return parks.sorted { lhs, rhs in
-            if lhs.acreage != rhs.acreage {
-                return lhs.acreage > rhs.acreage
-            } else {
-                return lhs.name < rhs.name
+        do {
+            let parks = try modelContext.fetch(descriptor)
+            return parks.sorted { lhs, rhs in
+                if lhs.acreage != rhs.acreage {
+                    return lhs.acreage > rhs.acreage
+                } else {
+                    return lhs.name < rhs.name
+                }
             }
+        } catch {
+            throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch parks by size"), underlyingError: error)
         }
     }
     
     func syncParksFromRemote(for city: City) async throws -> [Park] {
-        // Load curated parks from SF Parks API
-        let curatedParks = try await curationService.loadCuratedParks(for: city)
-        
-        // Insert new parks into the database
-        for park in curatedParks {
-            // Check if park already exists
-            let existing = try await getParkBySFParksID(park.sfParksPropertyID, city: city)
+        do {
+            // Load curated parks from SF Parks API
+            let curatedParks = try await curationService.loadCuratedParks(for: city)
             
-            if existing == nil {
-                modelContext.insert(park)
-            } else {
-                // Update existing park with new data
-                try updateExistingPark(existing!, with: park)
+            // Insert new parks into the database
+            for park in curatedParks {
+                // Check if park already exists
+                let existing = try await getParkBySFParksID(park.sfParksPropertyID, city: city)
+                
+                if existing == nil {
+                    modelContext.insert(park)
+                } else {
+                    // Update existing park with new data
+                    try updateExistingPark(existing!, with: park)
+                }
             }
+            
+            try modelContext.save()
+            
+            return curatedParks
+        } catch {
+            throw ParkRepositoryError(.networkFailure(reason: error.localizedDescription), underlyingError: error)
         }
-        
-        try modelContext.save()
-        
-        return curatedParks
     }
     
     func refreshParkData(for city: City) async throws {
-        _ = try await syncParksFromRemote(for: city)
+        do {
+            _ = try await syncParksFromRemote(for: city)
+        } catch {
+            if error is ParkRepositoryError {
+                throw error
+            } else {
+                throw ParkRepositoryError(.networkFailure(reason: "Failed to refresh park data"), underlyingError: error)
+            }
+        }
     }
     
     // MARK: - Main Actor Methods for UI
@@ -192,47 +242,55 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let parks = try context.fetch(descriptor)
-        
-        // If no parks found, try to sync from remote
-        if parks.isEmpty {
-            return try await syncParksFromRemoteOnMain(for: city)
-        }
-        
-        // Sort manually: featured first, then by featured rank, then by name
-        return parks.sorted { lhs, rhs in
-            if lhs.isFeatured != rhs.isFeatured {
-                return lhs.isFeatured
-            } else if lhs.isFeatured && rhs.isFeatured {
-                return (lhs.featuredRank ?? 999) < (rhs.featuredRank ?? 999)
-            } else {
-                return lhs.name < rhs.name
+        do {
+            let parks = try context.fetch(descriptor)
+            
+            // If no parks found, try to sync from remote
+            if parks.isEmpty {
+                return try await syncParksFromRemoteOnMain(for: city)
             }
+            
+            // Sort manually: featured first, then by featured rank, then by name
+            return parks.sorted { lhs, rhs in
+                if lhs.isFeatured != rhs.isFeatured {
+                    return lhs.isFeatured
+                } else if lhs.isFeatured && rhs.isFeatured {
+                    return (lhs.featuredRank ?? 999) < (rhs.featuredRank ?? 999)
+                } else {
+                    return lhs.name < rhs.name
+                }
+            }
+        } catch {
+            throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch parks for UI"), underlyingError: error)
         }
     }
     
     @MainActor private func syncParksFromRemoteOnMain(for city: City) async throws -> [Park] {
-        // Load curated parks from SF Parks API
-        let curatedParks = try await curationService.loadCuratedParksOnMain(for: city)
-        
-        let context = modelContainer.mainContext
-        
-        // Insert new parks into the database
-        for park in curatedParks {
-            // Check if park already exists
-            let existing = try await getParkBySFParksIDOnMain(park.sfParksPropertyID, city: city)
+        do {
+            // Load curated parks from SF Parks API
+            let curatedParks = try await curationService.loadCuratedParksOnMain(for: city)
             
-            if existing == nil {
-                context.insert(park)
-            } else {
-                // Update existing park with new data
-                try updateExistingParkOnMain(existing!, with: park)
+            let context = modelContainer.mainContext
+            
+            // Insert new parks into the database
+            for park in curatedParks {
+                // Check if park already exists
+                let existing = try await getParkBySFParksIDOnMain(park.sfParksPropertyID, city: city)
+                
+                if existing == nil {
+                    context.insert(park)
+                } else {
+                    // Update existing park with new data
+                    try updateExistingParkOnMain(existing!, with: park)
+                }
             }
+            
+            try context.save()
+            
+            return curatedParks
+        } catch {
+            throw ParkRepositoryError(.networkFailure(reason: error.localizedDescription), underlyingError: error)
         }
-        
-        try context.save()
-        
-        return curatedParks
     }
     
     @MainActor private func getParkBySFParksIDOnMain(_ sfParksID: String?, city: City) async throws -> Park? {
@@ -246,8 +304,12 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let parks = try context.fetch(descriptor)
-        return parks.first
+        do {
+            let parks = try context.fetch(descriptor)
+            return parks.first
+        } catch {
+            throw ParkRepositoryError(.dataCorruption(details: "Failed to find park by SF Parks ID"), underlyingError: error)
+        }
     }
     
     @MainActor private func updateExistingParkOnMain(_ existing: Park, with new: Park) throws {
@@ -274,8 +336,12 @@ class ParkRepository: ParkRepositoryProtocol {
             }
         )
         
-        let parks = try modelContext.fetch(descriptor)
-        return parks.first
+        do {
+            let parks = try modelContext.fetch(descriptor)
+            return parks.first
+        } catch {
+            throw ParkRepositoryError(.dataCorruption(details: "Failed to find park by SF Parks ID"), underlyingError: error)
+        }
     }
     
     private func updateExistingPark(_ existing: Park, with new: Park) throws {
@@ -294,25 +360,33 @@ class ParkRepository: ParkRepositoryProtocol {
 // MARK: - Repository Extensions for Statistics
 extension ParkRepository {
     func getVisitStatistics(for city: City) async throws -> ParkVisitStatistics {
-        let allParks = try await getAllParks(for: city)
-        let totalParks = allParks.count
-        let featuredParks = allParks.filter(\.isFeatured).count
-        
-        let categoryBreakdown = Dictionary(grouping: allParks, by: \.category)
-            .mapValues { $0.count }
-        
-        let sizeBreakdown = Dictionary(grouping: allParks, by: \.size)
-            .mapValues { $0.count }
-        
-        let totalAcreage = allParks.reduce(0) { $0 + $1.acreage }
-        
-        return ParkVisitStatistics(
-            totalParks: totalParks,
-            featuredParks: featuredParks,
-            totalAcreage: totalAcreage,
-            categoryBreakdown: categoryBreakdown,
-            sizeBreakdown: sizeBreakdown
-        )
+        do {
+            let allParks = try await getAllParks(for: city)
+            let totalParks = allParks.count
+            let featuredParks = allParks.filter(\.isFeatured).count
+            
+            let categoryBreakdown = Dictionary(grouping: allParks, by: \.category)
+                .mapValues { $0.count }
+            
+            let sizeBreakdown = Dictionary(grouping: allParks, by: \.size)
+                .mapValues { $0.count }
+            
+            let totalAcreage = allParks.reduce(0) { $0 + $1.acreage }
+            
+            return ParkVisitStatistics(
+                totalParks: totalParks,
+                featuredParks: featuredParks,
+                totalAcreage: totalAcreage,
+                categoryBreakdown: categoryBreakdown,
+                sizeBreakdown: sizeBreakdown
+            )
+        } catch {
+            if error is ParkRepositoryError {
+                throw error
+            } else {
+                throw ParkRepositoryError(.dataCorruption(details: "Failed to calculate visit statistics"), underlyingError: error)
+            }
+        }
     }
 }
 
@@ -325,26 +399,4 @@ struct ParkVisitStatistics {
     let sizeBreakdown: [ParkSize: Int]
 }
 
-// MARK: - Repository Error Types
-enum RepositoryError: Error, LocalizedError {
-    case parkNotFound
-    case userNotFound
-    case saveFailed
-    case syncFailed
-    case invalidData
-    
-    var errorDescription: String? {
-        switch self {
-        case .parkNotFound:
-            return "Park not found"
-        case .userNotFound:
-            return "User not found"
-        case .saveFailed:
-            return "Failed to save data"
-        case .syncFailed:
-            return "Failed to sync parks from remote source"
-        case .invalidData:
-            return "Invalid data"
-        }
-    }
-}
+// Note: Using new domain-specific error types from FogFernError.swift
