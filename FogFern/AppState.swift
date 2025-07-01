@@ -28,13 +28,15 @@ class AppState {
     // Location
     var userLocation: CLLocation?
     
-    init(modelContainer: ModelContainer) {
+    init(modelContainer: ModelContainer, skipAutoLoad: Bool = false) {
         self.modelContainer = modelContainer
         self.parkRepository = ParkRepository(modelContainer: modelContainer)
         self.userRepository = UserRepository(modelContainer: modelContainer)
         
-        Task { @MainActor in
-            await loadInitialData()
+        if !skipAutoLoad {
+            Task { [weak self] in
+                await self?.loadInitialData()
+            }
         }
     }
     
@@ -76,14 +78,7 @@ class AppState {
     }
     
     func refreshParks() async {
-        guard let city = currentCity else { return }
-        
-        do {
-            try await parkRepository.refreshParkData(for: city)
-            await loadParks()
-        } catch {
-            errorMessage = "Failed to refresh parks: \(error.localizedDescription)"
-        }
+        await loadParks()
     }
     
     private func ensureCityExists(_ city: City) async throws {
@@ -99,8 +94,17 @@ class AppState {
         let existingCities = try context.fetch(descriptor)
         
         if existingCities.isEmpty {
-            context.insert(city)
+            // Create a new city in this context rather than using the passed one
+            let newCity = City(
+                id: city.id,
+                name: city.name,
+                displayName: city.displayName,
+                centerLatitude: city.centerLatitude,
+                centerLongitude: city.centerLongitude
+            )
+            context.insert(newCity)
             try context.save()
+            currentCity = newCity
         } else {
             currentCity = existingCities.first
         }

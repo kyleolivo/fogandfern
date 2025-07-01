@@ -89,82 +89,53 @@ enum ParkSize: String, CaseIterable, Codable {
 }
 
 
-// MARK: - Park Model
 @Model
 final class Park {
-    var id: UUID
-    var name: String
-    var officialName: String?
-    var shortDescription: String
-    var fullDescription: String
-    var category: ParkCategory
-    var size: ParkSize
+    var id: UUID = UUID()
+    var name: String = ""
+    var shortDescription: String = ""
+    var fullDescription: String = ""
+    var category: ParkCategory = ParkCategory.destination
+    var size: ParkSize = ParkSize.pocket
     
-    // Location
-    var latitude: Double
-    var longitude: Double
-    var address: String
-    var neighborhood: String?
-    var zipCode: String?
+    // Location - Default to San Francisco coordinates
+    var latitude: Double = 37.7749
+    var longitude: Double = -122.4194
+    var address: String = ""
+    var neighborhood: String? = nil
+    var zipCode: String? = nil
     
     // Physical characteristics
-    var acreage: Double
-    var squareFeet: Double?
-    var elevationFeet: Double?
+    var acreage: Double = 0.0
     
-    // Visit information
-    var bestTimeToVisit: String?
-    
-    var accessibilityFeatures: [String]
+    // SF Parks API Integration
+    var sfParksPropertyID: String? = nil
     
     // Status and metadata
-    var isActive: Bool
-    var isFeatured: Bool
-    var featuredRank: Int?
-    var createdDate: Date
-    var lastUpdated: Date
+    var isActive: Bool = true
+    var createdDate: Date = Date()
+    var lastUpdated: Date = Date()
     
-    // External data integration
-    var sfParksPropertyID: String?
-    var sfParksObjectID: Int?
-    var lastSyncDate: Date?
-    
-    // Image management
-    var imageURLs: [String]
-    var primaryImageURL: String?
-    
-    // Relationships
-    var city: City
-    
-    @Relationship(deleteRule: .cascade, inverse: \Visit.park)
-    var visits: [Visit] = []
+    // Relationships - Optional for CloudKit compatibility
+    var city: City? = nil
     
     init(
         id: UUID = UUID(),
-        name: String,
-        officialName: String? = nil,
-        shortDescription: String,
-        fullDescription: String,
-        category: ParkCategory,
-        latitude: Double,
-        longitude: Double,
-        address: String,
+        name: String = "",
+        shortDescription: String = "",
+        fullDescription: String = "",
+        category: ParkCategory = ParkCategory.destination,
+        latitude: Double = 37.7749,
+        longitude: Double = -122.4194,
+        address: String = "",
         neighborhood: String? = nil,
         zipCode: String? = nil,
-        acreage: Double,
-        squareFeet: Double? = nil,
-        elevationFeet: Double? = nil,
-        bestTimeToVisit: String? = nil,
-        accessibilityFeatures: [String] = [],
-        city: City,
+        acreage: Double = 0.0,
         sfParksPropertyID: String? = nil,
-        sfParksObjectID: Int? = nil,
-        imageURLs: [String] = [],
-        primaryImageURL: String? = nil
+        city: City? = nil
     ) {
         self.id = id
         self.name = name
-        self.officialName = officialName
         self.shortDescription = shortDescription
         self.fullDescription = fullDescription
         self.category = category
@@ -175,17 +146,9 @@ final class Park {
         self.neighborhood = neighborhood
         self.zipCode = zipCode
         self.acreage = acreage
-        self.squareFeet = squareFeet
-        self.elevationFeet = elevationFeet
-        self.bestTimeToVisit = bestTimeToVisit
-        self.accessibilityFeatures = accessibilityFeatures
-        self.city = city
         self.sfParksPropertyID = sfParksPropertyID
-        self.sfParksObjectID = sfParksObjectID
-        self.imageURLs = imageURLs
-        self.primaryImageURL = primaryImageURL
+        self.city = city
         self.isActive = true
-        self.isFeatured = false
         self.createdDate = Date()
         self.lastUpdated = Date()
     }
@@ -216,10 +179,6 @@ final class Park {
             .replacingOccurrences(of: ".", with: "")
     }
     
-}
-
-// MARK: - Distance Calculations
-extension Park {
     func distance(from location: CLLocation) -> CLLocationDistance {
         self.location.distance(from: location)
     }

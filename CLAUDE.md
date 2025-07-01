@@ -8,24 +8,24 @@
 **Created**: June 19, 2025  
 **Technology Stack**: Swift, SwiftUI, SwiftData, CloudKit  
 **Target Platforms**: iOS 18.6+ (iPhone only for MVP)  
-**Bundle ID**: `com.kyleolivo.fogandfern`  
+**Bundle ID**: `com.kyleolivo.FogFern`  
 **Display Name**: "Fog & Fern"  
 **App Category**: Healthcare & Fitness  
 
 ## Project Structure
 
 ```
-FogAndFern/
-├── FogAndFern.xcodeproj/           # Xcode project file
-├── FogAndFern/                     # Main application code
-│   ├── FogAndFern.swift           # App entry point (@main)
+FogFern/
+├── FogFern.xcodeproj/           # Xcode project file
+├── FogFern/                     # Main application code
+│   ├── FogFern.swift           # App entry point (@main)
 │   ├── ContentView.swift          # Primary UI view
 │   ├── Item.swift                 # SwiftData model (placeholder)
 │   ├── Info.plist                 # App configuration
-│   ├── FogAndFern.entitlements    # App capabilities
+│   ├── FogFern.entitlements    # App capabilities
 │   └── Assets.xcassets/           # App icons and assets
-├── FogAndFernTests/               # Unit tests
-├── FogAndFernUITests/             # UI automation tests
+├── FogFernTests/               # Unit tests
+├── FogFernUITests/             # UI automation tests
 ├── Requirements/                  # Product requirements and design
 │   ├── Product Requirements.md    # Detailed PRD
 │   └── wireframes.png            # UI wireframes
@@ -46,7 +46,7 @@ FogAndFern/
 - **Schema**: Currently includes only Item model
 
 ### UI Architecture
-- **App Entry Point**: `FogAndFernApp.swift` - Sets up ModelContainer and WindowGroup
+- **App Entry Point**: `FogFernApp.swift` - Sets up ModelContainer and WindowGroup
 - **Main View**: `ContentView.swift` - NavigationSplitView with list/detail layout
 - **iPhone-Focused**: Optimized for iPhone for MVP (no iPad/macOS support)
 - **Preview Support**: SwiftUI previews with in-memory data for development
@@ -63,22 +63,22 @@ FogAndFern/
 ### Building & Running
 ```bash
 # Open in Xcode
-open FogAndFern.xcodeproj
+open FogFern.xcodeproj
 
 # Build for iOS Simulator (iPhone)
-xcodebuild -project FogAndFern.xcodeproj -scheme FogAndFern -destination 'platform=iOS Simulator,name=iPhone 16 Pro' build
+xcodebuild -project FogFern.xcodeproj -scheme FogFern -destination 'platform=iOS Simulator,name=iPhone 16 Pro' build
 
 # Build for iPhone Device
-xcodebuild -project FogAndFern.xcodeproj -scheme FogAndFern -destination 'platform=iOS,name=Any iOS Device' build
+xcodebuild -project FogFern.xcodeproj -scheme FogFern -destination 'platform=iOS,name=Any iOS Device' build
 ```
 
 ### Testing
 ```bash
 # Run unit tests
-xcodebuild test -project FogAndFern.xcodeproj -scheme FogAndFern -destination 'platform=iOS Simulator,name=iPhone 16 Pro'
+xcodebuild test -project FogFern.xcodeproj -scheme FogFern -destination 'platform=iOS Simulator,name=iPhone 16 Pro'
 
 # Run UI tests
-xcodebuild test -project FogAndFern.xcodeproj -scheme FogAndFern -destination 'platform=iOS Simulator,name=iPhone 16 Pro' -only-testing:FogAndFernUITests
+xcodebuild test -project FogFern.xcodeproj -scheme FogFern -destination 'platform=iOS Simulator,name=iPhone 16 Pro' -only-testing:FogFernUITests
 ```
 
 ### Code Organization Patterns
@@ -273,12 +273,12 @@ try modelContext.save()
 ```
 
 ## File Locations Reference
-- **Project Root**: `/Users/kyleolivo/Developer/FogAndFern/`
-- **Source Code**: `/Users/kyleolivo/Developer/FogAndFern/FogAndFern/`
-- **Tests**: `/Users/kyleolivo/Developer/FogAndFern/FogAndFernTests/`
-- **UI Tests**: `/Users/kyleolivo/Developer/FogAndFern/FogAndFernUITests/`
-- **Requirements**: `/Users/kyleolivo/Developer/FogAndFern/Requirements/`
-- **Project File**: `/Users/kyleolivo/Developer/FogAndFern/FogAndFern.xcodeproj/`
+- **Project Root**: `/Users/kyleolivo/Developer/FogFern/`
+- **Source Code**: `/Users/kyleolivo/Developer/FogFern/FogFern/`
+- **Tests**: `/Users/kyleolivo/Developer/FogFern/FogFernTests/`
+- **UI Tests**: `/Users/kyleolivo/Developer/FogFern/FogFernUITests/`
+- **Requirements**: `/Users/kyleolivo/Developer/FogFern/Requirements/`
+- **Project File**: `/Users/kyleolivo/Developer/FogFern/FogFern.xcodeproj/`
 
 ---
 

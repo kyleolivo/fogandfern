@@ -8,6 +8,8 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Fog &amp; Fern uses your location to show nearby parks and help you discover green spaces around you.</string>
+	<key>NSCloudKitUsageDescription</key>
+	<string>Fog &amp; Fern uses CloudKit to sync your park visits and journal entries across all your devices. This data is stored securely in your personal iCloud account.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -329,7 +329,7 @@ class CityDataLoader {
 ```swift
 // Main schema container
 extension Schema {
-    static let fogAndFernSchema = Schema([
+    static let FogFernSchema = Schema([
         City.self,
         Park.self,
         Visit.self,
@@ -341,12 +341,12 @@ extension Schema {
 
 // Migration handling
 extension ModelContainer {
-    static func fogAndFernContainer() throws -> ModelContainer {
+    static func FogFernContainer() throws -> ModelContainer {
         let container = try ModelContainer(
-            for: Schema.fogAndFernSchema,
+            for: Schema.FogFernSchema,
             configurations: [
                 ModelConfiguration(
-                    url: URL.applicationSupportDirectory.appending(path: "FogAndFern.sqlite"),
+                    url: URL.applicationSupportDirectory.appending(path: "FogFern.sqlite"),
                     allowsSave: true,
                     isStoredInMemoryOnly: false,
                     cloudKitDatabase: .automatic

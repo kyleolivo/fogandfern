@@ -24,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		755D08492E123D7C002A3F50 /* FogFern.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FogFern.xctestplan; sourceTree = "<group>"; };
 		756E25FA2E0901400023E521 /* FogFern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FogFern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		756E260B2E0901420023E521 /* FogFernTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FogFernTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		756E26152E0901420023E521 /* FogFernUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FogFernUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +36,7 @@
 		756E261D2E0901420023E521 /* Exceptions for "FogFern" folder in "FogFern" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Configuration.storekit,
 				Info.plist,
 			);
 			target = 756E25F92E0901400023E521 /* FogFern */;
@@ -105,6 +107,7 @@
 		756E25F12E0901400023E521 = {
 			isa = PBXGroup;
 			children = (
+				755D08492E123D7C002A3F50 /* FogFern.xctestplan */,
 				756E25FC2E0901400023E521 /* FogFern */,
 				756E260E2E0901420023E521 /* FogFernTests */,
 				756E26182E0901420023E521 /* FogFernUITests */,

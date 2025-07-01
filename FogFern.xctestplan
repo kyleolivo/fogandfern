@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "718ED802-F724-4844-916C-264982591319",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:FogFern.xcodeproj",
+      "identifier" : "756E25F92E0901400023E521",
+      "name" : "FogFern"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:FogFern.xcodeproj",
+        "identifier" : "756E260A2E0901420023E521",
+        "name" : "FogFernTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:FogFern.xcodeproj",
+        "identifier" : "756E26142E0901420023E521",
+        "name" : "FogFernUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

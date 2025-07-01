@@ -53,22 +53,31 @@ struct ParkDiscoveryView: View {
     }
     
     private func hasVisited(_ park: Park) -> Bool {
-        guard let currentUser = getCurrentUser() else { return false }
+        guard let currentUser = getCurrentUser(),
+              let sfParksPropertyID = park.sfParksPropertyID else { return false }
         return visits.contains { visit in
-            visit.park.id == park.id && visit.user.id == currentUser.id
+            visit.parkSFParksPropertyID == sfParksPropertyID && visit.user?.id == currentUser.id
         }
     }
     
     private func markAsVisited(_ park: Park) {
-        guard let currentUser = getCurrentUser() else { return }
+        guard let currentUser = getCurrentUser(),
+              let sfParksPropertyID = park.sfParksPropertyID else { 
+            // Cannot mark as visited: Missing user or park property ID
+            return 
+        }
+        
+        // Marking park as visited
         
         // Check if park is already visited
         if let existingVisit = visits.first(where: { visit in
-            visit.park.id == park.id && visit.user.id == currentUser.id
+            visit.parkSFParksPropertyID == sfParksPropertyID && visit.user?.id == currentUser.id
         }) {
             // Remove the visit (unmark as visited)
+            // Remove existing visit
             modelContext.delete(existingVisit)
         } else {
+            // Create new visit using CloudKit-optimized initializer
             // Create new visit
             let newVisit = Visit(
                 timestamp: Date(),
@@ -81,8 +90,9 @@ struct ParkDiscoveryView: View {
         // Save changes
         do {
             try modelContext.save()
+            // Visit data saved successfully
         } catch {
-            // TODO: Implement proper error handling with user notification
+            // Failed to save visit data: \(error)
         }
     }
     
@@ -119,6 +129,8 @@ struct ParkDiscoveryView: View {
                 .onShake {
                     selectRandomVisiblePark()
                 }
+                .accessibilityIdentifier("parkMap")
+                .accessibilityLabel("Map showing San Francisco parks")
             } else {
                 // List view
                 ParkFilteredListView(
@@ -151,9 +163,11 @@ struct ParkDiscoveryView: View {
                 Button {
                     showingFilterSheet = true
                 } label: {
-                    Image(systemName: "line.3.horizontal.decrease.circle")
+                    Image(systemName: "gearshape")
                         .foregroundColor(selectedCategories.count > 1 ? .blue : .primary)
                 }
+                .accessibilityIdentifier("filterButton")
+                .accessibilityLabel("Settings and park filters")
                 
                 Button {
                     centerOnUserLocation()
@@ -162,37 +176,19 @@ struct ParkDiscoveryView: View {
                         .foregroundColor(.blue)
                 }
                 .disabled(!locationManager.isLocationAvailable || !showingMapView)
+                .accessibilityIdentifier("locationButton")
+                .accessibilityLabel("Center map on current location")
             }
         }
         .sheet(isPresented: $showingFilterSheet) {
             FilterCategoriesView(selectedCategories: $selectedCategories)
         }
         .onAppear {
-            loadParks()
             ensureCurrentUserExists()
             locationManager.requestLocationPermission()
         }
     }
     
-    @State private var hasLoadedParks = false
-    
-    private func loadParks() {
-        // Only load parks once during the app session
-        guard !hasLoadedParks else {
-            return
-        }
-        
-        hasLoadedParks = true
-        
-        do {
-            // ParkDataLoader will create its own city instance
-            try ParkDataLoader.loadParks(into: modelContext, for: City.sanFrancisco)
-        } catch {
-            hasLoadedParks = false // Reset so we can try again
-            try? modelContext.save()
-            // TODO: Implement proper error handling with user notification
-        }
-    }
     
     private func centerOnUserLocation() {
         guard let userLocation = locationManager.userLocation else { return }
@@ -215,14 +211,18 @@ struct ParkDiscoveryView: View {
     
     private func ensureCurrentUserExists() {
         if users.isEmpty {
+            // Creating new user
             let newUser = User()
             modelContext.insert(newUser)
             
             do {
                 try modelContext.save()
+                // New user created
             } catch {
-                // TODO: Implement proper error handling with user notification
+                // Failed to create user: \(error)
             }
+        } else {
+            // Using existing user
         }
     }
 }

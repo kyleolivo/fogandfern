@@ -91,6 +91,8 @@ struct ParkDetailOverlay: View {
                             .background(hasVisited(park) ? .green : .blue)
                             .cornerRadius(10)
                         }
+                        .accessibilityIdentifier("markAsVisitedButton")
+                        .accessibilityLabel(hasVisited(park) ? "Mark as unvisited" : "Mark as visited")
                         
                         // Get directions button
                         Button(action: {
@@ -107,6 +109,8 @@ struct ParkDetailOverlay: View {
                             .background(.indigo)
                             .cornerRadius(10)
                         }
+                        .accessibilityIdentifier("getDirectionsButton")
+                        .accessibilityLabel("Get directions to \(park.name)")
                     }
                     
                     Divider()
@@ -141,9 +145,10 @@ struct ParkDetailOverlay: View {
     }
     
     private func hasVisited(_ park: Park) -> Bool {
-        guard let currentUser = users.first else { return false }
+        guard let currentUser = users.first,
+              let sfParksPropertyID = park.sfParksPropertyID else { return false }
         return visits.contains { visit in
-            visit.park.id == park.id && visit.user.id == currentUser.id
+            visit.parkSFParksPropertyID == sfParksPropertyID && visit.user?.id == currentUser.id
         }
     }
     

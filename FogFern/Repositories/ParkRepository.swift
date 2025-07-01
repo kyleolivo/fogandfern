@@ -18,20 +18,19 @@ protocol ParkRepositoryProtocol {
     func searchParks(query: String, in city: City) async throws -> [Park]
     func getParksBy(category: ParkCategory, in city: City) async throws -> [Park]
     func getParksBy(size: ParkSize, in city: City) async throws -> [Park]
-    func syncParksFromRemote(for city: City) async throws -> [Park]
-    func refreshParkData(for city: City) async throws
 }
 
 // MARK: - Park Repository Implementation
 class ParkRepository: ParkRepositoryProtocol {
     private let modelContainer: ModelContainer
     
-    private var modelContext: ModelContext {
-        ModelContext(modelContainer)
-    }
-    
     init(modelContainer: ModelContainer) {
         self.modelContainer = modelContainer
+    }
+    
+    // Test-only initializer that accepts a specific context
+    init(modelContext: ModelContext) {
+        self.modelContainer = modelContext.container
     }
     
     // MARK: - Public Methods
@@ -40,28 +39,21 @@ class ParkRepository: ParkRepositoryProtocol {
         let cityId = city.id
         let descriptor = FetchDescriptor<Park>(
             predicate: #Predicate<Park> { park in
-                park.city.id == cityId && park.isActive
+                park.city?.id == cityId && park.isActive
             }
         )
         
         do {
-            let parks = try modelContext.fetch(descriptor)
+            let context = ModelContext(modelContainer)
+            let parks = try context.fetch(descriptor)
             
-            // If no parks found, try to sync from remote
             if parks.isEmpty {
-                return try await syncParksFromRemote(for: city)
+                return []
             }
             
-            // Sort manually: featured first, then by featured rank, then by name
-            return parks.sorted { lhs, rhs in
-                if lhs.isFeatured != rhs.isFeatured {
-                    return lhs.isFeatured
-                } else if lhs.isFeatured && rhs.isFeatured {
-                    return (lhs.featuredRank ?? 999) < (rhs.featuredRank ?? 999)
-                } else {
-                    return lhs.name < rhs.name
-                }
-            }
+            return parks.sorted(by: { lhs, rhs in
+                return lhs.name < rhs.name
+            })
         } catch {
             throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch parks from database"), underlyingError: error)
         }
@@ -71,13 +63,14 @@ class ParkRepository: ParkRepositoryProtocol {
         let cityId = city.id
         let descriptor = FetchDescriptor<Park>(
             predicate: #Predicate<Park> { park in
-                park.city.id == cityId && park.isActive && park.isFeatured
+                park.city?.id == cityId && park.isActive
             }
         )
         
         do {
-            let parks = try modelContext.fetch(descriptor)
-            return parks.sorted { ($0.featuredRank ?? 999) < ($1.featuredRank ?? 999) }
+            let context = ModelContext(modelContainer)
+            let parks = try context.fetch(descriptor)
+            return parks.sorted(by: { $0.name < $1.name })
         } catch {
             throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch featured parks from database"), underlyingError: error)
         }
@@ -115,7 +108,8 @@ class ParkRepository: ParkRepositoryProtocol {
         )
         
         do {
-            let parks = try modelContext.fetch(descriptor)
+            let context = ModelContext(modelContainer)
+            let parks = try context.fetch(descriptor)
             return parks.first
         } catch {
             throw ParkRepositoryError(.parkNotFound(id: id), underlyingError: error)
@@ -131,7 +125,7 @@ class ParkRepository: ParkRepositoryProtocol {
         
         let descriptor = FetchDescriptor<Park>(
             predicate: #Predicate<Park> { park in
-                park.city.id == cityId && 
+                park.city?.id == cityId && 
                 park.isActive && (
                     park.name.localizedStandardContains(query) ||
                     park.shortDescription.localizedStandardContains(query) ||
@@ -141,7 +135,8 @@ class ParkRepository: ParkRepositoryProtocol {
         )
         
         do {
-            let results = try modelContext.fetch(descriptor)
+            let context = ModelContext(modelContainer)
+            let results = try context.fetch(descriptor)
             return results.sorted { $0.name < $1.name }
         } catch {
             throw ParkRepositoryError(.dataCorruption(details: "Failed to search parks in database"), underlyingError: error)
@@ -152,19 +147,17 @@ class ParkRepository: ParkRepositoryProtocol {
         let cityId = city.id
         let descriptor = FetchDescriptor<Park>(
             predicate: #Predicate<Park> { park in
-                park.city.id == cityId && park.isActive && park.category == category
+                park.city?.id == cityId && park.isActive
             }
         )
         
         do {
-            let parks = try modelContext.fetch(descriptor)
-            return parks.sorted { lhs, rhs in
-                if lhs.isFeatured != rhs.isFeatured {
-                    return lhs.isFeatured
-                } else {
-                    return lhs.name < rhs.name
-                }
-            }
+            let context = ModelContext(modelContainer)
+            let parks = try context.fetch(descriptor)
+            let filteredParks = parks.filter { $0.category == category }
+            return filteredParks.sorted(by: { lhs, rhs in
+                return lhs.name < rhs.name
+            })
         } catch {
             throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch parks by category"), underlyingError: error)
         }
@@ -174,41 +167,26 @@ class ParkRepository: ParkRepositoryProtocol {
         let cityId = city.id
         let descriptor = FetchDescriptor<Park>(
             predicate: #Predicate<Park> { park in
-                park.city.id == cityId && park.isActive && park.size == size
+                park.city?.id == cityId && park.isActive
             }
         )
         
         do {
-            let parks = try modelContext.fetch(descriptor)
-            return parks.sorted { lhs, rhs in
+            let context = ModelContext(modelContainer)
+            let parks = try context.fetch(descriptor)
+            let filteredParks = parks.filter { $0.size == size }
+            return filteredParks.sorted(by: { lhs, rhs in
                 if lhs.acreage != rhs.acreage {
                     return lhs.acreage > rhs.acreage
                 } else {
                     return lhs.name < rhs.name
                 }
-            }
+            })
         } catch {
             throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch parks by size"), underlyingError: error)
         }
     }
     
-    func syncParksFromRemote(for city: City) async throws -> [Park] {
-        // This method is currently not implemented as we load parks from JSON
-        // Future implementation would sync from remote API
-        return []
-    }
-    
-    func refreshParkData(for city: City) async throws {
-        do {
-            _ = try await syncParksFromRemote(for: city)
-        } catch {
-            if error is ParkRepositoryError {
-                throw error
-            } else {
-                throw ParkRepositoryError(.networkFailure(reason: "Failed to refresh park data"), underlyingError: error)
-            }
-        }
-    }
     
     // MARK: - Main Actor Methods for UI
     
@@ -217,101 +195,35 @@ class ParkRepository: ParkRepositoryProtocol {
         let context = modelContainer.mainContext
         let descriptor = FetchDescriptor<Park>(
             predicate: #Predicate<Park> { park in
-                park.city.id == cityId && park.isActive
+                park.city?.id == cityId && park.isActive
             }
         )
         
         do {
             let parks = try context.fetch(descriptor)
             
-            // If no parks found, try to sync from remote
+            // If no parks found, try to load from local data
             if parks.isEmpty {
-                return try await syncParksFromRemoteOnMain(for: city)
+                // Try to load parks from bundled data
+                try ParkDataLoader.loadParks(into: context, for: city)
+                
+                // Fetch again after loading
+                let newParks = try context.fetch(descriptor)
+                return newParks.sorted(by: { lhs, rhs in
+                    return lhs.name < rhs.name
+                })
             }
             
-            // Sort manually: featured first, then by featured rank, then by name
-            return parks.sorted { lhs, rhs in
-                if lhs.isFeatured != rhs.isFeatured {
-                    return lhs.isFeatured
-                } else if lhs.isFeatured && rhs.isFeatured {
-                    return (lhs.featuredRank ?? 999) < (rhs.featuredRank ?? 999)
-                } else {
-                    return lhs.name < rhs.name
-                }
-            }
+            // Sort by name since featured functionality is removed
+            return parks.sorted(by: { lhs, rhs in
+                return lhs.name < rhs.name
+            })
         } catch {
             throw ParkRepositoryError(.dataCorruption(details: "Failed to fetch parks for UI"), underlyingError: error)
         }
     }
     
-    @MainActor private func syncParksFromRemoteOnMain(for city: City) async throws -> [Park] {
-        // This method is currently not implemented as we load parks from JSON
-        // Future implementation would sync from remote API
-        return []
-    }
     
-    @MainActor private func getParkBySFParksIDOnMain(_ sfParksID: String?, city: City) async throws -> Park? {
-        guard let sfParksID = sfParksID else { return nil }
-        let cityId = city.id
-        let context = modelContainer.mainContext
-        
-        let descriptor = FetchDescriptor<Park>(
-            predicate: #Predicate<Park> { park in
-                park.city.id == cityId && park.sfParksPropertyID == sfParksID
-            }
-        )
-        
-        do {
-            let parks = try context.fetch(descriptor)
-            return parks.first
-        } catch {
-            throw ParkRepositoryError(.dataCorruption(details: "Failed to find park by SF Parks ID"), underlyingError: error)
-        }
-    }
-    
-    @MainActor private func updateExistingParkOnMain(_ existing: Park, with new: Park) throws {
-        // Update fields that might have changed
-        existing.officialName = new.officialName
-        existing.address = new.address
-        existing.acreage = new.acreage
-        existing.squareFeet = new.squareFeet
-        existing.lastUpdated = Date()
-        existing.lastSyncDate = Date()
-        
-        // Don't update enhanced content (descriptions, highlights) to preserve curation
-    }
-    
-    // MARK: - Private Helper Methods
-    
-    private func getParkBySFParksID(_ sfParksID: String?, city: City) async throws -> Park? {
-        guard let sfParksID = sfParksID else { return nil }
-        let cityId = city.id
-        
-        let descriptor = FetchDescriptor<Park>(
-            predicate: #Predicate<Park> { park in
-                park.city.id == cityId && park.sfParksPropertyID == sfParksID
-            }
-        )
-        
-        do {
-            let parks = try modelContext.fetch(descriptor)
-            return parks.first
-        } catch {
-            throw ParkRepositoryError(.dataCorruption(details: "Failed to find park by SF Parks ID"), underlyingError: error)
-        }
-    }
-    
-    private func updateExistingPark(_ existing: Park, with new: Park) throws {
-        // Update fields that might have changed
-        existing.officialName = new.officialName
-        existing.address = new.address
-        existing.acreage = new.acreage
-        existing.squareFeet = new.squareFeet
-        existing.lastUpdated = Date()
-        existing.lastSyncDate = Date()
-        
-        // Don't update enhanced content (descriptions, highlights) to preserve curation
-    }
 }
 
 // MARK: - Repository Extensions for Statistics
@@ -320,7 +232,7 @@ extension ParkRepository {
         do {
             let allParks = try await getAllParks(for: city)
             let totalParks = allParks.count
-            let featuredParks = allParks.filter(\.isFeatured).count
+            let featuredParks = 0
             
             let categoryBreakdown = Dictionary(grouping: allParks, by: \.category)
                 .mapValues { $0.count }

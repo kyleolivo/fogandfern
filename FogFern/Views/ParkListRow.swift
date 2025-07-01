@@ -50,11 +50,15 @@ struct ParkListRow: View {
                     .font(.title2)
             }
             .buttonStyle(PlainButtonStyle())
+            .accessibilityIdentifier("markVisitedButton_\(park.name)")
+            .accessibilityLabel(isVisited ? "Mark \(park.name) as unvisited" : "Mark \(park.name) as visited")
         }
         .padding(.vertical, 8)
         .contentShape(Rectangle())
         .onTapGesture {
             onTap()
         }
+        .accessibilityIdentifier("parkRow_\(park.name)")
+        .accessibilityLabel("Park: \(park.name), \(park.category.displayName), \(park.formattedAcreage)")
     }
 }

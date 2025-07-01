@@ -27,6 +27,7 @@ struct ParkFilteredListView: View {
                         )
                     }
                 }
+                .accessibilityIdentifier("visitedParksSection")
             }
             
             if !unvisitedParks.isEmpty {
@@ -40,6 +41,7 @@ struct ParkFilteredListView: View {
                         )
                     }
                 }
+                .accessibilityIdentifier("unvisitedParksSection")
             }
             
             if visitedParks.isEmpty && unvisitedParks.isEmpty {
@@ -47,9 +49,11 @@ struct ParkFilteredListView: View {
                     Text("No parks match your current filter")
                         .foregroundColor(.secondary)
                         .italic()
+                        .accessibilityIdentifier("noParksMessage")
                 }
             }
         }
         .listStyle(PlainListStyle())
+        .accessibilityIdentifier("parksList")
     }
 }

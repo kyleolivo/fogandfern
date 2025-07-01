@@ -43,6 +43,8 @@ struct ParkData: Codable {
     let address: String
     let neighborhood: String?
     let acreage: Double
+    let sfParksObjectID: Int?
+    let sfParksPropertyID: String?
 }
 
 struct ParksContainer: Codable {
@@ -74,6 +76,7 @@ struct ParkDescriptionsContainer: Codable {
     let descriptions: [String: String]
 }
 
+
 // MARK: - Data Generation
 
 class ParkDataGenerator {
@@ -94,7 +97,7 @@ class ParkDataGenerator {
         let categorizedParks = categorizeParks(properties)
         print("✅ Categorized \(categorizedParks.count) parks into 5 main categories")
         
-        // Generate enhanced park data
+        // Generate enhanced park data with SF Parks IDs included
         let enhancedParks = categorizedParks.map { property in
             generateParkData(from: property)
         }
@@ -118,7 +121,7 @@ class ParkDataGenerator {
         encoder.outputFormatting = [.prettyPrinted]
         let jsonData = try encoder.encode(container)
         
-        let outputPath = "../FogAndFern/Data/SFParks.json"
+        let outputPath = "../Data/SFParks.json"
         let outputURL = URL(fileURLWithPath: outputPath)
         
         // Create directory if it doesn't exist
@@ -206,7 +209,7 @@ class ParkDataGenerator {
     }
     
     private func categorizeParks(_ properties: [SFParksProperty]) -> [SFParksProperty] {
-        let filteredProperties = properties.compactMap { property in
+        let filteredProperties: [SFParksProperty] = properties.compactMap { property in
             guard let name = property.propertyName?.lowercased(),
                   let type = property.propertyType?.lowercased() else { return nil }
             
@@ -328,7 +331,9 @@ class ParkDataGenerator {
             longitude: property.longitude ?? -122.4194,
             address: property.address ?? "San Francisco, CA",
             neighborhood: property.analysisNeighborhood ?? property.complex,
-            acreage: acres
+            acreage: acres,
+            sfParksObjectID: property.objectid,
+            sfParksPropertyID: property.propertyID
         )
     }
     
@@ -397,7 +402,7 @@ class ParkDataGenerator {
         encoder.outputFormatting = [.prettyPrinted]
         let jsonData = try encoder.encode(container)
         
-        let exportPath = "../FogAndFern/Data/ParksForDescriptionGeneration.json"
+        let exportPath = "../Data/ParksForDescriptionGeneration.json"
         let exportURL = URL(fileURLWithPath: exportPath)
         
         try jsonData.write(to: exportURL)
@@ -407,8 +412,9 @@ class ParkDataGenerator {
         print("   📊 Ready for LLM processing: \(exportData.count) parks")
     }
     
+    
     private func loadEnhancedDescriptions() throws {
-        let descriptionsPath = "../FogAndFern/Data/ParkDescriptions.json"
+        let descriptionsPath = "../Data/ParkDescriptions.json"
         let descriptionsURL = URL(fileURLWithPath: descriptionsPath)
         
         guard FileManager.default.fileExists(atPath: descriptionsURL.path) else {

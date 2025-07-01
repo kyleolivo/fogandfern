@@ -22,6 +22,8 @@ struct ParkDataLoader {
         let address: String
         let neighborhood: String?
         let acreage: Double
+        let sfParksObjectID: Int?
+        let sfParksPropertyID: String?
     }
     
     struct ParksContainer: Codable {
@@ -30,22 +32,24 @@ struct ParkDataLoader {
         let generatedDate: String
     }
     
+    
     // MARK: - Loading Functions
     
     static func loadParks(into modelContext: ModelContext, for city: City) throws {
-        // Check if we already have the correct number of parks
-        let parkDescriptor = FetchDescriptor<Park>()
-        let existingParks = try modelContext.fetch(parkDescriptor)
-        
-        guard let url = Bundle.main.url(forResource: "SFParks", withExtension: "json") else {
+        // Load parks data
+        guard let parksURL = Bundle.main.url(forResource: "SFParks", withExtension: "json") else {
             throw ParkDataLoaderError.fileNotFound
         }
         
-        let data = try Data(contentsOf: url)
-        let container = try JSONDecoder().decode(ParksContainer.self, from: data)
+        let parksData = try Data(contentsOf: parksURL)
+        let container = try JSONDecoder().decode(ParksContainer.self, from: parksData)
         
-        // If we have the expected number of parks, don't reload
-        if existingParks.count == container.parks.count {
+        // Check existing parks using SF Parks IDs instead of names
+        let existingParks = try modelContext.fetch(FetchDescriptor<Park>())
+        let existingSFParksIDs = Set(existingParks.compactMap { $0.sfParksPropertyID })
+        
+        // If we have the expected number of parks and it's not zero, don't reload
+        if existingParks.count == container.parks.count && existingParks.count > 0 {
             return
         }
         
@@ -54,31 +58,37 @@ struct ParkDataLoader {
             clearExistingParks(from: modelContext)
         }
         
-        // Get or create city
-        let cityDescriptor = FetchDescriptor<City>()
+        // Get or create city in this context
+        let cityDescriptor = FetchDescriptor<City>(
+            predicate: #Predicate<City> { city in
+                city.name == "san_francisco"
+            }
+        )
         let existingCities = try modelContext.fetch(cityDescriptor)
-        let freshCity = existingCities.first ?? {
-            let newCity = City.sanFrancisco
-            modelContext.insert(newCity)
-            return newCity
-        }()
+        let contextCity: City
         
-        var insertedParkNames = Set<String>()
-        
-        // Add existing park names to avoid duplicates
-        for existingPark in existingParks {
-            insertedParkNames.insert(existingPark.name)
+        if let existingCity = existingCities.first {
+            contextCity = existingCity
+        } else {
+            // Create a new city directly in this context
+            contextCity = City(
+                id: UUID(),
+                name: "san_francisco",
+                displayName: "San Francisco",
+                centerLatitude: 37.7749,
+                centerLongitude: -122.4194
+            )
+            modelContext.insert(contextCity)
         }
         
         for parkData in container.parks {
-            // Skip if we've already inserted a park with this name
-            if insertedParkNames.contains(parkData.name) {
+            // Skip if we already have a park with this SF Parks ID
+            if let propertyID = parkData.sfParksPropertyID, existingSFParksIDs.contains(propertyID) {
                 continue
             }
             
-            let park = try createPark(from: parkData, for: freshCity)
+            let park = try createPark(from: parkData, for: contextCity)
             modelContext.insert(park)
-            insertedParkNames.insert(parkData.name)
         }
         
         // Save the new version
@@ -136,6 +146,7 @@ struct ParkDataLoader {
             address: data.address,
             neighborhood: data.neighborhood,
             acreage: data.acreage,
+            sfParksPropertyID: data.sfParksPropertyID,
             city: city
         )
     }
