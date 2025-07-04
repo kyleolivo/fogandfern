@@ -68,11 +68,6 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
-		75F39F6C2E09045D005E4697 /* Data */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Data;
-			sourceTree = "<group>";
-		};
 		75F39F722E09046B005E4697 /* Docs */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Docs;
@@ -115,7 +110,6 @@
 				756E26182E0901420023E521 /* FogFernUITests */,
 				756E25FB2E0901400023E521 /* Products */,
 				75F39F662E090443005E4697 /* Scripts */,
-				75F39F6C2E09045D005E4697 /* Data */,
 				75F39F722E09046B005E4697 /* Docs */,
 				75F39F732E09046F005E4697 /* README.md */,
 				757D338C2E178042005BFF0E /* CLAUDE.md */,
