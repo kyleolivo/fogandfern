@@ -151,30 +151,16 @@ final class UserTests: XCTestCase {
         XCTAssertEqual(uniqueParks.count, 2)
     }
     
-    func testVisitsWithJournalEntries() throws {
-        // Add visits with and without journal entries
-        let visitWithJournal = Visit(
-            journalEntry: "Great visit!",
-            park: testPark,
-            user: testUser
-        )
-        let visitWithoutJournal = Visit(park: testPark, user: testUser)
-        let visitWithEmptyJournal = Visit(
-            journalEntry: "",
-            park: testPark,
-            user: testUser
-        )
+    func testMultipleVisitsToSamePark() throws {
+        // Add multiple visits to same park
+        let visit1 = Visit(park: testPark, user: testUser)
+        let visit2 = Visit(park: testPark, user: testUser)
+        let visit3 = Visit(park: testPark, user: testUser)
         
-        testUser.visits?.append(contentsOf: [visitWithJournal, visitWithoutJournal, visitWithEmptyJournal])
+        testUser.visits?.append(contentsOf: [visit1, visit2, visit3])
         
-        let visitsWithJournal = testUser.visits?.filter { visit in
-            if let journal = visit.journalEntry, !journal.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                return true
-            }
-            return false
-        }
-        
-        XCTAssertEqual(visitsWithJournal?.count, 1)
+        XCTAssertEqual(testUser.visits?.count, 3)
+        XCTAssertTrue(testUser.visits?.allSatisfy { $0.parkSFParksPropertyID == testPark.sfParksPropertyID } ?? false)
     }
     
     // MARK: - Visit Date Analysis Tests

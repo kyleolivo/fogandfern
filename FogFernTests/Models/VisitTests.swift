@@ -53,7 +53,6 @@ final class VisitTests: XCTestCase {
         
         testVisit = Visit(
             timestamp: Date(),
-            journalEntry: "Had a great time at the park!",
             parkSFParksPropertyID: testPark.sfParksPropertyID ?? "",
             parkName: testPark.name,
             user: testUser
@@ -81,7 +80,6 @@ final class VisitTests: XCTestCase {
     func testVisitInitialization() throws {
         XCTAssertNotNil(testVisit.id)
         XCTAssertNotNil(testVisit.timestamp)
-        XCTAssertEqual(testVisit.journalEntry, "Had a great time at the park!")
         XCTAssertEqual(testVisit.parkSFParksPropertyID, "TEST123")
         XCTAssertEqual(testVisit.parkName, "Test Park")
         XCTAssertEqual(testVisit.user?.id, testUser.id)
@@ -91,7 +89,6 @@ final class VisitTests: XCTestCase {
         let defaultVisit = Visit()
         XCTAssertNotNil(defaultVisit.id)
         XCTAssertNotNil(defaultVisit.timestamp)
-        XCTAssertNil(defaultVisit.journalEntry)
         XCTAssertEqual(defaultVisit.parkSFParksPropertyID, "")
         XCTAssertEqual(defaultVisit.parkName, "")
         XCTAssertNil(defaultVisit.user)
@@ -99,14 +96,12 @@ final class VisitTests: XCTestCase {
     
     func testVisitConvenienceInitializerWithPark() throws {
         let visitWithPark = Visit(
-            journalEntry: "Beautiful park!",
             park: testPark,
             user: testUser
         )
         
         XCTAssertEqual(visitWithPark.parkSFParksPropertyID, "TEST123")
         XCTAssertEqual(visitWithPark.parkName, "Test Park")
-        XCTAssertEqual(visitWithPark.journalEntry, "Beautiful park!")
         XCTAssertEqual(visitWithPark.user?.id, testUser.id)
     }
     
@@ -143,25 +138,6 @@ final class VisitTests: XCTestCase {
         XCTAssertNil(foundPark)
     }
     
-    // MARK: - Journal Entry Tests
-    
-    func testVisitWithoutJournalEntry() throws {
-        let visitNoJournal = Visit(
-            park: testPark,
-            user: testUser
-        )
-        XCTAssertNil(visitNoJournal.journalEntry)
-    }
-    
-    func testVisitWithLongJournalEntry() throws {
-        let longEntry = String(repeating: "This is a long journal entry. ", count: 100)
-        let visitLongJournal = Visit(
-            journalEntry: longEntry,
-            park: testPark,
-            user: testUser
-        )
-        XCTAssertEqual(visitLongJournal.journalEntry, longEntry)
-    }
     
     // MARK: - Timestamp Tests
     
@@ -226,7 +202,6 @@ final class VisitTests: XCTestCase {
         measure {
             for _ in 0..<1000 {
                 let _ = Visit(
-                    journalEntry: "Performance test",
                     park: testPark,
                     user: testUser
                 )

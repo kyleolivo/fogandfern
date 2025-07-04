@@ -11,7 +11,6 @@ import SwiftData
 final class Visit {
     var id: UUID = UUID()
     var timestamp: Date = Date()
-    var journalEntry: String? = nil
     
     // CloudKit-optimized park reference using stable SF Parks Property ID
     var parkSFParksPropertyID: String = ""
@@ -23,14 +22,12 @@ final class Visit {
     init(
         id: UUID = UUID(),
         timestamp: Date = Date(),
-        journalEntry: String? = nil,
         parkSFParksPropertyID: String = "",
         parkName: String = "",
         user: User? = nil
     ) {
         self.id = id
         self.timestamp = timestamp
-        self.journalEntry = journalEntry
         self.parkSFParksPropertyID = parkSFParksPropertyID
         self.parkName = parkName
         self.user = user
@@ -40,14 +37,12 @@ final class Visit {
     convenience init(
         id: UUID = UUID(),
         timestamp: Date = Date(),
-        journalEntry: String? = nil,
         park: Park,
         user: User
     ) {
         self.init(
             id: id,
             timestamp: timestamp,
-            journalEntry: journalEntry,
             parkSFParksPropertyID: park.sfParksPropertyID ?? "",
             parkName: park.name,
             user: user

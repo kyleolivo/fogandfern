@@ -38,7 +38,6 @@ enum SchemaV1: VersionedSchema {
     final class Visit {
         var id: UUID
         var timestamp: Date
-        var journalEntry: String?
         
         // CloudKit-optimized park reference using stable SF Parks Property ID
         var parkSFParksPropertyID: String
@@ -50,14 +49,12 @@ enum SchemaV1: VersionedSchema {
         init(
             id: UUID = UUID(),
             timestamp: Date = Date(),
-            journalEntry: String? = nil,
             parkSFParksPropertyID: String,
             parkName: String,
             user: User
         ) {
             self.id = id
             self.timestamp = timestamp
-            self.journalEntry = journalEntry
             self.parkSFParksPropertyID = parkSFParksPropertyID
             self.parkName = parkName
             self.user = user
@@ -67,14 +64,12 @@ enum SchemaV1: VersionedSchema {
         convenience init(
             id: UUID = UUID(),
             timestamp: Date = Date(),
-            journalEntry: String? = nil,
             park: Park,
             user: User
         ) {
             self.init(
                 id: id,
                 timestamp: timestamp,
-                journalEntry: journalEntry,
                 parkSFParksPropertyID: park.sfParksPropertyID ?? "",
                 parkName: park.name,
                 user: user
