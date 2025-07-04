@@ -115,24 +115,26 @@ struct ParkDiscoveryView: View {
     }
     
     var body: some View {
-        Group {
-            if showingMapView {
-                // Full screen map
-                Map(position: $mapPosition, selection: $selectedPark) {
-                    ForEach(parks) { park in
-                        Marker(park.name, systemImage: "tree.fill", coordinate: park.coordinate)
-                            .tint(hasVisited(park) ? .green : .blue)
-                            .tag(park)
-                    }
+        ZStack {
+            // Full screen map (always rendered but hidden when not in use)
+            Map(position: $mapPosition, selection: $selectedPark) {
+                ForEach(parks) { park in
+                    Marker(park.name, systemImage: "tree.fill", coordinate: park.coordinate)
+                        .tint(hasVisited(park) ? .green : .blue)
+                        .tag(park)
                 }
-                .mapStyle(.standard)
-                .onShake {
-                    selectRandomVisiblePark()
-                }
-                .accessibilityIdentifier("parkMap")
-                .accessibilityLabel("Map showing San Francisco parks")
-            } else {
-                // List view
+            }
+            .mapStyle(.standard)
+            .onShake {
+                selectRandomVisiblePark()
+            }
+            .accessibilityIdentifier("parkMap")
+            .accessibilityLabel("Map showing San Francisco parks")
+            .opacity(showingMapView ? 1 : 0)
+            .allowsHitTesting(showingMapView)
+            
+            // List view overlay
+            if !showingMapView {
                 ParkFilteredListView(
                     visitedParks: visitedParks, 
                     unvisitedParks: unvisitedParks,
@@ -142,6 +144,7 @@ struct ParkDiscoveryView: View {
                     },
                     onMarkVisited: markAsVisited
                 )
+                .background(Color(UIColor.systemBackground))
             }
         }
         .sheet(item: $selectedPark) { park in
