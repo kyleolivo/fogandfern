@@ -28,7 +28,6 @@
 		756E25FA2E0901400023E521 /* FogFern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FogFern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		756E260B2E0901420023E521 /* FogFernTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FogFernTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		756E26152E0901420023E521 /* FogFernUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FogFernUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		75F39F6D2E090465005E4697 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		75F39F732E09046F005E4697 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +115,6 @@
 				75F39F6C2E09045D005E4697 /* Data */,
 				75F39F722E09046B005E4697 /* Docs */,
 				75F39F732E09046F005E4697 /* README.md */,
-				75F39F6D2E090465005E4697 /* CLAUDE.md */,
 			);
 			sourceTree = "<group>";
 		};
