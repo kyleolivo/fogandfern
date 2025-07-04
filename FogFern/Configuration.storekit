@@ -1,4 +1,14 @@
 {
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
   "identifier" : "B7A62F72",
   "nonRenewingSubscriptions" : [
 
@@ -40,13 +50,13 @@
       "internalID" : "6670914483",
       "localizations" : [
         {
-          "description" : "Show your appreciation with a big tip to support the development of Fog & Fern",
-          "displayName" : "Big Tip",
+          "description" : "Show your appreciation with a large tip to support the development of Fog & Fern",
+          "displayName" : "Large Tip",
           "locale" : "en_US"
         }
       ],
-      "productID" : "com.kyleolivo.FogFern.tip.big",
-      "referenceName" : "Big Tip",
+      "productID" : "com.kyleolivo.FogFern.tip.large",
+      "referenceName" : "Large Tip",
       "type" : "Consumable"
     }
   ],
@@ -109,7 +119,7 @@
 
   ],
   "version" : {
-    "major" : 3,
+    "major" : 4,
     "minor" : 0
   }
 }

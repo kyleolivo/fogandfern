@@ -22,7 +22,7 @@ class TipStoreManager: ObservableObject {
     private let productIdentifiers = [
         "com.kyleolivo.FogFern.tip.small",
         "com.kyleolivo.FogFern.tip.medium", 
-        "com.kyleolivo.FogFern.tip.big"
+        "com.kyleolivo.FogFern.tip.large"
     ]
     
     private var transactionListener: Task<Void, Error>?
@@ -53,7 +53,7 @@ class TipStoreManager: ObservableObject {
                 purchaseError = "No tip options available. Please check your internet connection and try again."
             } else {
                 self.products = products.sorted { product1, product2 in
-                    // Sort by price: small, medium, big
+                    // Sort by price: small, medium, large
                     let price1 = product1.price
                     let price2 = product2.price
                     if price1 != price2 {
@@ -103,8 +103,8 @@ class TipStoreManager: ObservableObject {
             return "💚 Small Tip"
         case "com.kyleolivo.FogFern.tip.medium":
             return "🌿 Medium Tip"
-        case "com.kyleolivo.FogFern.tip.big":
-            return "🌲 Big Tip"
+        case "com.kyleolivo.FogFern.tip.large":
+            return "🌲 Large Tip"
         default:
             return product.displayName
         }
