@@ -30,7 +30,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:FogFern.xctestplan"
+            reference = "container:FogFern-Cloud.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

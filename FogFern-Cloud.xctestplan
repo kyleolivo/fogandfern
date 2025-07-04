@@ -17,7 +17,7 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : false,
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:FogFern.xcodeproj",
         "identifier" : "756E260A2E0901420023E521",
@@ -25,7 +25,7 @@
       }
     },
     {
-      "parallelizable" : false,
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:FogFern.xcodeproj",
         "identifier" : "756E26142E0901420023E521",

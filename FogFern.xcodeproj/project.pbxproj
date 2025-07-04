@@ -29,6 +29,7 @@
 		756E260B2E0901420023E521 /* FogFernTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FogFernTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		756E26152E0901420023E521 /* FogFernUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FogFernUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		757D338C2E178042005BFF0E /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
+		757D338D2E187E5D005BFF0E /* FogFern-Cloud.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FogFern-Cloud.xctestplan"; sourceTree = "<group>"; };
 		75F39F732E09046F005E4697 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				755D08492E123D7C002A3F50 /* FogFern.xctestplan */,
+				757D338D2E187E5D005BFF0E /* FogFern-Cloud.xctestplan */,
 				756E25FC2E0901400023E521 /* FogFern */,
 				756E260E2E0901420023E521 /* FogFernTests */,
 				756E26182E0901420023E521 /* FogFernUITests */,
