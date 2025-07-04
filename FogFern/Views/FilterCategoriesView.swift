@@ -63,22 +63,30 @@ struct FilterCategoriesView: View {
                 
                 Section {
                     VStack(spacing: 12) {
-                        Text("Made with ❤️ in San Francisco")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        
-                        Text("This app was fueled by coffee.")
+                        Text("Made with ❤️ in San Francisco.")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         
                         Button("Buy me a ☕️") {
                             showingTipView = true
                         }
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 16, weight: .medium))
                         .padding(.horizontal, 24)
-                        .padding(.vertical, 8)
-                        .background(.mint)
-                        .cornerRadius(8)
+                        .padding(.vertical, 12)
+                        .background(
+                            LinearGradient(
+                                colors: [Color.mint, Color.mint.opacity(0.8)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .shadow(color: .black.opacity(0.15), radius: 3, x: 0, y: 2)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(.white.opacity(0.2), lineWidth: 1)
+                        )
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
