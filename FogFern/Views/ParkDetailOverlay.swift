@@ -20,7 +20,7 @@ struct ParkDetailOverlay: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    // Hero Image
+                    // Hero Image - only show if image exists
                     if UIImage(named: park.imageName) != nil {
                         Image(park.imageName)
                             .resizable()
@@ -28,26 +28,6 @@ struct ParkDetailOverlay: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 220)
                             .clipped()
-                    } else {
-                        // Placeholder image
-                        Rectangle()
-                            .fill(LinearGradient(
-                                gradient: Gradient(colors: [.mint.opacity(0.3), .green.opacity(0.6)]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ))
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 220)
-                            .overlay(
-                                VStack {
-                                    Image(systemName: "tree.fill")
-                                        .font(.system(size: 40))
-                                        .foregroundColor(.white.opacity(0.8))
-                                    Text("No Image Available")
-                                        .font(.caption)
-                                        .foregroundColor(.white.opacity(0.8))
-                                }
-                            )
                     }
                     
                     VStack(alignment: .leading, spacing: 16) {
