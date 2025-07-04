@@ -139,6 +139,96 @@ final class VisitTests: XCTestCase {
     }
     
     
+    // MARK: - Composite ID Tests
+    
+    func testGenerateUniqueIDWithValidPark() throws {
+        let uniqueID = Visit.generateUniqueID(for: testPark)
+        XCTAssertEqual(uniqueID, "test_city:TEST123")
+    }
+    
+    func testGenerateUniqueIDWithNilExternalID() throws {
+        let parkWithoutID = Park(
+            name: "No ID Park",
+            shortDescription: "Park without external ID",
+            fullDescription: "This park has no external ID",
+            category: .mini,
+            latitude: 40.0,
+            longitude: -120.0,
+            address: "456 Test Ave",
+            acreage: 1.0,
+            city: testCity
+        )
+        
+        let uniqueID = Visit.generateUniqueID(for: parkWithoutID)
+        XCTAssertTrue(uniqueID.hasPrefix("test_city:"))
+        XCTAssertTrue(uniqueID.count > "test_city:".count)
+        // Should use the park's UUID when no external ID exists
+        XCTAssertTrue(uniqueID.contains("-")) // UUID format check
+    }
+    
+    func testGenerateUniqueIDWithNilCity() throws {
+        let parkWithoutCity = Park(
+            name: "Cityless Park",
+            shortDescription: "Park without city",
+            fullDescription: "This park has no city assigned",
+            category: .destination,
+            latitude: 41.0,
+            longitude: -121.0,
+            address: "789 Nowhere St",
+            acreage: 10.0,
+            sfParksPropertyID: "CITYLESS123"
+        )
+        
+        let uniqueID = Visit.generateUniqueID(for: parkWithoutCity)
+        XCTAssertEqual(uniqueID, "unknown:CITYLESS123")
+    }
+    
+    func testParseValidUniqueID() throws {
+        let visit = Visit(
+            parkUniqueID: "san_francisco:12345",
+            parkName: "Golden Gate Park",
+            user: testUser
+        )
+        
+        let parsed = visit.parseUniqueID()
+        XCTAssertNotNil(parsed)
+        XCTAssertEqual(parsed?.cityName, "san_francisco")
+        XCTAssertEqual(parsed?.externalID, "12345")
+    }
+    
+    func testParseInvalidUniqueID() throws {
+        let visit = Visit(
+            parkUniqueID: "invalid_format",
+            parkName: "Invalid Park",
+            user: testUser
+        )
+        
+        let parsed = visit.parseUniqueID()
+        XCTAssertNil(parsed)
+    }
+    
+    func testParseEmptyUniqueID() throws {
+        let visit = Visit(
+            parkUniqueID: "",
+            parkName: "Empty ID Park",
+            user: testUser
+        )
+        
+        let parsed = visit.parseUniqueID()
+        XCTAssertNil(parsed)
+    }
+    
+    func testParseUniqueIDWithMultipleColons() throws {
+        let visit = Visit(
+            parkUniqueID: "city:external:extra",
+            parkName: "Multi Colon Park",
+            user: testUser
+        )
+        
+        let parsed = visit.parseUniqueID()
+        XCTAssertNil(parsed) // Should only accept exactly one colon
+    }
+    
     // MARK: - Timestamp Tests
     
     func testTimestampIsRecent() throws {

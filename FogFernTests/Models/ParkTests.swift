@@ -121,6 +121,36 @@ final class ParkTests: XCTestCase {
         XCTAssertTrue(allCategories.contains(.garden))
     }
     
+    func testRemovedCategoriesNoLongerExist() throws {
+        // Verify that the removed categories are indeed gone
+        let allCaseNames = ParkCategory.allCases.map { $0.rawValue }
+        XCTAssertFalse(allCaseNames.contains("scenic"))
+        XCTAssertFalse(allCaseNames.contains("recreational"))
+        XCTAssertFalse(allCaseNames.contains("historic"))
+        XCTAssertFalse(allCaseNames.contains("waterfront"))
+    }
+    
+    func testParkCategoryRawValues() throws {
+        XCTAssertEqual(ParkCategory.destination.rawValue, "destination")
+        XCTAssertEqual(ParkCategory.neighborhood.rawValue, "neighborhood")
+        XCTAssertEqual(ParkCategory.mini.rawValue, "mini")
+        XCTAssertEqual(ParkCategory.plaza.rawValue, "plaza")
+        XCTAssertEqual(ParkCategory.garden.rawValue, "garden")
+    }
+    
+    func testParkCategoryFromRawValue() throws {
+        XCTAssertEqual(ParkCategory(rawValue: "destination"), .destination)
+        XCTAssertEqual(ParkCategory(rawValue: "neighborhood"), .neighborhood)
+        XCTAssertEqual(ParkCategory(rawValue: "mini"), .mini)
+        XCTAssertEqual(ParkCategory(rawValue: "plaza"), .plaza)
+        XCTAssertEqual(ParkCategory(rawValue: "garden"), .garden)
+        
+        // Test invalid raw values
+        XCTAssertNil(ParkCategory(rawValue: "scenic"))
+        XCTAssertNil(ParkCategory(rawValue: "invalid"))
+        XCTAssertNil(ParkCategory(rawValue: ""))
+    }
+    
     func testParkCategoryIsShownByDefault() throws {
         XCTAssertTrue(ParkCategory.destination.isShownByDefault)
         XCTAssertFalse(ParkCategory.neighborhood.isShownByDefault)
@@ -358,6 +388,110 @@ final class ParkTests: XCTestCase {
         XCTAssertEqual(extremePark.size, .massive)
         XCTAssertEqual(extremePark.coordinate.latitude, 90.0)
         XCTAssertEqual(extremePark.coordinate.longitude, 180.0)
+    }
+    
+    // MARK: - Park Data Validation Tests
+    
+    func testParkWithAllOptionalFields() throws {
+        let comprehensivePark = Park(
+            name: "Comprehensive Park",
+            shortDescription: "Full featured test park",
+            fullDescription: "A park with all optional fields populated for testing",
+            category: .destination,
+            latitude: 37.8,
+            longitude: -122.4,
+            address: "100 Comprehensive Ave",
+            neighborhood: "Test Neighborhood",
+            zipCode: "94102",
+            acreage: 25.5,
+            sfParksPropertyID: "COMP123",
+            city: testCity
+        )
+        
+        XCTAssertEqual(comprehensivePark.neighborhood, "Test Neighborhood")
+        XCTAssertEqual(comprehensivePark.zipCode, "94102")
+        XCTAssertEqual(comprehensivePark.sfParksPropertyID, "COMP123")
+        XCTAssertEqual(comprehensivePark.size, .large) // 25.5 acres = large
+    }
+    
+    func testParkImageNameGeneration() throws {
+        // Test various special characters in park names
+        let specialChars = [
+            ("Golden Gate Park", "golden-gate-park"),
+            ("Mission Dolores Park", "mission-dolores-park"),
+            ("St. Mary's Square", "st-marys-square"),
+            ("AT&T Park", "atandt-park"),
+            ("Pier 39/Fisherman's Wharf", "pier-39-fishermans-wharf"),
+            ("Balboa Park (SF)", "balboa-park-(sf)"), // Parentheses are NOT removed by imageName
+            ("Children's Playground", "childrens-playground")
+        ]
+        
+        for (originalName, expectedImageName) in specialChars {
+            let park = Park(
+                name: originalName,
+                shortDescription: "Test",
+                fullDescription: "Test park",
+                category: .neighborhood,
+                latitude: 37.7,
+                longitude: -122.4,
+                address: "Test St",
+                acreage: 1.0,
+                city: testCity
+            )
+            XCTAssertEqual(park.imageName, expectedImageName, "Failed for park name: \(originalName)")
+        }
+    }
+    
+    func testParkSizeClassification() throws {
+        let sizePairs: [(Double, ParkSize)] = [
+            (0.0, .pocket),
+            (0.5, .pocket),
+            (0.99, .pocket),
+            (1.0, .small),
+            (3.0, .small),
+            (4.99, .small),
+            (5.0, .medium),
+            (15.0, .medium),
+            (19.99, .medium),
+            (20.0, .large),
+            (75.0, .large),
+            (99.99, .large),
+            (100.0, .massive),
+            (1000.0, .massive)
+        ]
+        
+        for (acreage, expectedSize) in sizePairs {
+            let park = Park(
+                name: "Size Test Park",
+                shortDescription: "Testing size classification",
+                fullDescription: "Park for testing size boundaries",
+                category: .mini,
+                latitude: 37.7,
+                longitude: -122.4,
+                address: "Size Test St",
+                acreage: acreage,
+                city: testCity
+            )
+            XCTAssertEqual(park.size, expectedSize, "Failed for acreage: \(acreage)")
+        }
+    }
+    
+    func testParkRelationshipsOptional() throws {
+        // Test that park can be created without city (for CloudKit compatibility)
+        let orphanPark = Park(
+            name: "Orphan Park",
+            shortDescription: "Park without city",
+            fullDescription: "Testing optional relationships",
+            category: .mini,
+            latitude: 38.0,
+            longitude: -123.0,
+            address: "Orphan St",
+            acreage: 2.0
+        )
+        
+        XCTAssertNil(orphanPark.city)
+        XCTAssertEqual(orphanPark.name, "Orphan Park")
+        XCTAssertTrue(orphanPark.isActive)
     }
     
     // MARK: - Performance Tests

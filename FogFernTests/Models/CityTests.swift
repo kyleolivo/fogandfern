@@ -79,6 +79,85 @@ final class CityTests: XCTestCase {
         XCTAssertLessThan(timeDifference, 1.0)
     }
     
+    // MARK: - Static San Francisco Tests
+    
+    func testSanFranciscoStaticCity() throws {
+        let sfCity = City.sanFrancisco
+        XCTAssertEqual(sfCity.name, "san_francisco")
+        XCTAssertEqual(sfCity.displayName, "San Francisco")
+        XCTAssertEqual(sfCity.centerLatitude, 37.7749, accuracy: 0.0001)
+        XCTAssertEqual(sfCity.centerLongitude, -122.4194, accuracy: 0.0001)
+        XCTAssertNotNil(sfCity.id)
+    }
+    
+    func testSanFranciscoCoordinate() throws {
+        let sfCity = City.sanFrancisco
+        let coordinate = sfCity.centerCoordinate
+        XCTAssertEqual(coordinate.latitude, 37.7749, accuracy: 0.0001)
+        XCTAssertEqual(coordinate.longitude, -122.4194, accuracy: 0.0001)
+    }
+    
+    // MARK: - Field Validation Tests
+    
+    func testCityNameAndDisplayNameDifferences() throws {
+        // Test that name and displayName serve different purposes
+        let testCases = [
+            ("san_francisco", "San Francisco"),
+            ("new_york", "New York City"),
+            ("los_angeles", "Los Angeles"),
+            ("test_city", "Test City with Special Characters!")
+        ]
+        
+        for (name, displayName) in testCases {
+            let city = City(
+                name: name,
+                displayName: displayName,
+                centerLatitude: 37.0,
+                centerLongitude: -122.0
+            )
+            XCTAssertEqual(city.name, name)
+            XCTAssertEqual(city.displayName, displayName)
+            XCTAssertNotEqual(city.name, city.displayName) // They should be different
+        }
+    }
+    
+    func testCityNameConsistencyForDatabaseQueries() throws {
+        // Test that name field is suitable for database queries (lowercase, underscores)
+        let dbFriendlyNames = [
+            "san_francisco",
+            "new_york",
+            "los_angeles",
+            "chicago",
+            "test_city_123"
+        ]
+        
+        for name in dbFriendlyNames {
+            let city = City(
+                name: name,
+                displayName: "Display Name",
+                centerLatitude: 37.0,
+                centerLongitude: -122.0
+            )
+            
+            // Verify name is suitable for database operations
+            XCTAssertFalse(city.name.contains(" "))
+            XCTAssertFalse(city.name.contains("'"))
+            XCTAssertFalse(city.name.contains("\""))
+            XCTAssertEqual(city.name, name.lowercased())
+        }
+    }
+    
+    func testCityWithUnicodeDisplayName() throws {
+        let unicodeCity = City(
+            name: "unicode_test",
+            displayName: "Tëst Çîty 北京",
+            centerLatitude: 39.9,
+            centerLongitude: 116.4
+        )
+        XCTAssertEqual(unicodeCity.displayName, "Tëst Çîty 北京")
+        XCTAssertEqual(unicodeCity.name, "unicode_test")
+    }
+    
     // MARK: - Edge Cases Tests
     
     func testCityWithEmptyName() throws {

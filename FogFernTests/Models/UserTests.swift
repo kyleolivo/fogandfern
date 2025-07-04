@@ -288,6 +288,72 @@ final class UserTests: XCTestCase {
         }
     }
     
+    // MARK: - Advanced User Scenarios Tests
+    
+    func testUserWithManyVisitsPerformance() throws {
+        // Test performance with a large number of visits
+        let numberOfVisits = 1000
+        
+        for i in 0..<numberOfVisits {
+            let visit = Visit(
+                timestamp: Date().addingTimeInterval(Double(i)),
+                park: testPark,
+                user: testUser
+            )
+            testUser.visits?.append(visit)
+        }
+        
+        XCTAssertEqual(testUser.visits?.count, numberOfVisits)
+        
+        // Test that operations on large visit collections are still performant
+        measure {
+            let visitCount = testUser.visits?.count ?? 0
+            XCTAssertEqual(visitCount, numberOfVisits)
+        }
+    }
+    
+    func testUserVisitStatisticsWithDifferentTimestamps() throws {
+        let baseDate = Date()
+        let visits = [
+            Visit(timestamp: baseDate.addingTimeInterval(-86400 * 7), park: testPark, user: testUser),  // 1 week ago
+            Visit(timestamp: baseDate.addingTimeInterval(-86400 * 1), park: testPark, user: testUser),  // 1 day ago
+            Visit(timestamp: baseDate.addingTimeInterval(-3600), park: testPark, user: testUser),       // 1 hour ago
+            Visit(timestamp: baseDate, park: testPark, user: testUser)                                  // Now
+        ]
+        
+        testUser.visits?.append(contentsOf: visits)
+        
+        XCTAssertEqual(testUser.visits?.count, 4)
+        
+        // Test that visits can be sorted by timestamp
+        let sortedVisits = testUser.visits?.sorted { $0.timestamp < $1.timestamp }
+        XCTAssertNotNil(sortedVisits)
+        XCTAssertEqual(sortedVisits?.count, 4)
+        
+        // Verify chronological order
+        for i in 0..<(sortedVisits!.count - 1) {
+            XCTAssertLessThanOrEqual(sortedVisits![i].timestamp, sortedVisits![i + 1].timestamp)
+        }
+    }
+    
+    func testUserWithEmptyVisitsArray() throws {
+        let userWithEmptyVisits = User()
+        
+        // User starts with empty array, not nil (SwiftData behavior)
+        XCTAssertNotNil(userWithEmptyVisits.visits)
+        XCTAssertEqual(userWithEmptyVisits.visits?.count, 0)
+        XCTAssertTrue(userWithEmptyVisits.visits?.isEmpty ?? true)
+        
+        // Operations on empty visits should work gracefully
+        let visitCount = userWithEmptyVisits.visits?.count ?? 0
+        XCTAssertEqual(visitCount, 0)
+        
+        // Test that we can add visits to the empty array
+        let visit = Visit(park: testPark, user: userWithEmptyVisits)
+        userWithEmptyVisits.visits?.append(visit)
+        XCTAssertEqual(userWithEmptyVisits.visits?.count, 1)
+    }
+    
     // MARK: - SwiftData Integration Tests
     
     func testUserPersistence() throws {
