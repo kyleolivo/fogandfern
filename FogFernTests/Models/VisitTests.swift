@@ -47,7 +47,7 @@ final class VisitTests: XCTestCase {
             longitude: -120.5,
             address: "123 Test Street",
             acreage: 5.0,
-            sfParksPropertyID: "TEST123",
+            propertyID: "TEST123",
             city: testCity
         )
         
@@ -111,7 +111,7 @@ final class VisitTests: XCTestCase {
         let foundPark = testVisit.findPark(in: modelContext)
         XCTAssertNotNil(foundPark)
         XCTAssertEqual(foundPark?.id, testPark.id)
-        XCTAssertEqual(foundPark?.sfParksPropertyID, "TEST123")
+        XCTAssertEqual(foundPark?.propertyID, "TEST123")
     }
     
     func testFindParkWithInvalidID() throws {
@@ -176,7 +176,7 @@ final class VisitTests: XCTestCase {
             longitude: -121.0,
             address: "789 Nowhere St",
             acreage: 10.0,
-            sfParksPropertyID: "CITYLESS123"
+            propertyID: "CITYLESS123"
         )
         
         let uniqueID = Visit.generateUniqueID(for: parkWithoutCity)
@@ -263,7 +263,7 @@ final class VisitTests: XCTestCase {
     
     // MARK: - Edge Cases Tests
     
-    func testVisitWithNilParkSFParksPropertyID() throws {
+    func testVisitWithNilPropertyID() throws {
         let parkWithoutID = Park(
             name: "No ID Park",
             shortDescription: "Park without SF ID",
@@ -313,7 +313,7 @@ final class VisitTests: XCTestCase {
                 longitude: -120.5 + Double(i) * 0.001,
                 address: "\(i) Park Street",
                 acreage: Double(i),
-                sfParksPropertyID: "PARK\(i)",
+                propertyID: "PARK\(i)",
                 city: testCity
             )
             modelContext.insert(park)

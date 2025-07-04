@@ -43,8 +43,8 @@ struct ParkData: Codable {
     let address: String
     let neighborhood: String?
     let acreage: Double
-    let sfParksObjectID: Int?
-    let sfParksPropertyID: String?
+    let objectID: Int?
+    let propertyID: String?
 }
 
 struct ParksContainer: Codable {
@@ -332,8 +332,8 @@ class ParkDataGenerator {
             address: property.address ?? "San Francisco, CA",
             neighborhood: property.analysisNeighborhood ?? property.complex,
             acreage: acres,
-            sfParksObjectID: property.objectid,
-            sfParksPropertyID: property.propertyID
+            objectID: property.objectid,
+            propertyID: property.propertyID
         )
     }
     

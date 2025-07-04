@@ -47,7 +47,7 @@ final class ModelIntegrationTests: XCTestCase {
             longitude: -122.4194,
             address: "123 Integration Test St",
             acreage: 10.0,
-            sfParksPropertyID: "INT123",
+            propertyID: "INT123",
             city: testCity
         )
         
@@ -143,7 +143,7 @@ final class ModelIntegrationTests: XCTestCase {
             longitude: -123.0,
             address: "789 Cityless St",
             acreage: 5.0,
-            sfParksPropertyID: "CITYLESS123"
+            propertyID: "CITYLESS123"
         )
         
         modelContext.insert(citylessCity)
@@ -165,7 +165,7 @@ final class ModelIntegrationTests: XCTestCase {
             longitude: -122.3,
             address: "456 Second St",
             acreage: 15.0,
-            sfParksPropertyID: "SEC456",
+            propertyID: "SEC456",
             city: testCity
         )
         
@@ -346,7 +346,7 @@ final class ModelIntegrationTests: XCTestCase {
                         longitude: -122.0 + Double(i) * 0.1,
                         address: "Perf St \(i)-\(j)",
                         acreage: Double(j + 1),
-                        sfParksPropertyID: "PERF\(i)\(j)",
+                        propertyID: "PERF\(i)\(j)",
                         city: city
                     )
                     modelContext.insert(park)

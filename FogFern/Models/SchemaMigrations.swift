@@ -69,7 +69,7 @@ struct MigrationUtilities {
         }
         
         _ = parks.contains { park in
-            park.sfParksPropertyID?.isEmpty == true
+            park.propertyID?.isEmpty == true
         }
         
         if hasOrphanedVisits {

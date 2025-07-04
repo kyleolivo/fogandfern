@@ -37,7 +37,7 @@ final class UserTests: XCTestCase {
             longitude: -120.5,
             address: "123 Test Street",
             acreage: 5.0,
-            sfParksPropertyID: "TEST123",
+            propertyID: "TEST123",
             city: testCity
         )
     }
@@ -137,7 +137,7 @@ final class UserTests: XCTestCase {
             longitude: -120.6,
             address: "456 Another Street",
             acreage: 10.0,
-            sfParksPropertyID: "ANOTHER123",
+            propertyID: "ANOTHER123",
             city: testCity
         )
         

@@ -54,7 +54,7 @@ final class Visit {
     /// Generates a composite unique ID for a park in format: {city}:{external_id}
     static func generateUniqueID(for park: Park) -> String {
         let cityName = park.city?.name ?? "unknown"
-        let externalID = park.sfParksPropertyID ?? park.id.uuidString
+        let externalID = park.propertyID ?? park.id.uuidString
         return "\(cityName):\(externalID)"
     }
     
@@ -75,7 +75,7 @@ final class Visit {
         let externalID = parsed.externalID
         let descriptor = FetchDescriptor<Park>(
             predicate: #Predicate<Park> { park in
-                park.sfParksPropertyID == externalID
+                park.propertyID == externalID
             }
         )
         

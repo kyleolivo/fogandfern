@@ -92,8 +92,8 @@ final class Park {
     // Physical characteristics
     var acreage: Double = 0.0
     
-    // SF Parks API Integration
-    var sfParksPropertyID: String? = nil
+    // External API Integration
+    var propertyID: String? = nil
     
     // Status and metadata
     var isActive: Bool = true
@@ -115,7 +115,7 @@ final class Park {
         neighborhood: String? = nil,
         zipCode: String? = nil,
         acreage: Double = 0.0,
-        sfParksPropertyID: String? = nil,
+        propertyID: String? = nil,
         city: City? = nil
     ) {
         self.id = id
@@ -130,7 +130,7 @@ final class Park {
         self.neighborhood = neighborhood
         self.zipCode = zipCode
         self.acreage = acreage
-        self.sfParksPropertyID = sfParksPropertyID
+        self.propertyID = propertyID
         self.city = city
         self.isActive = true
         self.createdDate = Date()

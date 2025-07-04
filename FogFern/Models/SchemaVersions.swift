@@ -68,7 +68,7 @@ enum SchemaV1: VersionedSchema {
             user: User
         ) {
             // Note: This references the current Visit model's helper method
-            let parkUniqueID = "\(park.city.name):\(park.sfParksPropertyID ?? park.id.uuidString)"
+            let parkUniqueID = "\(park.city.name):\(park.propertyID ?? park.id.uuidString)"
             self.init(
                 id: id,
                 timestamp: timestamp,
@@ -88,7 +88,7 @@ enum SchemaV1: VersionedSchema {
             let externalID = parsed.externalID
             let descriptor = FetchDescriptor<Park>(
                 predicate: #Predicate<Park> { park in
-                    park.sfParksPropertyID == externalID
+                    park.propertyID == externalID
                 }
             )
             
@@ -143,8 +143,8 @@ enum SchemaV1: VersionedSchema {
         // Physical characteristics
         var acreage: Double
         
-        // SF Parks API Integration
-        var sfParksPropertyID: String?
+        // External API Integration
+        var propertyID: String?
         
         // Status and metadata
         var isActive: Bool
@@ -166,7 +166,7 @@ enum SchemaV1: VersionedSchema {
             neighborhood: String? = nil,
             zipCode: String? = nil,
             acreage: Double,
-            sfParksPropertyID: String? = nil,
+            propertyID: String? = nil,
             city: City
         ) {
             self.id = id
@@ -181,7 +181,7 @@ enum SchemaV1: VersionedSchema {
             self.neighborhood = neighborhood
             self.zipCode = zipCode
             self.acreage = acreage
-            self.sfParksPropertyID = sfParksPropertyID
+            self.propertyID = propertyID
             self.city = city
             self.isActive = true
             self.createdDate = Date()
@@ -282,10 +282,9 @@ enum SchemaV2: VersionedSchema {
     final class Visit {
         var id: UUID
         var timestamp: Date
-        var journalEntry: String?
         
         // CloudKit-optimized park reference
-        var parkSFParksPropertyID: String
+        var parkUniqueID: String
         var parkName: String
         
         // NEW in V2: Photo attachments
@@ -300,8 +299,7 @@ enum SchemaV2: VersionedSchema {
         init(
             id: UUID = UUID(),
             timestamp: Date = Date(),
-            journalEntry: String? = nil,
-            parkSFParksPropertyID: String,
+            parkUniqueID: String,
             parkName: String,
             photoURLs: [String] = [],
             weather: String? = nil,
@@ -310,8 +308,7 @@ enum SchemaV2: VersionedSchema {
         ) {
             self.id = id
             self.timestamp = timestamp
-            self.journalEntry = journalEntry
-            self.parkSFParksPropertyID = parkSFParksPropertyID
+            self.parkUniqueID = parkUniqueID
             self.parkName = parkName
             self.photoURLs = photoURLs
             self.weather = weather

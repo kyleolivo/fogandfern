@@ -22,8 +22,7 @@ struct ParkDataLoader {
         let address: String
         let neighborhood: String?
         let acreage: Double
-        let sfParksObjectID: Int?
-        let sfParksPropertyID: String?
+        let propertyID: String?
     }
     
     struct ParksContainer: Codable {
@@ -51,7 +50,7 @@ struct ParkDataLoader {
         // Build a map of existing parks by SF Parks Property ID for updating
         let existingParksMap: [String: Park] = Dictionary(
             existingParks.compactMap { park in
-                guard let propertyID = park.sfParksPropertyID else { return nil }
+                guard let propertyID = park.propertyID else { return nil }
                 return (propertyID, park)
             },
             uniquingKeysWith: { first, _ in first }
@@ -63,7 +62,7 @@ struct ParkDataLoader {
         
         // Check for version mismatch to trigger cleanup only when needed
         // Check for duplicate parks that may have been synced from CloudKit
-        let existingBySFID = Dictionary(grouping: existingParks) { $0.sfParksPropertyID }
+        let existingBySFID = Dictionary(grouping: existingParks) { $0.propertyID }
         let cloudKitDuplicates = existingBySFID.filter { $0.value.count > 1 }
         
         // If we have the expected number of parks and same version, don't reload
@@ -108,7 +107,7 @@ struct ParkDataLoader {
         
         if shouldCleanup {
             if hasCloudKitDuplicates {
-                // For CloudKit duplicates, keep only one record per sfParksPropertyID
+                // For CloudKit duplicates, keep only one record per propertyID
                 var parksToDelete: [Park] = []
                 for (_, duplicateParts) in cloudKitDuplicates {
                     // Keep the most recent one, delete the rest
@@ -145,9 +144,9 @@ struct ParkDataLoader {
         var seenPropertyIDs = Set<String>()
         
         for parkData in container.parks {
-            guard let propertyID = parkData.sfParksPropertyID else {
+            guard let propertyID = parkData.propertyID else {
                 // Skip parks without property IDs as they can't be reliably tracked
-                print("Warning: Park '\(parkData.name)' has no sfParksPropertyID")
+                print("Warning: Park '\(parkData.name)' has no propertyID")
                 continue
             }
             
@@ -166,7 +165,7 @@ struct ParkDataLoader {
         // Mark parks as removed if they're no longer in the data
         // (but don't delete them to preserve visit history)
         for park in existingParks {
-            if let propertyID = park.sfParksPropertyID,
+            if let propertyID = park.propertyID,
                !seenPropertyIDs.contains(propertyID) {
                 // Mark as removed or inactive (would need to add this property)
                 print("Warning: Park '\(park.name)' is no longer in the data but has been preserved")
@@ -228,7 +227,7 @@ struct ParkDataLoader {
         park.address = data.address
         park.neighborhood = data.neighborhood
         park.acreage = data.acreage
-        // Note: sfParksPropertyID should never change, so we don't update it
+        // Note: propertyID should never change, so we don't update it
         park.city = city
     }
     
@@ -247,7 +246,7 @@ struct ParkDataLoader {
             address: data.address,
             neighborhood: data.neighborhood,
             acreage: data.acreage,
-            sfParksPropertyID: data.sfParksPropertyID,
+            propertyID: data.propertyID,
             city: city
         )
     }

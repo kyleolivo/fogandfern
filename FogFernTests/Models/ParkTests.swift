@@ -75,13 +75,13 @@ final class ParkTests: XCTestCase {
             neighborhood: "Test Neighborhood",
             zipCode: "12345",
             acreage: 100.0,
-            sfParksPropertyID: "SF123",
+            propertyID: "SF123",
             city: testCity
         )
         
         XCTAssertEqual(parkWithOptionals.neighborhood, "Test Neighborhood")
         XCTAssertEqual(parkWithOptionals.zipCode, "12345")
-        XCTAssertEqual(parkWithOptionals.sfParksPropertyID, "SF123")
+        XCTAssertEqual(parkWithOptionals.propertyID, "SF123")
     }
     
     // MARK: - Park Category Tests
@@ -404,13 +404,13 @@ final class ParkTests: XCTestCase {
             neighborhood: "Test Neighborhood",
             zipCode: "94102",
             acreage: 25.5,
-            sfParksPropertyID: "COMP123",
+            propertyID: "COMP123",
             city: testCity
         )
         
         XCTAssertEqual(comprehensivePark.neighborhood, "Test Neighborhood")
         XCTAssertEqual(comprehensivePark.zipCode, "94102")
-        XCTAssertEqual(comprehensivePark.sfParksPropertyID, "COMP123")
+        XCTAssertEqual(comprehensivePark.propertyID, "COMP123")
         XCTAssertEqual(comprehensivePark.size, .large) // 25.5 acres = large
     }
     

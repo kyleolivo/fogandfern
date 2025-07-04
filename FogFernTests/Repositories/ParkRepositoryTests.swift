@@ -47,7 +47,7 @@ final class ParkRepositoryTests: XCTestCase {
                 longitude: -120.5,
                 address: "123 Featured Street",
                 acreage: 100.0,
-                sfParksPropertyID: "FEATURED123",
+                propertyID: "FEATURED123",
                 city: testCity
             ),
             Park(
@@ -59,7 +59,7 @@ final class ParkRepositoryTests: XCTestCase {
                 longitude: -120.51,
                 address: "456 Neighborhood Street",
                 acreage: 5.0,
-                sfParksPropertyID: "NEIGHBORHOOD123",
+                propertyID: "NEIGHBORHOOD123",
                 city: testCity
             ),
             Park(
@@ -71,7 +71,7 @@ final class ParkRepositoryTests: XCTestCase {
                 longitude: -120.52,
                 address: "789 Mini Street",
                 acreage: 0.5,
-                sfParksPropertyID: "MINI123",
+                propertyID: "MINI123",
                 city: testCity
             )
         ]
@@ -239,7 +239,7 @@ final class ParkRepositoryTests: XCTestCase {
             longitude: 0.0,
             address: "Invalid Address",
             acreage: 1.0,
-            sfParksPropertyID: "INVALID123",
+            propertyID: "INVALID123",
             city: contextCity
         )
         
@@ -383,7 +383,7 @@ final class ParkRepositoryTests: XCTestCase {
             longitude: -120.53,
             address: "999 Destination Street",
             acreage: 50.0,
-            sfParksPropertyID: "ANOTHERDEST123",
+            propertyID: "ANOTHERDEST123",
             city: contextCity
         )
         
@@ -444,7 +444,7 @@ final class ParkRepositoryTests: XCTestCase {
             longitude: -120.54,
             address: "888 Medium Street",
             acreage: 10.0,
-            sfParksPropertyID: "ANOTHERMEDIUM123",
+            propertyID: "ANOTHERMEDIUM123",
             city: contextCity
         )
         
@@ -546,7 +546,7 @@ final class ParkRepositoryTests: XCTestCase {
                 longitude: -120.5 + Double(i) * 0.001,
                 address: "\(i) Performance Street",
                 acreage: Double(i + 1),
-                sfParksPropertyID: "PERF\(i)",
+                propertyID: "PERF\(i)",
                 city: testCity
             )
             context.insert(park)
@@ -581,7 +581,7 @@ final class ParkRepositoryTests: XCTestCase {
                 longitude: -120.5 + Double(i) * 0.0001,
                 address: "\(i) Search Street",
                 acreage: Double(i + 1),
-                sfParksPropertyID: "SEARCH\(i)",
+                propertyID: "SEARCH\(i)",
                 city: testCity
             )
             context.insert(park)
@@ -669,7 +669,7 @@ final class ParkRepositoryTests: XCTestCase {
             longitude: -120.99,
             address: "Orphan Street",
             acreage: 1.0,
-            sfParksPropertyID: "ORPHAN123",
+            propertyID: "ORPHAN123",
             city: contextCity
         )
         
@@ -707,7 +707,7 @@ final class ParkRepositoryTests: XCTestCase {
             longitude: 179.99,
             address: "Extreme Location",
             acreage: 999999.0,
-            sfParksPropertyID: "EXTREME123",
+            propertyID: "EXTREME123",
             city: contextCity
         )
         
