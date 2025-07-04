@@ -45,9 +45,7 @@ class TipStoreManager: ObservableObject {
         purchaseError = nil
         
         do {
-            print("Loading products with identifiers: \(productIdentifiers)")
             let products = try await Product.products(for: productIdentifiers)
-            print("Loaded \(products.count) products")
             
             if products.isEmpty {
                 purchaseError = "No tip options available. Please check your internet connection and try again."
@@ -61,10 +59,8 @@ class TipStoreManager: ObservableObject {
                     }
                     return product1.id < product2.id
                 }
-                print("Products sorted successfully")
             }
         } catch {
-            print("Error loading products: \(error)")
             purchaseError = "Failed to load tip options: \(error.localizedDescription)"
         }
         
@@ -129,7 +125,6 @@ class TipStoreManager: ObservableObject {
                     await transaction?.finish()
                 } catch {
                     // StoreKit has a transaction that fails verification. Don't deliver content to the user.
-                    print("Transaction failed verification")
                 }
             }
         }

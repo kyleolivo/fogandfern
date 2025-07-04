@@ -12,7 +12,7 @@ final class User {
     var id: UUID = UUID()
     var createdDate: Date = Date()
     
-    // Relationships - Optional for CloudKit compatibility
+    // Relationships - Must be optional for CloudKit compatibility
     @Relationship(deleteRule: .cascade, inverse: \Visit.user)
     var visits: [Visit]? = []
     

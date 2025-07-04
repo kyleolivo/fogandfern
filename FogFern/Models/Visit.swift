@@ -17,8 +17,8 @@ final class Visit {
     var parkSFParksPropertyID: String = ""
     var parkName: String = ""  // Backup for display if park not found locally
     
-    // Relationships - Optional for CloudKit compatibility
-    var user: User? = nil
+    // Relationships - Must be optional for CloudKit compatibility
+    var user: User?
     
     init(
         id: UUID = UUID(),

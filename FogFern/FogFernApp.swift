@@ -29,11 +29,9 @@ struct FogFernApp: App {
                 for: schema,
                 configurations: [cloudKitConfig]
             )
-            print("✅ CloudKit sync enabled - visits will sync across devices")
             return container
         } catch {
-            print("⚠️ CloudKit initialization failed: \(error)")
-            print("⚠️ Falling back to local storage - visits will not sync across devices")
+            // CloudKit failed, fall back to local storage
         }
         
         // Fallback to local storage (persistent, no CloudKit)
@@ -47,7 +45,6 @@ struct FogFernApp: App {
                 for: schema,
                 configurations: [localConfig]
             )
-            print("✅ Local storage initialized - data will be saved on this device only")
             return container
         } catch {
             fatalError("Cannot create persistent storage. Error: \(error)")
