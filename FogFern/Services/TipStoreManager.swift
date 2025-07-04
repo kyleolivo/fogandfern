@@ -45,18 +45,26 @@ class TipStoreManager: ObservableObject {
         purchaseError = nil
         
         do {
+            print("Loading products with identifiers: \(productIdentifiers)")
             let products = try await Product.products(for: productIdentifiers)
+            print("Loaded \(products.count) products")
             
-            self.products = products.sorted { product1, product2 in
-                // Sort by price: small, medium, big
-                let price1 = product1.price
-                let price2 = product2.price
-                if price1 != price2 {
-                    return price1 < price2
+            if products.isEmpty {
+                purchaseError = "No tip options available. Please check your internet connection and try again."
+            } else {
+                self.products = products.sorted { product1, product2 in
+                    // Sort by price: small, medium, big
+                    let price1 = product1.price
+                    let price2 = product2.price
+                    if price1 != price2 {
+                        return price1 < price2
+                    }
+                    return product1.id < product2.id
                 }
-                return product1.id < product2.id
+                print("Products sorted successfully")
             }
         } catch {
+            print("Error loading products: \(error)")
             purchaseError = "Failed to load tip options: \(error.localizedDescription)"
         }
         

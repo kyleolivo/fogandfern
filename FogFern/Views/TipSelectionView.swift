@@ -47,6 +47,32 @@ struct TipSelectionView: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.vertical, 8)
                     }
+                } else if storeManager.products.isEmpty {
+                    Section {
+                        VStack(spacing: 12) {
+                            Image(systemName: "exclamationmark.triangle")
+                                .font(.largeTitle)
+                                .foregroundColor(.orange)
+                            
+                            Text("No tip options available")
+                                .font(.headline)
+                            
+                            Text("Please check your internet connection and try again.")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                            
+                            Button("Reload") {
+                                Task {
+                                    await storeManager.loadProducts()
+                                }
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .controlSize(.small)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                    }
                 } else {
                     Section("Tip Options") {
                         ForEach(storeManager.products, id: \.id) { product in
