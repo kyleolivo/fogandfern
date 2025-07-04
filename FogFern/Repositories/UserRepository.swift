@@ -96,12 +96,6 @@ class UserRepository: UserRepositoryProtocol {
         return try getUserFromContext(by: id, context: modelContainer.mainContext)
     }
     
-    // Non-MainActor version for testing
-    func getUserForTesting(by id: PersistentIdentifier) throws -> User? {
-        let context = ModelContext(modelContainer)
-        return try getUserFromContext(by: id, context: context)
-    }
-    
     private func getUserFromContext(by id: PersistentIdentifier, context: ModelContext) throws -> User? {
         do {
             let model = context.model(for: id)

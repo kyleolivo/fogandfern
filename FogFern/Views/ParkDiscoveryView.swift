@@ -56,27 +56,26 @@ struct ParkDiscoveryView: View {
     }
     
     private func hasVisited(_ park: Park) -> Bool {
-        guard let currentUser = getCurrentUser(),
-              let sfParksPropertyID = park.sfParksPropertyID else { return false }
+        guard let currentUser = getCurrentUser() else { return false }
+        let expectedUniqueID = Visit.generateUniqueID(for: park)
         return visits.contains { visit in
-            visit.parkSFParksPropertyID == sfParksPropertyID && visit.user?.id == currentUser.id
+            visit.parkUniqueID == expectedUniqueID && visit.user?.id == currentUser.id
         }
     }
     
     private func markAsVisited(_ park: Park) {
-        guard let currentUser = getCurrentUser(),
-              let sfParksPropertyID = park.sfParksPropertyID,
-              !sfParksPropertyID.isEmpty else { 
-            // Cannot mark as visited: Missing user or park property ID
-            print("⚠️ Cannot mark park '\(park.name)' as visited: Missing sfParksPropertyID")
+        guard let currentUser = getCurrentUser() else { 
+            // Cannot mark as visited: Missing user
+            print("⚠️ Cannot mark park '\(park.name)' as visited: Missing user")
             return 
         }
         
         // Marking park as visited
+        let expectedUniqueID = Visit.generateUniqueID(for: park)
         
         // Check if park is already visited
         let existingVisits = visits.filter { visit in
-            visit.parkSFParksPropertyID == sfParksPropertyID && visit.user?.id == currentUser.id
+            visit.parkUniqueID == expectedUniqueID && visit.user?.id == currentUser.id
         }
         
         
@@ -112,9 +111,9 @@ struct ParkDiscoveryView: View {
         
         let userVisits = visits.filter { $0.user?.id == currentUser.id }
         
-        // Group visits by park ID
+        // Group visits by park unique ID
         let visitsByPark = Dictionary(grouping: userVisits) { visit in
-            visit.parkSFParksPropertyID
+            visit.parkUniqueID
         }
         
         var duplicatesFound = 0

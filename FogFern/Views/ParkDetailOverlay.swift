@@ -125,10 +125,10 @@ struct ParkDetailOverlay: View {
     }
     
     private func hasVisited(_ park: Park) -> Bool {
-        guard let currentUser = users.first,
-              let sfParksPropertyID = park.sfParksPropertyID else { return false }
+        guard let currentUser = users.first else { return false }
+        let expectedUniqueID = Visit.generateUniqueID(for: park)
         return visits.contains { visit in
-            visit.parkSFParksPropertyID == sfParksPropertyID && visit.user?.id == currentUser.id
+            visit.parkUniqueID == expectedUniqueID && visit.user?.id == currentUser.id
         }
     }
     

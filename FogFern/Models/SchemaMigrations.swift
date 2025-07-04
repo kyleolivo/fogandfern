@@ -65,7 +65,7 @@ struct MigrationUtilities {
         
         // Basic validation checks
         let hasOrphanedVisits = visits.contains { visit in
-            visit.parkSFParksPropertyID.isEmpty
+            visit.parkUniqueID.isEmpty
         }
         
         _ = parks.contains { park in

@@ -53,7 +53,7 @@ final class VisitTests: XCTestCase {
         
         testVisit = Visit(
             timestamp: Date(),
-            parkSFParksPropertyID: testPark.sfParksPropertyID ?? "",
+            parkUniqueID: Visit.generateUniqueID(for: testPark),
             parkName: testPark.name,
             user: testUser
         )
@@ -80,7 +80,7 @@ final class VisitTests: XCTestCase {
     func testVisitInitialization() throws {
         XCTAssertNotNil(testVisit.id)
         XCTAssertNotNil(testVisit.timestamp)
-        XCTAssertEqual(testVisit.parkSFParksPropertyID, "TEST123")
+        XCTAssertEqual(testVisit.parkUniqueID, "test_city:TEST123")
         XCTAssertEqual(testVisit.parkName, "Test Park")
         XCTAssertEqual(testVisit.user?.id, testUser.id)
     }
@@ -89,7 +89,7 @@ final class VisitTests: XCTestCase {
         let defaultVisit = Visit()
         XCTAssertNotNil(defaultVisit.id)
         XCTAssertNotNil(defaultVisit.timestamp)
-        XCTAssertEqual(defaultVisit.parkSFParksPropertyID, "")
+        XCTAssertEqual(defaultVisit.parkUniqueID, "")
         XCTAssertEqual(defaultVisit.parkName, "")
         XCTAssertNil(defaultVisit.user)
     }
@@ -100,7 +100,7 @@ final class VisitTests: XCTestCase {
             user: testUser
         )
         
-        XCTAssertEqual(visitWithPark.parkSFParksPropertyID, "TEST123")
+        XCTAssertEqual(visitWithPark.parkUniqueID, "test_city:TEST123")
         XCTAssertEqual(visitWithPark.parkName, "Test Park")
         XCTAssertEqual(visitWithPark.user?.id, testUser.id)
     }
@@ -116,7 +116,7 @@ final class VisitTests: XCTestCase {
     
     func testFindParkWithInvalidID() throws {
         let invalidVisit = Visit(
-            parkSFParksPropertyID: "INVALID",
+            parkUniqueID: "test_city:INVALID",
             parkName: "Unknown Park",
             user: testUser
         )
@@ -128,7 +128,7 @@ final class VisitTests: XCTestCase {
     
     func testFindParkWithEmptyID() throws {
         let emptyVisit = Visit(
-            parkSFParksPropertyID: "",
+            parkUniqueID: "",
             parkName: "No ID Park",
             user: testUser
         )
@@ -165,7 +165,7 @@ final class VisitTests: XCTestCase {
     
     func testVisitWithoutUser() throws {
         let orphanVisit = Visit(
-            parkSFParksPropertyID: "TEST456",
+            parkUniqueID: "test_city:TEST456",
             parkName: "Another Park"
         )
         XCTAssertNil(orphanVisit.user)
@@ -192,7 +192,9 @@ final class VisitTests: XCTestCase {
             user: testUser
         )
         
-        XCTAssertEqual(visitToNilIDPark.parkSFParksPropertyID, "")
+        // When park has no external ID, it uses the park's UUID instead
+        XCTAssertTrue(visitToNilIDPark.parkUniqueID.hasPrefix("test_city:"))
+        XCTAssertTrue(visitToNilIDPark.parkUniqueID.count > "test_city:".count)
         XCTAssertEqual(visitToNilIDPark.parkName, "No ID Park")
     }
     

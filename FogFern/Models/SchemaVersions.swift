@@ -39,8 +39,8 @@ enum SchemaV1: VersionedSchema {
         var id: UUID
         var timestamp: Date
         
-        // CloudKit-optimized park reference using stable SF Parks Property ID
-        var parkSFParksPropertyID: String
+        // Unique park identifier using composite format: {city}:{external_id}
+        var parkUniqueID: String
         var parkName: String  // Backup for display if park not found locally
         
         // Relationships
@@ -49,13 +49,13 @@ enum SchemaV1: VersionedSchema {
         init(
             id: UUID = UUID(),
             timestamp: Date = Date(),
-            parkSFParksPropertyID: String,
+            parkUniqueID: String,
             parkName: String,
             user: User
         ) {
             self.id = id
             self.timestamp = timestamp
-            self.parkSFParksPropertyID = parkSFParksPropertyID
+            self.parkUniqueID = parkUniqueID
             self.parkName = parkName
             self.user = user
         }
@@ -67,10 +67,12 @@ enum SchemaV1: VersionedSchema {
             park: Park,
             user: User
         ) {
+            // Note: This references the current Visit model's helper method
+            let parkUniqueID = "\(park.city.name):\(park.sfParksPropertyID ?? park.id.uuidString)"
             self.init(
                 id: id,
                 timestamp: timestamp,
-                parkSFParksPropertyID: park.sfParksPropertyID ?? "",
+                parkUniqueID: parkUniqueID,
                 parkName: park.name,
                 user: user
             )
@@ -78,10 +80,15 @@ enum SchemaV1: VersionedSchema {
         
         // Helper to find the associated park in the local database
         func findPark(in modelContext: ModelContext) -> Park? {
-            let propertyID = self.parkSFParksPropertyID
+            guard !parkUniqueID.isEmpty,
+                  let parsed = parseUniqueID() else {
+                return nil
+            }
+            
+            let externalID = parsed.externalID
             let descriptor = FetchDescriptor<Park>(
                 predicate: #Predicate<Park> { park in
-                    park.sfParksPropertyID == propertyID
+                    park.sfParksPropertyID == externalID
                 }
             )
             
@@ -92,6 +99,13 @@ enum SchemaV1: VersionedSchema {
                 // Error finding park for visit: \(error)
                 return nil
             }
+        }
+        
+        /// Parses a composite unique ID into city name and external ID
+        func parseUniqueID() -> (cityName: String, externalID: String)? {
+            let components = parkUniqueID.components(separatedBy: ":")
+            guard components.count == 2 else { return nil }
+            return (cityName: components[0], externalID: components[1])
         }
     }
     

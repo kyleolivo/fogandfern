@@ -147,7 +147,7 @@ final class UserTests: XCTestCase {
         XCTAssertEqual(testUser.visits?.count, 3)
         
         // Test unique parks calculation
-        let uniqueParks = Set(testUser.visits?.map { $0.parkSFParksPropertyID } ?? [])
+        let uniqueParks = Set(testUser.visits?.map { $0.parkUniqueID } ?? [])
         XCTAssertEqual(uniqueParks.count, 2)
     }
     
@@ -160,7 +160,8 @@ final class UserTests: XCTestCase {
         testUser.visits?.append(contentsOf: [visit1, visit2, visit3])
         
         XCTAssertEqual(testUser.visits?.count, 3)
-        XCTAssertTrue(testUser.visits?.allSatisfy { $0.parkSFParksPropertyID == testPark.sfParksPropertyID } ?? false)
+        let expectedUniqueID = Visit.generateUniqueID(for: testPark)
+        XCTAssertTrue(testUser.visits?.allSatisfy { $0.parkUniqueID == expectedUniqueID } ?? false)
     }
     
     // MARK: - Visit Date Analysis Tests
@@ -282,7 +283,7 @@ final class UserTests: XCTestCase {
         }
         
         measure {
-            let uniqueParks = Set(testUser.visits?.map { $0.parkSFParksPropertyID } ?? [])
+            let uniqueParks = Set(testUser.visits?.map { $0.parkUniqueID } ?? [])
             let _ = uniqueParks.count
         }
     }
