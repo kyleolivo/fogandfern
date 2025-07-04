@@ -2460,19 +2460,6 @@
       "longitude" : -122.41819118
     },
     {
-      "name" : "Sharp Park",
-      "shortDescription" : "Major 409-acre park with multiple attractions and facilities",
-      "acreage" : 409.75272024000003,
-      "sfParksObjectID" : 187,
-      "fullDescription" : "Sharp Park is a major destination park offering extensive recreational opportunities, multiple attractions, and facilities for visitors to enjoy throughout the day.",
-      "latitude" : 37.62439947,
-      "address" : "1 Sharp Park Rd",
-      "sfParksPropertyID" : "10380",
-      "neighborhood" : "Sharp Park Complex",
-      "category" : "destination",
-      "longitude" : -122.48190638
-    },
-    {
       "name" : "Shipyard Parks",
       "shortDescription" : "Community park in Bayview Hunters Point with recreational facilities",
       "acreage" : 7.95587612,

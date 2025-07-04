@@ -62,8 +62,10 @@ struct ParkDiscoveryView: View {
     
     private func markAsVisited(_ park: Park) {
         guard let currentUser = getCurrentUser(),
-              let sfParksPropertyID = park.sfParksPropertyID else { 
+              let sfParksPropertyID = park.sfParksPropertyID,
+              !sfParksPropertyID.isEmpty else { 
             // Cannot mark as visited: Missing user or park property ID
+            print("⚠️ Cannot mark park '\(park.name)' as visited: Missing sfParksPropertyID")
             return 
         }
         

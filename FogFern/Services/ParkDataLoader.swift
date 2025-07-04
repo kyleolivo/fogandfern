@@ -46,17 +46,29 @@ struct ParkDataLoader {
         
         // Check existing parks using SF Parks IDs instead of names
         let existingParks = try modelContext.fetch(FetchDescriptor<Park>())
-        let existingSFParksIDs = Set(existingParks.compactMap { $0.sfParksPropertyID })
         
-        // If we have the expected number of parks and it's not zero, don't reload
-        if existingParks.count == container.parks.count && existingParks.count > 0 {
+        // Build a map of existing parks by SF Parks Property ID for updating
+        let existingParksMap: [String: Park] = Dictionary(
+            existingParks.compactMap { park in
+                guard let propertyID = park.sfParksPropertyID else { return nil }
+                return (propertyID, park)
+            },
+            uniquingKeysWith: { first, _ in first }
+        )
+        
+        // Check if we need to update based on version
+        let storedVersion = UserDefaults.standard.string(forKey: "ParksDataVersion")
+        let needsUpdate = storedVersion != container.version
+        
+        // If we have the expected number of parks and same version, don't reload
+        if existingParks.count == container.parks.count && 
+           existingParks.count > 0 && 
+           !needsUpdate {
             return
         }
         
-        // Only clear if we have duplicates or wrong count
-        if existingParks.count > container.parks.count {
-            clearExistingParks(from: modelContext)
-        }
+        // IMPORTANT: Never clear existing parks as it would orphan visits
+        // Instead, we'll update existing parks and add new ones
         
         // Get or create city in this context
         let cityDescriptor = FetchDescriptor<City>(
@@ -81,14 +93,36 @@ struct ParkDataLoader {
             modelContext.insert(contextCity)
         }
         
+        // Track which parks we've seen in the new data
+        var seenPropertyIDs = Set<String>()
+        
         for parkData in container.parks {
-            // Skip if we already have a park with this SF Parks ID
-            if let propertyID = parkData.sfParksPropertyID, existingSFParksIDs.contains(propertyID) {
+            guard let propertyID = parkData.sfParksPropertyID else {
+                // Skip parks without property IDs as they can't be reliably tracked
+                print("Warning: Park '\(parkData.name)' has no sfParksPropertyID")
                 continue
             }
             
-            let park = try createPark(from: parkData, for: contextCity)
-            modelContext.insert(park)
+            seenPropertyIDs.insert(propertyID)
+            
+            if let existingPark = existingParksMap[propertyID] {
+                // Update existing park with new data (preserving visits)
+                try updatePark(existingPark, with: parkData, city: contextCity)
+            } else {
+                // This is a new park, create it
+                let park = try createPark(from: parkData, for: contextCity)
+                modelContext.insert(park)
+            }
+        }
+        
+        // Mark parks as removed if they're no longer in the data
+        // (but don't delete them to preserve visit history)
+        for park in existingParks {
+            if let propertyID = park.sfParksPropertyID,
+               !seenPropertyIDs.contains(propertyID) {
+                // Mark as removed or inactive (would need to add this property)
+                print("Warning: Park '\(park.name)' is no longer in the data but has been preserved")
+            }
         }
         
         // Save the new version
@@ -129,6 +163,25 @@ struct ParkDataLoader {
         } catch {
             // Failed to clear existing data
         }
+    }
+    
+    private static func updatePark(_ park: Park, with data: ParkData, city: City) throws {
+        guard let category = ParkCategory(rawValue: data.category) else {
+            throw ParkDataLoaderError.invalidCategory(data.category)
+        }
+        
+        // Update park properties with new data
+        park.name = data.name
+        park.shortDescription = data.shortDescription
+        park.fullDescription = data.fullDescription
+        park.category = category
+        park.latitude = data.latitude
+        park.longitude = data.longitude
+        park.address = data.address
+        park.neighborhood = data.neighborhood
+        park.acreage = data.acreage
+        // Note: sfParksPropertyID should never change, so we don't update it
+        park.city = city
     }
     
     private static func createPark(from data: ParkData, for city: City) throws -> Park {
