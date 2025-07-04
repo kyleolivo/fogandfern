@@ -111,14 +111,14 @@ final class ParkTests: XCTestCase {
         XCTAssertEqual(ParkCategory.garden.systemImageName, "leaf.fill")
     }
     
-    func testParkCategoryMainCategories() throws {
-        let mainCategories = ParkCategory.mainCategories
-        XCTAssertEqual(mainCategories.count, 5)
-        XCTAssertTrue(mainCategories.contains(.destination))
-        XCTAssertTrue(mainCategories.contains(.neighborhood))
-        XCTAssertTrue(mainCategories.contains(.mini))
-        XCTAssertTrue(mainCategories.contains(.plaza))
-        XCTAssertTrue(mainCategories.contains(.garden))
+    func testParkCategoryAllCases() throws {
+        let allCategories = ParkCategory.allCases
+        XCTAssertEqual(allCategories.count, 5)
+        XCTAssertTrue(allCategories.contains(.destination))
+        XCTAssertTrue(allCategories.contains(.neighborhood))
+        XCTAssertTrue(allCategories.contains(.mini))
+        XCTAssertTrue(allCategories.contains(.plaza))
+        XCTAssertTrue(allCategories.contains(.garden))
     }
     
     func testParkCategoryIsShownByDefault() throws {

@@ -16,10 +16,6 @@ enum ParkCategory: String, CaseIterable, Codable {
     case mini = "mini"
     case plaza = "plaza"
     case garden = "garden"
-    case scenic = "scenic"
-    case recreational = "recreational"
-    case historic = "historic"
-    case waterfront = "waterfront"
     
     var displayName: String {
         switch self {
@@ -28,10 +24,6 @@ enum ParkCategory: String, CaseIterable, Codable {
         case .mini: return "Mini Parks"
         case .plaza: return "Civic Plazas"
         case .garden: return "Community Gardens"
-        case .scenic: return "Scenic"
-        case .recreational: return "Recreational"
-        case .historic: return "Historic"
-        case .waterfront: return "Waterfront"
         }
     }
     
@@ -42,17 +34,9 @@ enum ParkCategory: String, CaseIterable, Codable {
         case .mini: return "circle.fill"
         case .plaza: return "building.2.fill"
         case .garden: return "leaf.fill"
-        case .scenic: return "mountain.2.fill"
-        case .recreational: return "sportscourt.fill"
-        case .historic: return "building.columns.fill"
-        case .waterfront: return "water.waves"
         }
     }
     
-    // Categories included in the main app experience (categories 1-5 from analysis)
-    static var mainCategories: [ParkCategory] {
-        [.destination, .neighborhood, .mini, .plaza, .garden]
-    }
     
     // Helper to check if category should be shown by default
     var isShownByDefault: Bool {

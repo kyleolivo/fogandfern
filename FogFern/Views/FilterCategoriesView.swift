@@ -16,7 +16,7 @@ struct FilterCategoriesView: View {
         NavigationStack {
             List {
                 Section("Park Categories") {
-                    ForEach(ParkCategory.mainCategories, id: \.self) { category in
+                    ForEach(ParkCategory.allCases, id: \.self) { category in
                         HStack {
                             Image(systemName: category.systemImageName)
                                 .foregroundColor(.mint)
@@ -51,7 +51,7 @@ struct FilterCategoriesView: View {
                 
                 Section {
                     Button("Show All Categories") {
-                        selectedCategories = Set(ParkCategory.mainCategories)
+                        selectedCategories = Set(ParkCategory.allCases)
                     }
                     .foregroundColor(.blue)
                     
@@ -133,8 +133,6 @@ struct FilterCategoriesView: View {
             return "Urban squares and civic gathering spaces"
         case .garden:
             return "Community gardens and green spaces"
-        default:
-            return category.displayName
         }
     }
 }
