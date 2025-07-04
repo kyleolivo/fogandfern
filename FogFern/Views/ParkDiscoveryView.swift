@@ -32,9 +32,12 @@ struct ParkDiscoveryView: View {
     
     // Filtered parks based on selected categories
     private var parks: [Park] {
-        allParks.filter { park in
+        
+        let filtered = allParks.filter { park in
             selectedCategories.contains(park.category)
         }
+        
+        return filtered
     }
     
     // Parks visible in current map region
@@ -45,7 +48,7 @@ struct ParkDiscoveryView: View {
     
     // Split parks by visit status for list view
     private var visitedParks: [Park] {
-        parks.filter { hasVisited($0) }.sorted { $0.name < $1.name }
+        return parks.filter { hasVisited($0) }.sorted { $0.name < $1.name }
     }
     
     private var unvisitedParks: [Park] {
@@ -72,15 +75,21 @@ struct ParkDiscoveryView: View {
         // Marking park as visited
         
         // Check if park is already visited
-        if let existingVisit = visits.first(where: { visit in
+        let existingVisits = visits.filter { visit in
             visit.parkSFParksPropertyID == sfParksPropertyID && visit.user?.id == currentUser.id
-        }) {
+        }
+        
+        
+        if let existingVisit = existingVisits.first {
             // Remove the visit (unmark as visited)
-            // Remove existing visit
             modelContext.delete(existingVisit)
+            
+            // If there are multiple existing visits, clean them up too
+            for additionalVisit in existingVisits.dropFirst() {
+                modelContext.delete(additionalVisit)
+            }
         } else {
             // Create new visit using CloudKit-optimized initializer
-            // Create new visit
             let newVisit = Visit(
                 timestamp: Date(),
                 park: park,
@@ -95,6 +104,42 @@ struct ParkDiscoveryView: View {
             // Visit data saved successfully
         } catch {
             // Failed to save visit data: \(error)
+        }
+    }
+    
+    private func cleanupDuplicateVisits() {
+        guard let currentUser = getCurrentUser() else { return }
+        
+        let userVisits = visits.filter { $0.user?.id == currentUser.id }
+        
+        // Group visits by park ID
+        let visitsByPark = Dictionary(grouping: userVisits) { visit in
+            visit.parkSFParksPropertyID
+        }
+        
+        var duplicatesFound = 0
+        var duplicatesRemoved = 0
+        
+        for (_, parkVisits) in visitsByPark {
+            if parkVisits.count > 1 {
+                duplicatesFound += parkVisits.count - 1
+                
+                // Keep the most recent visit, delete the rest
+                let sortedVisits = parkVisits.sorted { $0.timestamp > $1.timestamp }
+                
+                for duplicateVisit in sortedVisits.dropFirst() {
+                    modelContext.delete(duplicateVisit)
+                    duplicatesRemoved += 1
+                }
+            }
+        }
+        
+        if duplicatesRemoved > 0 {
+            do {
+                try modelContext.save()
+            } catch {
+                print("Failed to save duplicate cleanup: \(error)")
+            }
         }
     }
     
@@ -191,6 +236,9 @@ struct ParkDiscoveryView: View {
         .onAppear {
             ensureCurrentUserExists()
             locationManager.requestLocationPermission()
+            
+            // Clean up any duplicate visits on app launch
+            cleanupDuplicateVisits()
         }
     }
     

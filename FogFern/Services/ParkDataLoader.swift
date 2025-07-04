@@ -33,6 +33,7 @@ struct ParkDataLoader {
     }
     
     
+    
     // MARK: - Loading Functions
     
     static func loadParks(into modelContext: ModelContext, for city: City) throws {
@@ -60,17 +61,19 @@ struct ParkDataLoader {
         let storedVersion = UserDefaults.standard.string(forKey: "ParksDataVersion")
         let needsUpdate = storedVersion != container.version
         
+        // Check for version mismatch to trigger cleanup only when needed
+        // Check for duplicate parks that may have been synced from CloudKit
+        let existingBySFID = Dictionary(grouping: existingParks) { $0.sfParksPropertyID }
+        let cloudKitDuplicates = existingBySFID.filter { $0.value.count > 1 }
+        
         // If we have the expected number of parks and same version, don't reload
         if existingParks.count == container.parks.count && 
            existingParks.count > 0 && 
            !needsUpdate {
-            return
+                return
         }
         
-        // IMPORTANT: Never clear existing parks as it would orphan visits
-        // Instead, we'll update existing parks and add new ones
-        
-        // Get or create city in this context
+        // Get or create city in this context first
         let cityDescriptor = FetchDescriptor<City>(
             predicate: #Predicate<City> { city in
                 city.name == "san_francisco"
@@ -91,6 +94,51 @@ struct ParkDataLoader {
                 centerLongitude: -122.4194
             )
             modelContext.insert(contextCity)
+        }
+        
+        // Check for duplicate parks and clean them up
+        let existingNames = existingParks.map { $0.name }
+        let uniqueNames = Set(existingNames)
+        let hasDuplicates = uniqueNames.count != existingParks.count
+        
+        
+        // Clean up if we have duplicates or wrong count, including CloudKit duplicates
+        let hasCloudKitDuplicates = !cloudKitDuplicates.isEmpty
+        let shouldCleanup = hasDuplicates || existingParks.count != container.parks.count || hasCloudKitDuplicates
+        
+        if shouldCleanup {
+            if hasCloudKitDuplicates {
+                // For CloudKit duplicates, keep only one record per sfParksPropertyID
+                var parksToDelete: [Park] = []
+                for (_, duplicateParts) in cloudKitDuplicates {
+                    // Keep the most recent one, delete the rest
+                    let sorted = duplicateParts.sorted { $0.lastUpdated > $1.lastUpdated }
+                    parksToDelete.append(contentsOf: sorted.dropFirst())
+                }
+                
+                for park in parksToDelete {
+                    modelContext.delete(park)
+                }
+                try modelContext.save()
+            } else {
+                // Delete all existing parks and reload fresh data
+                for park in existingParks {
+                    modelContext.delete(park)
+                }
+                try modelContext.save()
+                
+                // Insert fresh parks
+                for parkData in container.parks {
+                    let park = try createPark(from: parkData, for: contextCity)
+                    modelContext.insert(park)
+                }
+            }
+            
+            // Save new data
+            UserDefaults.standard.set(container.version, forKey: "ParksDataVersion")
+            try modelContext.save()
+            
+            return
         }
         
         // Track which parks we've seen in the new data
