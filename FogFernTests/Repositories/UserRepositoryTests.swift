@@ -320,7 +320,7 @@ final class UserRepositoryTests: XCTestCase {
     
     // MARK: - Edge Cases Tests
     
-    func testRepositoryWithEmptyDatabase() async throws {
+    @MainActor func testRepositoryWithEmptyDatabase() async throws {
         // Ensure database is empty
         let allUsers = try modelContext.fetch(FetchDescriptor<User>())
         for user in allUsers {

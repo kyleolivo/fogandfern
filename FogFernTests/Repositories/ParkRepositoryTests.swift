@@ -921,6 +921,6 @@ final class ParkRepositoryTests: XCTestCase {
         XCTAssertNotNil(protocolInstance)
         
         // This is a compile-time test - if this compiles, the protocol is properly implemented
-        XCTAssertTrue(repository is any ParkRepositoryProtocol)
+        XCTAssertNotNil(repository)
     }
 }
