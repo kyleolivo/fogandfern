@@ -57,8 +57,8 @@ final class ParkDiscoveryUITests: XCTestCase {
         
         // Tap different areas of the map to look for park markers
         let mapFrame = mapView.frame
-        let centerX = mapFrame.midX
-        let centerY = mapFrame.midY
+        _ = mapFrame.midX
+        _ = mapFrame.midY
         
         // Tap center of map
         let centerCoordinate = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
@@ -129,12 +129,12 @@ final class ParkDiscoveryUITests: XCTestCase {
         sleep(1)
         
         // Look for any park list items
-        let cells = app.cells
+        _ = app.cells
         let buttons = app.buttons
         
         // Look for visit-related UI elements
         let visitButtons = buttons.matching(NSPredicate(format: "label CONTAINS[c] 'visit'"))
-        let checkmarkImages = app.images.matching(NSPredicate(format: "label CONTAINS[c] 'checkmark'"))
+        _ = app.images.matching(NSPredicate(format: "label CONTAINS[c] 'checkmark'"))
         
         // If visit-related UI exists, test interaction
         if visitButtons.count > 0 {

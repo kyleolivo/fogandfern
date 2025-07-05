@@ -59,7 +59,7 @@ struct ParkDiscoveryView: View {
         guard let currentUser = getCurrentUser() else { return false }
         let expectedUniqueID = Visit.generateUniqueID(for: park)
         return visits.contains { visit in
-            visit.parkUniqueID == expectedUniqueID && visit.user?.id == currentUser.id
+            visit.parkUniqueID == expectedUniqueID && visit.user?.id == currentUser.id && visit.isActive
         }
     }
     
@@ -73,18 +73,20 @@ struct ParkDiscoveryView: View {
         // Marking park as visited
         let expectedUniqueID = Visit.generateUniqueID(for: park)
         
-        // Check if park is already visited
+        // Check if park has any visit records (active or inactive)
         let existingVisits = visits.filter { visit in
             visit.parkUniqueID == expectedUniqueID && visit.user?.id == currentUser.id
         }
         
         
         if let existingVisit = existingVisits.first {
-            // Remove the visit (unmark as visited)
-            modelContext.delete(existingVisit)
+            // Toggle the visit status instead of deleting
+            existingVisit.isActive.toggle()
+            existingVisit.timestamp = Date()  // Update timestamp to track last change
             
-            // If there are multiple existing visits, clean them up too
+            // If there are multiple existing visits, consolidate them
             for additionalVisit in existingVisits.dropFirst() {
+                // Delete true duplicates, keeping only the first one
                 modelContext.delete(additionalVisit)
             }
         } else {
@@ -92,6 +94,7 @@ struct ParkDiscoveryView: View {
             let newVisit = Visit(
                 timestamp: Date(),
                 park: park,
+                isActive: true,
                 user: currentUser
             )
             modelContext.insert(newVisit)
@@ -123,8 +126,15 @@ struct ParkDiscoveryView: View {
             if parkVisits.count > 1 {
                 duplicatesFound += parkVisits.count - 1
                 
-                // Keep the most recent visit, delete the rest
-                let sortedVisits = parkVisits.sorted { $0.timestamp > $1.timestamp }
+                // Keep the most recent active visit, or if none are active, the most recent inactive
+                let sortedVisits = parkVisits.sorted { lhs, rhs in
+                    // First sort by active status (active visits first)
+                    if lhs.isActive != rhs.isActive {
+                        return lhs.isActive && !rhs.isActive
+                    }
+                    // Then by timestamp (most recent first)
+                    return lhs.timestamp > rhs.timestamp
+                }
                 
                 for duplicateVisit in sortedVisits.dropFirst() {
                     modelContext.delete(duplicateVisit)

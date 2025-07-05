@@ -16,6 +16,9 @@ final class Visit {
     var parkUniqueID: String = ""
     var parkName: String = ""  // Backup for display if park not found locally
     
+    // Visit status - allows toggling instead of delete/create cycles
+    var isActive: Bool = true
+    
     // Relationships - Must be optional for CloudKit compatibility
     var user: User?
     
@@ -24,12 +27,14 @@ final class Visit {
         timestamp: Date = Date(),
         parkUniqueID: String = "",
         parkName: String = "",
+        isActive: Bool = true,
         user: User? = nil
     ) {
         self.id = id
         self.timestamp = timestamp
         self.parkUniqueID = parkUniqueID
         self.parkName = parkName
+        self.isActive = isActive
         self.user = user
     }
     
@@ -38,6 +43,7 @@ final class Visit {
         id: UUID = UUID(),
         timestamp: Date = Date(),
         park: Park,
+        isActive: Bool = true,
         user: User
     ) {
         self.init(
@@ -45,6 +51,7 @@ final class Visit {
             timestamp: timestamp,
             parkUniqueID: Visit.generateUniqueID(for: park),
             parkName: park.name,
+            isActive: isActive,
             user: user
         )
     }

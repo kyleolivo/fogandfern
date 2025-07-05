@@ -43,6 +43,9 @@ enum SchemaV1: VersionedSchema {
         var parkUniqueID: String
         var parkName: String  // Backup for display if park not found locally
         
+        // Visit status - allows toggling instead of delete/create cycles
+        var isActive: Bool
+        
         // Relationships
         var user: User
         
@@ -51,12 +54,14 @@ enum SchemaV1: VersionedSchema {
             timestamp: Date = Date(),
             parkUniqueID: String,
             parkName: String,
+            isActive: Bool = true,
             user: User
         ) {
             self.id = id
             self.timestamp = timestamp
             self.parkUniqueID = parkUniqueID
             self.parkName = parkName
+            self.isActive = isActive
             self.user = user
         }
         
@@ -65,6 +70,7 @@ enum SchemaV1: VersionedSchema {
             id: UUID = UUID(),
             timestamp: Date = Date(),
             park: Park,
+            isActive: Bool = true,
             user: User
         ) {
             // Note: This references the current Visit model's helper method
@@ -74,6 +80,7 @@ enum SchemaV1: VersionedSchema {
                 timestamp: timestamp,
                 parkUniqueID: parkUniqueID,
                 parkName: park.name,
+                isActive: isActive,
                 user: user
             )
         }

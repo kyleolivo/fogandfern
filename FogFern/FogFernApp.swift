@@ -7,9 +7,20 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
+
+// AppDelegate to handle orientation restrictions
+class AppDelegate: NSObject, UIApplicationDelegate {
+    static var orientationLock = UIInterfaceOrientationMask.portrait
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return AppDelegate.orientationLock
+    }
+}
 
 @main
 struct FogFernApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Visit.self,
@@ -55,6 +66,10 @@ struct FogFernApp: App {
         WindowGroup {
             ContentView()
                 .environment(AppState(modelContainer: sharedModelContainer))
+                .onAppear {
+                    // Ensure the app only supports portrait orientation
+                    AppDelegate.orientationLock = .portrait
+                }
         }
         .modelContainer(sharedModelContainer)
     }

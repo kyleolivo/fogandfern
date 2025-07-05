@@ -89,6 +89,7 @@ final class ModelIntegrationTests: XCTestCase {
         // Test visit relationships
         XCTAssertEqual(visit.user?.id, testUser.id)
         XCTAssertEqual(visit.parkName, testPark.name)
+        XCTAssertTrue(visit.isActive)
         
         // Test composite ID generation
         let expectedUniqueID = "integration_test_city:INT123"
@@ -198,6 +199,7 @@ final class ModelIntegrationTests: XCTestCase {
             XCTAssertNotNil(visit.findPark(in: modelContext))
             XCTAssertFalse(visit.parkUniqueID.isEmpty)
             XCTAssertFalse(visit.parkName.isEmpty)
+            XCTAssertTrue(visit.isActive)
         }
         
         // Test unique park counting
@@ -245,6 +247,9 @@ final class ModelIntegrationTests: XCTestCase {
         
         // Test composite ID is preserved
         XCTAssertEqual(persistedVisit.parkUniqueID, "integration_test_city:INT123")
+        
+        // Test isActive field is preserved
+        XCTAssertTrue(persistedVisit.isActive)
     }
     
     // MARK: - Schema Validation Tests

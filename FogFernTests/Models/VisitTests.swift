@@ -55,6 +55,7 @@ final class VisitTests: XCTestCase {
             timestamp: Date(),
             parkUniqueID: Visit.generateUniqueID(for: testPark),
             parkName: testPark.name,
+            isActive: true,
             user: testUser
         )
         
@@ -82,6 +83,7 @@ final class VisitTests: XCTestCase {
         XCTAssertNotNil(testVisit.timestamp)
         XCTAssertEqual(testVisit.parkUniqueID, "test_city:TEST123")
         XCTAssertEqual(testVisit.parkName, "Test Park")
+        XCTAssertTrue(testVisit.isActive)
         XCTAssertEqual(testVisit.user?.id, testUser.id)
     }
     
@@ -91,6 +93,7 @@ final class VisitTests: XCTestCase {
         XCTAssertNotNil(defaultVisit.timestamp)
         XCTAssertEqual(defaultVisit.parkUniqueID, "")
         XCTAssertEqual(defaultVisit.parkName, "")
+        XCTAssertTrue(defaultVisit.isActive)
         XCTAssertNil(defaultVisit.user)
     }
     
@@ -118,6 +121,7 @@ final class VisitTests: XCTestCase {
         let invalidVisit = Visit(
             parkUniqueID: "test_city:INVALID",
             parkName: "Unknown Park",
+            isActive: true,
             user: testUser
         )
         modelContext.insert(invalidVisit)
@@ -130,6 +134,7 @@ final class VisitTests: XCTestCase {
         let emptyVisit = Visit(
             parkUniqueID: "",
             parkName: "No ID Park",
+            isActive: true,
             user: testUser
         )
         modelContext.insert(emptyVisit)
@@ -187,6 +192,7 @@ final class VisitTests: XCTestCase {
         let visit = Visit(
             parkUniqueID: "san_francisco:12345",
             parkName: "Golden Gate Park",
+            isActive: true,
             user: testUser
         )
         
@@ -200,6 +206,7 @@ final class VisitTests: XCTestCase {
         let visit = Visit(
             parkUniqueID: "invalid_format",
             parkName: "Invalid Park",
+            isActive: true,
             user: testUser
         )
         
@@ -211,6 +218,7 @@ final class VisitTests: XCTestCase {
         let visit = Visit(
             parkUniqueID: "",
             parkName: "Empty ID Park",
+            isActive: true,
             user: testUser
         )
         
@@ -222,6 +230,7 @@ final class VisitTests: XCTestCase {
         let visit = Visit(
             parkUniqueID: "city:external:extra",
             parkName: "Multi Colon Park",
+            isActive: true,
             user: testUser
         )
         
@@ -256,7 +265,8 @@ final class VisitTests: XCTestCase {
     func testVisitWithoutUser() throws {
         let orphanVisit = Visit(
             parkUniqueID: "test_city:TEST456",
-            parkName: "Another Park"
+            parkName: "Another Park",
+            isActive: true
         )
         XCTAssertNil(orphanVisit.user)
     }
@@ -286,6 +296,60 @@ final class VisitTests: XCTestCase {
         XCTAssertTrue(visitToNilIDPark.parkUniqueID.hasPrefix("test_city:"))
         XCTAssertTrue(visitToNilIDPark.parkUniqueID.count > "test_city:".count)
         XCTAssertEqual(visitToNilIDPark.parkName, "No ID Park")
+    }
+    
+    // MARK: - isActive Field Tests
+    
+    func testIsActiveDefaultValue() throws {
+        let visit = Visit()
+        XCTAssertTrue(visit.isActive)
+    }
+    
+    func testIsActiveInitializationWithTrue() throws {
+        let visit = Visit(
+            parkUniqueID: "test:123",
+            parkName: "Test Park",
+            isActive: true,
+            user: testUser
+        )
+        XCTAssertTrue(visit.isActive)
+    }
+    
+    func testIsActiveInitializationWithFalse() throws {
+        let visit = Visit(
+            parkUniqueID: "test:123",
+            parkName: "Test Park",
+            isActive: false,
+            user: testUser
+        )
+        XCTAssertFalse(visit.isActive)
+    }
+    
+    func testIsActiveToggling() throws {
+        let visit = Visit(park: testPark, user: testUser)
+        XCTAssertTrue(visit.isActive)
+        
+        visit.isActive = false
+        XCTAssertFalse(visit.isActive)
+        
+        visit.isActive = true
+        XCTAssertTrue(visit.isActive)
+    }
+    
+    func testConvenienceInitializerWithIsActive() throws {
+        let activeVisit = Visit(
+            park: testPark,
+            isActive: true,
+            user: testUser
+        )
+        XCTAssertTrue(activeVisit.isActive)
+        
+        let inactiveVisit = Visit(
+            park: testPark,
+            isActive: false,
+            user: testUser
+        )
+        XCTAssertFalse(inactiveVisit.isActive)
     }
     
     // MARK: - Performance Tests

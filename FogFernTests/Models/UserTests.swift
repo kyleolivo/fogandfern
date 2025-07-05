@@ -76,6 +76,7 @@ final class UserTests: XCTestCase {
         
         XCTAssertEqual(testUser.visits?.count, 1)
         XCTAssertEqual(testUser.visits?.first?.user?.id, testUser.id)
+        XCTAssertTrue(testUser.visits?.first?.isActive ?? false)
     }
     
     func testMultipleVisitsRelationship() throws {

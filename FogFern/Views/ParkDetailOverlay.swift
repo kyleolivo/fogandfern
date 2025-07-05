@@ -128,7 +128,7 @@ struct ParkDetailOverlay: View {
         guard let currentUser = users.first else { return false }
         let expectedUniqueID = Visit.generateUniqueID(for: park)
         return visits.contains { visit in
-            visit.parkUniqueID == expectedUniqueID && visit.user?.id == currentUser.id
+            visit.parkUniqueID == expectedUniqueID && visit.user?.id == currentUser.id && visit.isActive
         }
     }
     

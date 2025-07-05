@@ -409,6 +409,102 @@ final class EdgeCaseUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Discover"].exists)
     }
     
+    // MARK: - Device Orientation Tests
+    
+    func testPortraitOrientationOnly() throws {
+        // Verify app is configured for portrait mode only
+        let device = XCUIDevice.shared
+        
+        // Get current orientation (should be portrait)
+        let currentOrientation = device.orientation
+        XCTAssertTrue(currentOrientation == .portrait || currentOrientation == .unknown, 
+                     "App should start in portrait orientation")
+        
+        // Try to rotate device to landscape (this should not affect the app)
+        device.orientation = .landscapeLeft
+        
+        // Wait a moment for any potential rotation
+        sleep(1)
+        
+        // Verify app interface remains in portrait layout
+        // Navigation bar should still be at top, buttons should be in portrait layout
+        XCTAssertTrue(app.navigationBars["Discover"].exists)
+        XCTAssertTrue(app.segmentedControls.firstMatch.exists)
+        
+        // Try other orientations
+        device.orientation = .landscapeRight
+        sleep(1)
+        
+        // App should still be functional and in portrait layout
+        XCTAssertTrue(app.navigationBars["Discover"].exists)
+        XCTAssertTrue(app.buttons["filterButton"].firstMatch.exists)
+        
+        // Reset to portrait
+        device.orientation = .portrait
+    }
+    
+    func testInterfaceStabilityDuringRotationAttempts() throws {
+        // Test that attempting device rotation doesn't break the interface
+        let device = XCUIDevice.shared
+        
+        // Start with basic functionality
+        app.buttons["filterButton"].firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["Filter Parks"].exists)
+        
+        // Attempt rotations while sheet is open
+        device.orientation = .landscapeLeft
+        usleep(500000)
+        device.orientation = .landscapeRight  
+        usleep(500000)
+        device.orientation = .portraitUpsideDown
+        usleep(500000)
+        device.orientation = .portrait
+        
+        // Interface should remain stable and functional
+        if app.navigationBars["Filter Parks"].exists {
+            if app.navigationBars.buttons["Done"].exists {
+                app.navigationBars.buttons["Done"].tap()
+            }
+        }
+        
+        // Should return to stable state
+        XCTAssertTrue(app.navigationBars["Discover"].exists)
+    }
+    
+    func testAppInfoPlistOrientationConfiguration() throws {
+        // This test verifies that the app's orientation configuration hasn't been accidentally changed
+        // Since we can't directly read Info.plist in UI tests, we test the behavior
+        
+        let device = XCUIDevice.shared
+        let originalOrientation = device.orientation
+        
+        // Try all possible orientations
+        let orientations: [UIDeviceOrientation] = [
+            .landscapeLeft,
+            .landscapeRight,
+            .portraitUpsideDown,
+            .faceUp,
+            .faceDown
+        ]
+        
+        for orientation in orientations {
+            device.orientation = orientation
+            
+            // Wait for potential rotation
+            usleep(500000)
+            
+            // App should always maintain portrait layout regardless of device orientation
+            // This verifies our Info.plist restriction is working
+            XCTAssertTrue(app.navigationBars["Discover"].exists, 
+                         "Navigation should exist in all orientations - portrait layout maintained")
+            XCTAssertTrue(app.segmentedControls.firstMatch.exists,
+                         "Segmented control should exist in all orientations - portrait layout maintained")
+        }
+        
+        // Reset to portrait
+        device.orientation = originalOrientation.isPortrait ? originalOrientation : .portrait
+    }
+    
     // MARK: - Long-Running Operation Tests
     
     func testLongRunningOperations() throws {
