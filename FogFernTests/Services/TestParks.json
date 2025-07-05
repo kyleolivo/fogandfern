@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0-test",
+  "generatedDate": "2025-07-05T12:00:00Z",
+  "parks": [
+    {
+      "name": "Test Park 1",
+      "shortDescription": "A test park for unit testing",
+      "fullDescription": "This is a comprehensive test park used for unit testing the ParkDataLoader functionality",
+      "category": "destination",
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "address": "123 Test Street",
+      "neighborhood": "Test Neighborhood",
+      "acreage": 10.5,
+      "propertyID": "TEST001"
+    },
+    {
+      "name": "Test Park 2", 
+      "shortDescription": "Another test park",
+      "fullDescription": "A second test park for comprehensive testing scenarios",
+      "category": "neighborhood",
+      "latitude": 37.7849,
+      "longitude": -122.4094,
+      "address": "456 Test Avenue",
+      "neighborhood": "Test District",
+      "acreage": 5.25,
+      "propertyID": "TEST002"
+    },
+    {
+      "name": "Test Mini Park",
+      "shortDescription": "A mini test park",
+      "fullDescription": "A small test park for mini category testing",
+      "category": "mini",
+      "latitude": 37.7649,
+      "longitude": -122.4294,
+      "address": "789 Test Lane",
+      "neighborhood": "Test Area",
+      "acreage": 1.0,
+      "propertyID": "TEST003"
+    }
+  ]
+}
