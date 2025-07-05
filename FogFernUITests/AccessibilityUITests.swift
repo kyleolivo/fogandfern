@@ -227,7 +227,7 @@ final class AccessibilityUITests: XCTestCase {
             categoryElements.element(boundBy: 0).tap()
             
             // Selection should be indicated by more than color (checkmarks, etc.)
-            let checkmarks = app.images.matching(NSPredicate(format: "label CONTAINS[c] 'checkmark'"))
+            _ = app.images.matching(NSPredicate(format: "label CONTAINS[c] 'checkmark'"))
             // Checkmarks may or may not be visible depending on implementation
             
             XCTAssertTrue(app.navigationBars["Filter Parks"].exists) // Main test: no crash
