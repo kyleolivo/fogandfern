@@ -202,34 +202,16 @@ class ParkRepository: ParkRepositoryProtocol {
         do {
             let parks = try context.fetch(descriptor)
             
-            // Check for duplicates and trigger cleanup if needed
-            let parkNames = parks.map { $0.name }
-            let uniqueNames = Set(parkNames)
-            let hasDuplicates = uniqueNames.count != parks.count
-            
             // If no parks found, try to load from local data
             if parks.isEmpty {
                 try ParkDataLoader.loadParks(into: context, for: city)
-                
-                // Fetch again after loading
                 let newParks = try context.fetch(descriptor)
                 return newParks.sorted(by: { lhs, rhs in
                     return lhs.name < rhs.name
                 })
             }
             
-            // If we have duplicates, force a reload
-            if hasDuplicates {
-                try ParkDataLoader.loadParks(into: context, for: city)
-                
-                // Fetch again after loading
-                let newParks = try context.fetch(descriptor)
-                return newParks.sorted(by: { lhs, rhs in
-                    return lhs.name < rhs.name
-                })
-            }
-            
-            // Sort by name since featured functionality is removed
+            // ParkDataLoader handles all duplicate detection and cleanup
             return parks.sorted(by: { lhs, rhs in
                 return lhs.name < rhs.name
             })

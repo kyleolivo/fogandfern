@@ -44,10 +44,19 @@ struct ParkDataLoader {
         let parksData = try Data(contentsOf: parksURL)
         let container = try JSONDecoder().decode(ParksContainer.self, from: parksData)
         
-        // Check existing parks using SF Parks IDs instead of names
+        // Check existing parks
         let existingParks = try modelContext.fetch(FetchDescriptor<Park>())
         
-        // Build a map of existing parks by SF Parks Property ID for updating
+        // Check if we need to update based on version
+        let storedVersion = UserDefaults.standard.string(forKey: "ParksDataVersion")
+        let needsUpdate = storedVersion != container.version
+        
+        // If we have parks and the version matches, no need to reload
+        if existingParks.count > 0 && !needsUpdate {
+            return
+        }
+        
+        // Build a map of existing parks by property ID for efficient lookup
         let existingParksMap: [String: Park] = Dictionary(
             existingParks.compactMap { park in
                 guard let propertyID = park.propertyID else { return nil }
@@ -56,21 +65,9 @@ struct ParkDataLoader {
             uniquingKeysWith: { first, _ in first }
         )
         
-        // Check if we need to update based on version
-        let storedVersion = UserDefaults.standard.string(forKey: "ParksDataVersion")
-        let needsUpdate = storedVersion != container.version
-        
-        // Check for version mismatch to trigger cleanup only when needed
-        // Check for duplicate parks that may have been synced from CloudKit
-        let existingBySFID = Dictionary(grouping: existingParks) { $0.propertyID }
-        let cloudKitDuplicates = existingBySFID.filter { $0.value.count > 1 }
-        
-        // If we have the expected number of parks and same version, don't reload
-        if existingParks.count == container.parks.count && 
-           existingParks.count > 0 && 
-           !needsUpdate {
-                return
-        }
+        // Check for duplicates (CloudKit sync issues)
+        let existingByID = Dictionary(grouping: existingParks) { $0.propertyID }
+        let hasDuplicates = existingByID.values.contains { $0.count > 1 }
         
         // Get or create city in this context first
         let cityDescriptor = FetchDescriptor<City>(
@@ -95,62 +92,25 @@ struct ParkDataLoader {
             modelContext.insert(contextCity)
         }
         
-        // Check for duplicate parks and clean them up
-        let existingNames = existingParks.map { $0.name }
-        let uniqueNames = Set(existingNames)
-        let hasDuplicates = uniqueNames.count != existingParks.count
-        
-        
-        // Clean up if we have duplicates or wrong count, including CloudKit duplicates
-        let hasCloudKitDuplicates = !cloudKitDuplicates.isEmpty
-        let shouldCleanup = hasDuplicates || existingParks.count != container.parks.count || hasCloudKitDuplicates
-        
-        if shouldCleanup {
-            if hasCloudKitDuplicates {
-                // For CloudKit duplicates, keep only one record per propertyID
-                var parksToDelete: [Park] = []
-                for (_, duplicateParts) in cloudKitDuplicates {
-                    // Keep the most recent one, delete the rest
-                    let sorted = duplicateParts.sorted { $0.lastUpdated > $1.lastUpdated }
-                    parksToDelete.append(contentsOf: sorted.dropFirst())
-                }
-                
-                for park in parksToDelete {
+        // Clean up duplicates if they exist
+        if hasDuplicates {
+            let duplicateGroups = existingByID.filter { $0.value.count > 1 }
+            for (_, duplicates) in duplicateGroups {
+                // Keep the most recent one, delete the rest
+                let sorted = duplicates.sorted { $0.lastUpdated > $1.lastUpdated }
+                for park in sorted.dropFirst() {
                     modelContext.delete(park)
-                }
-                try modelContext.save()
-            } else {
-                // Delete all existing parks and reload fresh data
-                for park in existingParks {
-                    modelContext.delete(park)
-                }
-                try modelContext.save()
-                
-                // Insert fresh parks
-                for parkData in container.parks {
-                    let park = try createPark(from: parkData, for: contextCity)
-                    modelContext.insert(park)
                 }
             }
-            
-            // Save new data
-            UserDefaults.standard.set(container.version, forKey: "ParksDataVersion")
             try modelContext.save()
-            
-            return
         }
         
-        // Track which parks we've seen in the new data
-        var seenPropertyIDs = Set<String>()
-        
+        // Process each park in the data
         for parkData in container.parks {
             guard let propertyID = parkData.propertyID else {
-                // Skip parks without property IDs as they can't be reliably tracked
                 print("Warning: Park '\(parkData.name)' has no propertyID")
                 continue
             }
-            
-            seenPropertyIDs.insert(propertyID)
             
             if let existingPark = existingParksMap[propertyID] {
                 // Update existing park with new data (preserving visits)
@@ -162,55 +122,13 @@ struct ParkDataLoader {
             }
         }
         
-        // Mark parks as removed if they're no longer in the data
-        // (but don't delete them to preserve visit history)
-        for park in existingParks {
-            if let propertyID = park.propertyID,
-               !seenPropertyIDs.contains(propertyID) {
-                // Mark as removed or inactive (would need to add this property)
-                print("Warning: Park '\(park.name)' is no longer in the data but has been preserved")
-            }
-        }
-        
         // Save the new version
         UserDefaults.standard.set(container.version, forKey: "ParksDataVersion")
         
         try modelContext.save()
     }
     
-    // MARK: - Versioning Functions
-    
-    private static func needsDataUpdate(bundledVersion: String) -> Bool {
-        let currentVersion = UserDefaults.standard.string(forKey: "ParksDataVersion")
-        return currentVersion != bundledVersion
-    }
-    
-    private static func clearExistingParks(from modelContext: ModelContext) {
-        do {
-            // Delete parks first to clear the relationships
-            let parkDescriptor = FetchDescriptor<Park>()
-            let existingParks = try modelContext.fetch(parkDescriptor)
-            
-            for park in existingParks {
-                modelContext.delete(park)
-            }
-            
-            // Save after deleting parks to clear relationships
-            try modelContext.save()
-            
-            // Now safely delete cities
-            let cityDescriptor = FetchDescriptor<City>()
-            let existingCities = try modelContext.fetch(cityDescriptor)
-            
-            for city in existingCities {
-                modelContext.delete(city)
-            }
-            
-            try modelContext.save()
-        } catch {
-            // Failed to clear existing data
-        }
-    }
+    // MARK: - Helper Functions
     
     private static func updatePark(_ park: Park, with data: ParkData, city: City) throws {
         guard let category = ParkCategory(rawValue: data.category) else {
