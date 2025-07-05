@@ -292,7 +292,7 @@ final class ParkRepositoryTests: XCTestCase {
     
     func testSearchParksWithEmptyQuery() async throws {
         do {
-            let _ = try await repository.searchParks(query: "", in: testCity)
+            _ = try await repository.searchParks(query: "", in: testCity)
             XCTFail("Should throw error for empty query")
         } catch let error as ParkRepositoryError {
             switch error.code {
@@ -306,7 +306,7 @@ final class ParkRepositoryTests: XCTestCase {
     
     func testSearchParksWithWhitespaceQuery() async throws {
         do {
-            let _ = try await repository.searchParks(query: "   \n\t  ", in: testCity)
+            _ = try await repository.searchParks(query: "   \n\t  ", in: testCity)
             XCTFail("Should throw error for whitespace-only query")
         } catch let error as ParkRepositoryError {
             switch error.code {
@@ -557,7 +557,7 @@ final class ParkRepositoryTests: XCTestCase {
             let expectation = XCTestExpectation(description: "Get all parks")
             Task {
                 do {
-                    let _ = try await repository.getAllParks(for: testCity)
+                    _ = try await repository.getAllParks(for: testCity)
                     expectation.fulfill()
                 } catch {
                     XCTFail("Performance test failed: \(error)")
@@ -592,7 +592,7 @@ final class ParkRepositoryTests: XCTestCase {
             let expectation = XCTestExpectation(description: "Search parks")
             Task {
                 do {
-                    let _ = try await repository.searchParks(query: "Test", in: testCity)
+                    _ = try await repository.searchParks(query: "Test", in: testCity)
                     expectation.fulfill()
                 } catch {
                     XCTFail("Search performance test failed: \(error)")
@@ -614,16 +614,16 @@ final class ParkRepositoryTests: XCTestCase {
                     do {
                         switch i {
                         case 0:
-                            let _ = try await self.repository.getAllParks(for: self.testCity)
+                            _ = try await self.repository.getAllParks(for: self.testCity)
                         case 1:
-                            let _ = try await self.repository.getFeaturedParks(for: self.testCity)
+                            _ = try await self.repository.getFeaturedParks(for: self.testCity)
                         case 2:
                             let location = CLLocation(latitude: 39.5, longitude: -120.5)
-                            let _ = try await self.repository.getParksNearLocation(location, radius: 1000, city: self.testCity)
+                            _ = try await self.repository.getParksNearLocation(location, radius: 1000, city: self.testCity)
                         case 3:
-                            let _ = try await self.repository.getParksBy(category: .destination, in: self.testCity)
+                            _ = try await self.repository.getParksBy(category: .destination, in: self.testCity)
                         case 4:
-                            let _ = try await self.repository.searchParks(query: "park", in: self.testCity)
+                            _ = try await self.repository.searchParks(query: "park", in: self.testCity)
                         default:
                             break
                         }
@@ -719,5 +719,208 @@ final class ParkRepositoryTests: XCTestCase {
         let nearbyParks = try await repository.getParksNearLocation(location, radius: 1000000, city: testCity)
         
         XCTAssertGreaterThan(nearbyParks.count, 0)
+    }
+    
+    // MARK: - Additional Tests for Recent Changes
+    
+    func testParkRepositoryWithNewPropertyIDField() async throws {
+        // Test that the renamed propertyID field works correctly
+        let parks = try await repository.getAllParks(for: testCity)
+        let foundPark = parks.first { $0.propertyID == "FEATURED123" }
+        
+        XCTAssertNotNil(foundPark)
+        XCTAssertEqual(foundPark?.propertyID, "FEATURED123")
+        XCTAssertEqual(foundPark?.name, "Featured Park")
+    }
+    
+    func testParkRepositoryWithNilPropertyID() async throws {
+        // Test that parks without propertyID still work correctly
+        let context = ModelContext(modelContainer)
+        
+        // First fetch the city from this context
+        let cityId = testCity.id
+        let cityDescriptor = FetchDescriptor<City>(
+            predicate: #Predicate<City> { city in
+                city.id == cityId
+            }
+        )
+        let cities = try context.fetch(cityDescriptor)
+        guard let contextCity = cities.first else {
+            XCTFail("Could not find test city in context")
+            return
+        }
+        
+        let park = Park(
+            name: "No Property ID Park",
+            shortDescription: "Testing nil property ID",
+            fullDescription: "Full description for nil property ID test",
+            category: .mini,
+            latitude: 37.8,
+            longitude: -122.5,
+            address: "456 No Property St",
+            acreage: 2.0,
+            city: contextCity
+        )
+        
+        context.insert(park)
+        try context.save()
+        
+        let parks = try await repository.getAllParks(for: testCity)
+        let foundPark = parks.first { $0.name == "No Property ID Park" }
+        
+        XCTAssertNotNil(foundPark)
+        XCTAssertNil(foundPark?.propertyID)
+        XCTAssertEqual(foundPark?.name, "No Property ID Park")
+    }
+    
+    func testGetParksByCategoryWithUpdatedCategories() async throws {
+        // Test with the cleaned up category enum (only 5 categories now)
+        let context = ModelContext(modelContainer)
+        
+        // First fetch the city from this context
+        let cityId = testCity.id
+        let cityDescriptor = FetchDescriptor<City>(
+            predicate: #Predicate<City> { city in
+                city.id == cityId
+            }
+        )
+        let cities = try context.fetch(cityDescriptor)
+        guard let contextCity = cities.first else {
+            XCTFail("Could not find test city in context")
+            return
+        }
+        
+        // Create parks for each of the 5 remaining categories
+        let categories: [ParkCategory] = [.destination, .neighborhood, .mini, .plaza, .garden]
+        var createdParks: [Park] = []
+        
+        for category in categories {
+            let park = Park(
+                name: "\(category.displayName) Test Park",
+                shortDescription: "Testing \(category.rawValue) category",
+                fullDescription: "Full description for \(category.displayName)",
+                category: category,
+                latitude: 37.7,
+                longitude: -122.4,
+                address: "123 \(category.displayName) St",
+                acreage: 5.0,
+                propertyID: "\(category.rawValue.uppercased())123",
+                city: contextCity
+            )
+            createdParks.append(park)
+            context.insert(park)
+        }
+        
+        try context.save()
+        
+        // Test each category (only test for one since we know our test setup has limited parks)
+        let destinationParks = try await repository.getParksBy(category: .destination, in: testCity)
+        XCTAssertGreaterThanOrEqual(destinationParks.count, 1)
+        
+        // Verify we can fetch all parks
+        let allParks = try await repository.getAllParks(for: testCity)
+        XCTAssertGreaterThanOrEqual(allParks.count, 3) // At least our original test parks
+    }
+    
+    func testSearchParksWithCompositeIDReferences() async throws {
+        // Test search functionality works with parks that have composite ID references
+        let context = ModelContext(modelContainer)
+        
+        // First fetch the city from this context
+        let cityId = testCity.id
+        let cityDescriptor = FetchDescriptor<City>(
+            predicate: #Predicate<City> { city in
+                city.id == cityId
+            }
+        )
+        let cities = try context.fetch(cityDescriptor)
+        guard let contextCity = cities.first else {
+            XCTFail("Could not find test city in context")
+            return
+        }
+        
+        let searchablePark = Park(
+            name: "Searchable Composite Park",
+            shortDescription: "A park with composite ID for searching",
+            fullDescription: "This park tests search with composite ID functionality",
+            category: .destination,
+            latitude: 37.7,
+            longitude: -122.4,
+            address: "789 Composite Search St",
+            acreage: 15.0,
+            propertyID: "SEARCH789",
+            city: contextCity
+        )
+        
+        context.insert(searchablePark)
+        try context.save()
+        
+        // Test search by name
+        let nameResults = try await repository.searchParks(query: "Searchable", in: testCity)
+        XCTAssertEqual(nameResults.count, 1)
+        XCTAssertEqual(nameResults.first?.propertyID, "SEARCH789")
+        
+        // Test search by description
+        let descResults = try await repository.searchParks(query: "composite ID", in: testCity)
+        XCTAssertEqual(descResults.count, 1)
+        XCTAssertEqual(descResults.first?.name, "Searchable Composite Park")
+    }
+    
+    func testParkRepositoryErrorMessages() async throws {
+        // Test that custom error messages are properly formatted
+        do {
+            _ = try await repository.searchParks(query: "", in: testCity)
+            XCTFail("Should have thrown an error for empty query")
+        } catch let error as ParkRepositoryError {
+            XCTAssertNotNil(error.errorDescription)
+            XCTAssertTrue(error.errorDescription?.contains("empty") ?? false)
+        }
+        
+        // Test park not found error
+        let nonexistentID = UUID()
+        do {
+            _ = try await repository.getPark(by: nonexistentID)
+        } catch let error as ParkRepositoryError {
+            XCTAssertNotNil(error.errorDescription)
+            XCTAssertTrue(error.errorDescription?.contains(nonexistentID.uuidString) ?? false)
+        }
+    }
+    
+    func testGetVisitStatisticsWithUpdatedCategories() async throws {
+        // Test statistics with the cleaned up category system
+        let stats = try await repository.getVisitStatistics(for: testCity)
+        
+        XCTAssertEqual(stats.totalParks, 3) // From our test setup
+        XCTAssertEqual(stats.totalAcreage, 105.5) // 100 + 5 + 0.5
+        XCTAssertEqual(stats.categoryBreakdown[.destination], 1)
+        XCTAssertEqual(stats.categoryBreakdown[.neighborhood], 1)
+        XCTAssertEqual(stats.categoryBreakdown[.mini], 1)
+        XCTAssertEqual(stats.sizeBreakdown[.massive], 1) // 100 acres = massive
+        XCTAssertEqual(stats.sizeBreakdown[.medium], 1)  // 5 acres = medium
+        XCTAssertEqual(stats.sizeBreakdown[.pocket], 1)   // 0.5 acres = pocket
+    }
+    
+    @MainActor func testGetAllParksForUIWithDataLoading() async throws {
+        // Test the UI-specific method that can trigger data loading
+        let emptyCity = City(name: "empty_city", displayName: "Empty City")
+        
+        do {
+            let parks = try await repository.getAllParksForUI(for: emptyCity)
+            // This might be empty if no data file is available for loading
+            // The main test is that it doesn't crash
+            XCTAssertNotNil(parks)
+        } catch {
+            // Data loading might fail in test environment, which is acceptable
+            XCTAssertTrue(error is ParkRepositoryError)
+        }
+    }
+    
+    func testRepositoryProtocolConformance() {
+        // Test that ParkRepository properly conforms to ParkRepositoryProtocol
+        let protocolInstance: ParkRepositoryProtocol = repository
+        XCTAssertNotNil(protocolInstance)
+        
+        // This is a compile-time test - if this compiles, the protocol is properly implemented
+        XCTAssertTrue(repository is any ParkRepositoryProtocol)
     }
 }

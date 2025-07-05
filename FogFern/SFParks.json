@@ -65,7 +65,7 @@
       "objectId" : 171,
       "propertyID" : "957474",
       "acreage" : 2.53339019,
-      "fullDescription" : "Located in Mission, 49 S Van Ness Avenue serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families."
+      "fullDescription" : "This modern government building serves as San Francisco's centralized hub for city services, housing over fifteen departments including Planning, Public Works, and the Permit Center. The building represents San Francisco's commitment to accessible government, bringing together previously scattered offices into one convenient location where residents can handle construction permits, planning applications, and other city business. Its strategic location near Civic Center makes it a vital administrative anchor for the community, streamlining city services while contributing to the area's role as San Francisco's governmental heart."
     },
     {
       "neighborhood" : "Bayview Hunters Point",
@@ -91,7 +91,7 @@
       "objectId" : 97,
       "propertyID" : "46",
       "acreage" : 2.76858023,
-      "fullDescription" : "Located in Bayview Hunters Point, Adam Rodgers Park serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families."
+      "fullDescription" : "This 2.8-acre neighborhood gem in Bayview Hunters Point offers spectacular views of the Bay and serves as a beloved gathering spot for the community. The park features a wheelchair-accessible playground with city views, a basketball court, and numerous picnic sites with BBQ grills perfect for family gatherings. Its well-maintained trails provide excellent walking and running opportunities, while the thriving community garden allows residents to grow fresh fruits and vegetables, embodying the neighborhood's strong sense of community and self-reliance."
     },
     {
       "neighborhood" : "Hayes Valley",
@@ -181,7 +181,7 @@
       "latitude" : 37.77874981,
       "address" : "600 Arguello Blvd",
       "acreage" : 7.08433275,
-      "fullDescription" : "Located in Lone Mountain\/USF, Angelo J. Rossi Playground serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "fullDescription" : "This impressive 7-acre recreational complex sits on historically significant land in the Lone Mountain neighborhood, transformed from cemetery grounds into one of San Francisco's premier community recreation centers. The playground features extensive facilities including tennis and pickleball courts, baseball fields, basketball courts, and a renovated swimming pool, making it a athletic destination for residents and USF students alike. Its large open lawn areas and children's playground create perfect spaces for family gatherings, while the park's proximity to the University of San Francisco campus adds to its vibrant, collegiate atmosphere.",
       "shortDescription" : "Community park in Lone Mountain\/USF with recreational facilities"
     },
     {
@@ -246,7 +246,7 @@
       "latitude" : 37.7759179,
       "address" : "San Francisco, CA",
       "acreage" : 1.8432519,
-      "fullDescription" : "Located in Outer Richmond, Balboa Natural Area serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "fullDescription" : "This remarkable 1.8-acre natural sanctuary protects one of San Francisco's last remaining foredune ecosystems, offering visitors a rare glimpse into the city's original coastal landscape. An elevated boardwalk allows exploration while protecting the sensitive native vegetation, providing peaceful ocean views and educational opportunities about San Francisco's unique dune ecology. Located at the corner of Balboa Street and Great Highway, this hidden gem serves as a tranquil escape where visitors can experience the intersection of urban life and wild nature, making it a perfect stop for nature lovers exploring the Outer Richmond's coastal attractions.",
       "shortDescription" : "Community park in Outer Richmond with recreational facilities"
     },
     {
@@ -280,7 +280,7 @@
       "longitude" : -122.39329980999999,
       "acreage" : 3.9087788,
       "objectId" : 1682,
-      "fullDescription" : "Located in Bayview Hunters Point, Bayview K.C. Jones Playground serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "fullDescription" : "Named after basketball legend K.C. Jones who grew up in the nearby Double Rock Housing Development, this playground recently underwent a $6 million renovation that transformed it into a premier community recreation space. The renovated facility features a new baseball diamond with bleachers, expanded playground equipment, an accessible walking path with adult exercise equipment, and sustainable stormwater management features. Its 29 new trees and picnic lawn create a welcoming environment for families, while the playground's proximity to the Martin Luther King Jr. Pool adds to its appeal as a comprehensive recreational destination in the Bayview.",
       "latitude" : 37.725942090000004,
       "address" : "5701 3rd St",
       "propertyID" : "38",
@@ -384,7 +384,7 @@
       "longitude" : -122.46679189,
       "acreage" : 3.79028119,
       "objectId" : 128,
-      "fullDescription" : "Located in Oceanview\/Merced\/Ingleside, Brooks Park serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "fullDescription" : "This hidden hilltop gem in the OMI neighborhoods offers some of San Francisco's most spectacular and underrated sunset views over the Pacific Ocean, Lake Merced, and Parkmerced towers. The park features bocce ball and volleyball courts, BBQ pits, playground equipment, and an active community garden where locals grow vegetables and learn about native plant restoration. Once transformed from a troubled area into a safe family destination, Brooks Park now serves as a peaceful retreat where visitors can enjoy panoramic ocean vistas while exploring walking trails and picnic areas in one of the city's most suburban-feeling neighborhoods.",
       "latitude" : 37.71728548,
       "address" : "373 Ramsell St",
       "propertyID" : "18",
@@ -397,7 +397,7 @@
       "longitude" : -122.42858096,
       "acreage" : 1.9706335400000001,
       "objectId" : 55,
-      "fullDescription" : "Located in Western Addition, Hayes Valley, Buchanan St Mall serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "fullDescription" : "This five-block pedestrian mall running from Eddy to Grove Street represents both the resilience and renewal of the Western Addition community, currently undergoing a transformative $30 million renovation project scheduled for completion in late 2026. The reimagined space will feature a Memory Walk with decorative paving and foundational art elements, three park-activation kiosks, and new green infrastructure that honors the neighborhood's rich cultural heritage. Designed through extensive community input including over 1,150 survey responses, the renovated mall will serve as a vibrant hub for recreation, arts, culture, and intergenerational connection in the heart of the historic Fillmore district.",
       "latitude" : 37.77951424,
       "address" : "1151 Buchanan St",
       "propertyID" : "121",
@@ -449,7 +449,7 @@
       "longitude" : -122.4759929,
       "acreage" : 7.339430640000001,
       "objectId" : 1704,
-      "fullDescription" : "Located in Sunset\/Parkside, Carl Larsen Park serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "fullDescription" : "This beloved Sunset District park, donated by Danish immigrant Carl Larsen in 1926, features the neighborhood's famous aviation-themed playground complete with a sculpted F-8 Crusader jet replica that continues the park's decades-long tradition as \"the airplane park.\" The facility offers comprehensive recreation with tennis and basketball courts, a baseball diamond, and the architecturally award-winning Charlie Sava Pool, named after an Olympic swimming coach. Its unique combination of historical charm, modern amenities, and distinctive airplane playground makes it a cherished landmark visible from 19th Avenue and a favorite destination for families throughout the Parkside District.",
       "latitude" : 37.739289809999995,
       "address" : "2695 19th Ave",
       "propertyID" : "86",
@@ -683,7 +683,7 @@
       "shortDescription" : "Community park in Noe Valley with recreational facilities",
       "acreage" : 7.88730383,
       "objectId" : 147,
-      "fullDescription" : "Located in Noe Valley, Douglass Playground serves as a vital community hub providing recreational facilities, open space, and gathering areas for local residents and families.",
+      "fullDescription" : "This terraced neighborhood playground at 26th and Douglass Street offers stunning downtown San Francisco views along with comprehensive recreational facilities for the Noe Valley community. The well-equipped park features tennis and basketball courts on a first-come, first-serve basis, a modern playground, and pleasant picnic areas perfect for family gatherings. The facility includes a clubhouse with after-school programs, while the upper hillside hosts the Upper Douglass Dog Play Area, making it a multi-generational destination where sports enthusiasts, families, and pet owners can all find their perfect outdoor experience.",
       "latitude" : 37.74729064,
       "address" : "1098 Douglass St",
       "propertyID" : "8",
