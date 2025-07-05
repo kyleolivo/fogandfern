@@ -2,17 +2,18 @@
 //  SchemaMigrations.swift
 //  FogFern
 //
-//  SwiftData Migration Plans
-//  Handles data migration between schema versions
+//  SwiftData CloudKit Migration Plans
+//  Handles data migration between CloudKit schema versions
+//  Note: Only handles CloudKit-synced models (Visit, User)
 //
 
 import Foundation
 import SwiftData
 
-// MARK: - Versioned Migration Plan
-struct VersionedMigrationPlan: SchemaMigrationPlan {
+// MARK: - CloudKit Migration Plan
+struct CloudKitMigrationPlan: SchemaMigrationPlan {
     static var schemas: [any VersionedSchema.Type] {
-        [SchemaV1.self, SchemaV2.self]
+        [CloudKitSchemaV1.self, CloudKitSchemaV2.self]
     }
     
     static var stages: [MigrationStage] {
@@ -20,12 +21,12 @@ struct VersionedMigrationPlan: SchemaMigrationPlan {
     }
     
     static let migrateV1toV2 = MigrationStage.custom(
-        fromVersion: SchemaV1.self,
-        toVersion: SchemaV2.self,
+        fromVersion: CloudKitSchemaV1.self,
+        toVersion: CloudKitSchemaV2.self,
         willMigrate: { context in
-            _ = try context.fetchCount(FetchDescriptor<SchemaV1.Visit>())
-            _ = try context.fetchCount(FetchDescriptor<SchemaV1.User>())
-            _ = try context.fetchCount(FetchDescriptor<SchemaV1.Park>())
+            _ = try context.fetchCount(FetchDescriptor<CloudKitSchemaV1.Visit>())
+            _ = try context.fetchCount(FetchDescriptor<CloudKitSchemaV1.User>())
+            // Note: Park and City are local-only, not included in CloudKit migrations
         },
         didMigrate: { context in
             try context.save()
@@ -48,8 +49,8 @@ struct MigrationUtilities {
         // In a production app, you might want to export critical data
         // to a backup format before major migrations
         
-        let visits = try context.fetch(FetchDescriptor<SchemaV1.Visit>())
-        _ = try context.fetch(FetchDescriptor<SchemaV1.User>())
+        let visits = try context.fetch(FetchDescriptor<CloudKitSchemaV1.Visit>())
+        _ = try context.fetch(FetchDescriptor<CloudKitSchemaV1.User>())
         
         UserDefaults.standard.set(visits.count, forKey: "LastBackupVisitCount")
         UserDefaults.standard.set(Date(), forKey: "LastBackupDate")
@@ -59,18 +60,15 @@ struct MigrationUtilities {
     static func validateMigration(context: ModelContext) throws -> Bool {
         // Perform sanity checks on migrated data
         
-        let visits = try context.fetch(FetchDescriptor<SchemaV1.Visit>())
-        let _ = try context.fetch(FetchDescriptor<SchemaV1.User>())
-        let parks = try context.fetch(FetchDescriptor<SchemaV1.Park>())
+        let visits = try context.fetch(FetchDescriptor<CloudKitSchemaV1.Visit>())
+        let _ = try context.fetch(FetchDescriptor<CloudKitSchemaV1.User>())
         
         // Basic validation checks
         let hasOrphanedVisits = visits.contains { visit in
             visit.parkUniqueID.isEmpty
         }
         
-        _ = parks.contains { park in
-            park.propertyID?.isEmpty == true
-        }
+        // Note: Park validation removed since Parks are local-only
         
         if hasOrphanedVisits {
             return false

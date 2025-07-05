@@ -22,39 +22,42 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct FogFernApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Visit.self,
-            User.self, 
-            Park.self,
-            City.self
-        ])
-        
-        // Try CloudKit first
+        // Try CloudKit setup first with separate configurations
         do {
             let cloudKitConfig = ModelConfiguration(
-                schema: schema,
+                "CloudKitData",
+                schema: Schema([Visit.self, User.self]),
                 isStoredInMemoryOnly: false,
                 cloudKitDatabase: .automatic
             )
-            let container = try ModelContainer(
-                for: schema,
-                configurations: [cloudKitConfig]
-            )
-            return container
-        } catch {
-            // CloudKit failed, fall back to local storage
-        }
-        
-        // Fallback to local storage (persistent, no CloudKit)
-        do {
+            
             let localConfig = ModelConfiguration(
-                schema: schema,
+                "LocalData", 
+                schema: Schema([Park.self, City.self]),
                 isStoredInMemoryOnly: false,
                 cloudKitDatabase: .none
             )
+            
             let container = try ModelContainer(
-                for: schema,
-                configurations: [localConfig]
+                for: Visit.self, User.self, Park.self, City.self,
+                configurations: cloudKitConfig, localConfig
+            )
+            return container
+        } catch {
+            // CloudKit failed, fall back to all local storage
+        }
+        
+        // Fallback: All data stored locally (no CloudKit)
+        do {
+            let fallbackConfig = ModelConfiguration(
+                schema: Schema([Visit.self, User.self, Park.self, City.self]),
+                isStoredInMemoryOnly: false,
+                cloudKitDatabase: .none
+            )
+            
+            let container = try ModelContainer(
+                for: Visit.self, User.self, Park.self, City.self,
+                configurations: fallbackConfig
             )
             return container
         } catch {
