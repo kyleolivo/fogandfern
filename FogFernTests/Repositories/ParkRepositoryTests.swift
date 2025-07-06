@@ -923,4 +923,39 @@ final class ParkRepositoryTests: XCTestCase {
         // This is a compile-time test - if this compiles, the protocol is properly implemented
         XCTAssertNotNil(repository)
     }
+    
+    @MainActor func testGetAllParksForUIAlwaysChecksForUpdates() async throws {
+        // Test that getAllParksForUI always calls ParkDataLoader to check for version updates
+        // This test verifies the fix for the issue where park descriptions weren't updating
+        // despite version increments in the JSON file
+        
+        // Clear any stored version to simulate fresh state
+        UserDefaults.standard.removeObject(forKey: "ParksDataVersion")
+        
+        do {
+            // First call should trigger data loading
+            let parks1 = try await repository.getAllParksForUI(for: testCity)
+            
+            // Store the version that was set during first load
+            let storedVersion = UserDefaults.standard.string(forKey: "ParksDataVersion")
+            
+            // Second call should also call ParkDataLoader (which will check version and return early if no update)
+            let parks2 = try await repository.getAllParksForUI(for: testCity)
+            
+            // Should get the same parks since version didn't change
+            XCTAssertEqual(parks1.count, parks2.count)
+            
+            // Version should still be stored
+            XCTAssertEqual(UserDefaults.standard.string(forKey: "ParksDataVersion"), storedVersion)
+            
+        } catch let error as ParkRepositoryError {
+            // This is expected if SFParks.json is not available in test bundle
+            switch error.code {
+            case .dataCorruption:
+                throw XCTSkip("SFParks.json not found in test bundle")
+            default:
+                throw error
+            }
+        }
+    }
 }

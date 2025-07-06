@@ -200,18 +200,10 @@ class ParkRepository: ParkRepositoryProtocol {
         )
         
         do {
+            // Always check for data updates (ParkDataLoader handles version checking)
+            try ParkDataLoader.loadParks(into: context, for: city)
+            
             let parks = try context.fetch(descriptor)
-            
-            // If no parks found, try to load from local data
-            if parks.isEmpty {
-                try ParkDataLoader.loadParks(into: context, for: city)
-                let newParks = try context.fetch(descriptor)
-                return newParks.sorted(by: { lhs, rhs in
-                    return lhs.name < rhs.name
-                })
-            }
-            
-            // ParkDataLoader handles all duplicate detection and cleanup
             return parks.sorted(by: { lhs, rhs in
                 return lhs.name < rhs.name
             })
