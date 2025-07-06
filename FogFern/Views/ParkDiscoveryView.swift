@@ -154,7 +154,15 @@ struct ParkDiscoveryView: View {
     
     private func selectRandomVisiblePark() {
         guard !visibleParks.isEmpty else { return }
-        let randomPark = visibleParks.randomElement()
+        
+        // Filter visible parks to unvisited ones first
+        let unvisitedVisibleParks = visibleParks.filter { !hasVisited($0) }
+        
+        // Prefer unvisited parks, fall back to any visible park if all are visited
+        let randomPark = !unvisitedVisibleParks.isEmpty ? 
+            unvisitedVisibleParks.randomElement() : 
+            visibleParks.randomElement()
+        
         selectedPark = randomPark
         
         // Animate map to the selected park's location
