@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "generatedDate": "2025-06-29T22:01:51Z",
   "parks": [
     {
@@ -252,7 +252,7 @@
     {
       "propertyID": "66",
       "name": "Balboa Park",
-      "category": "destination",
+      "category": "neighborhood",
       "objectId": 80,
       "longitude": -122.44462514,
       "neighborhood": "Outer Mission",
@@ -265,7 +265,7 @@
     {
       "propertyID": "43",
       "name": "Bay View Park",
-      "category": "destination",
+      "category": "neighborhood",
       "objectId": 49,
       "longitude": -122.39251458,
       "neighborhood": "Bayview Hunters Point",
@@ -324,7 +324,7 @@
       "address": "San Francisco, CA",
       "propertyID": "36",
       "neighborhood": "Bernal Heights",
-      "category": "destination",
+      "category": "neighborhood",
       "name": "Bernal Heights Park"
     },
     {
@@ -415,7 +415,7 @@
       "address": "1293 Haight St",
       "propertyID": "81",
       "neighborhood": "Haight Ashbury",
-      "category": "destination",
+      "category": "neighborhood",
       "name": "Buena Vista Park"
     },
     {
@@ -571,7 +571,7 @@
       "address": "199 Museum Way",
       "propertyID": "80",
       "neighborhood": "Castro/Upper Market",
-      "category": "destination",
+      "category": "neighborhood",
       "longitude": -122.43881015
     },
     {
@@ -1871,7 +1871,7 @@
       "address": "150 Dalewood Way",
       "propertyID": "69",
       "neighborhood": "West of Twin Peaks",
-      "category": "destination",
+      "category": "neighborhood",
       "longitude": -122.45466691
     },
     {
@@ -2053,7 +2053,7 @@
       "address": "San Francisco, CA",
       "propertyID": "101",
       "neighborhood": "Outer Richmond, Inner Richmond, Seacliff, Presidio",
-      "category": "destination",
+      "category": "neighborhood",
       "longitude": -122.47230061
     },
     {
@@ -2131,7 +2131,7 @@
       "address": "200 Crestlake Dr",
       "propertyID": "82",
       "neighborhood": "Sunset/Parkside",
-      "category": "destination",
+      "category": "neighborhood",
       "longitude": -122.48593875
     },
     {
@@ -2235,7 +2235,7 @@
       "address": "3437 Clay St",
       "propertyID": "109",
       "neighborhood": "Presidio Heights",
-      "category": "destination",
+      "category": "neighborhood",
       "longitude": -122.44961450000001
     },
     {
@@ -2248,7 +2248,7 @@
       "address": "3550 Pacific Ave",
       "propertyID": "166",
       "neighborhood": "Presidio, Presidio Heights",
-      "category": "destination",
+      "category": "neighborhood",
       "longitude": -122.45398596000001
     },
     {
@@ -2495,7 +2495,7 @@
       "address": "2899 19th Ave",
       "propertyID": "83",
       "neighborhood": "Sunset/Parkside",
-      "category": "destination",
+      "category": "neighborhood",
       "longitude": -122.47829483
     },
     {
