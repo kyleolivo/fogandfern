@@ -228,6 +228,16 @@ struct ParkDiscoveryView: View {
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
+                    selectRandomVisiblePark()
+                } label: {
+                    Image(systemName: "dice")
+                        .foregroundColor(.black)
+                }
+                .disabled(visibleParks.isEmpty || !showingMapView)
+                .accessibilityIdentifier("randomParkButton")
+                .accessibilityLabel("Select random park")
+                
+                Button {
                     showingFilterSheet = true
                 } label: {
                     Image(systemName: "gearshape")

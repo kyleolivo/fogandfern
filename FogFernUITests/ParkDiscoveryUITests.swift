@@ -146,8 +146,7 @@ final class ParkDiscoveryUITests: XCTestCase {
     }
     
     func testRandomParkSelection() throws {
-        // Test shake gesture functionality (if available in UI tests)
-        // Note: Shake gesture is hard to test in UI tests, so we test related UI
+        // Test random park selection functionality via button
         
         // Ensure we're in map view
         app.segmentedControls.buttons["Map"].tap()
@@ -155,18 +154,24 @@ final class ParkDiscoveryUITests: XCTestCase {
         let mapView = app.otherElements["parkMap"].firstMatch
         XCTAssertTrue(mapView.exists)
         
-        // Since we can't easily simulate shake in UI tests,
-        // we test that the map view is responsive to interactions
-        // Use coordinate-based tapping to avoid accessibility scroll issues
-        let coordinate = mapView.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
-        coordinate.tap()
+        // Test the random park button
+        let randomParkButton = app.buttons["randomParkButton"].firstMatch
+        XCTAssertTrue(randomParkButton.exists, "Random park button should exist")
         
-        // Test additional coordinate interactions
-        let anotherCoordinate = mapView.coordinate(withNormalizedOffset: CGVector(dx: 0.6, dy: 0.4))
-        anotherCoordinate.tap()
+        // Button should be enabled when in map view
+        XCTAssertTrue(randomParkButton.isEnabled, "Random park button should be enabled in map view")
+        
+        // Tap the random park button (without checking position to avoid scroll issues)
+        if randomParkButton.isHittable {
+            randomParkButton.tap()
+            
+            // After tapping, the app should remain stable
+            XCTAssertTrue(app.navigationBars["Discover"].exists)
+        }
         
         // App should remain stable
         XCTAssertTrue(app.navigationBars["Discover"].exists)
+        XCTAssertTrue(mapView.exists)
     }
     
     // MARK: - Map Navigation Tests
@@ -218,6 +223,11 @@ final class ParkDiscoveryUITests: XCTestCase {
         
         // Wait for list to populate
         sleep(1)
+        
+        // Test that random park button is disabled in list view
+        let randomParkButton = app.buttons["randomParkButton"].firstMatch
+        XCTAssertTrue(randomParkButton.exists, "Random park button should exist")
+        XCTAssertFalse(randomParkButton.isEnabled, "Random park button should be disabled in list view")
         
         // Test scrolling in list view
         let scrollViews = app.scrollViews
@@ -303,31 +313,42 @@ final class ParkDiscoveryUITests: XCTestCase {
         // 1. Start in map view (default)
         XCTAssertTrue(app.segmentedControls.buttons["Map"].isSelected)
         
-        // 2. Open filter settings
+        // 2. Test random park button exists and is enabled in map view
+        let randomParkButton = app.buttons["randomParkButton"].firstMatch
+        XCTAssertTrue(randomParkButton.exists)
+        XCTAssertTrue(randomParkButton.isEnabled)
+        
+        // 3. Open filter settings
         app.buttons["filterButton"].firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Filter Parks"].exists)
         
-        // 3. Close filter settings
+        // 4. Close filter settings
         if app.navigationBars.buttons["Done"].exists {
             app.navigationBars.buttons["Done"].tap()
         }
         
-        // 4. Switch to list view
+        // 5. Switch to list view
         app.segmentedControls.buttons["List"].tap()
         XCTAssertTrue(app.segmentedControls.buttons["List"].isSelected)
         
-        // 5. Try location centering (should be disabled in list view)
+        // 6. Try location centering (should be disabled in list view)
         let locationButton = app.buttons["locationButton"].firstMatch
         XCTAssertFalse(locationButton.isEnabled)
         
-        // 6. Switch back to map view
+        // 7. Random park button should be disabled in list view
+        XCTAssertFalse(randomParkButton.isEnabled)
+        
+        // 8. Switch back to map view
         app.segmentedControls.buttons["Map"].tap()
         XCTAssertTrue(app.segmentedControls.buttons["Map"].isSelected)
         
-        // 7. Try location centering (should be enabled in map view)
+        // 9. Try location centering (should be enabled in map view)
         XCTAssertTrue(locationButton.isEnabled)
         
-        // 8. End in stable state
+        // 10. Random park button should be enabled again in map view
+        XCTAssertTrue(randomParkButton.isEnabled)
+        
+        // 11. End in stable state
         XCTAssertTrue(app.navigationBars["Discover"].exists)
     }
 }

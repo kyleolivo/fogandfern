@@ -25,7 +25,6 @@
       }
     },
     {
-      "parallelizable" : false,
       "target" : {
         "containerPath" : "container:FogFern.xcodeproj",
         "identifier" : "756E26142E0901420023E521",
